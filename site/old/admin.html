@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
+	<title>OutOfBounds</title>
+	<!-- Bootstrap Core CSS -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="font-awesome/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/form-elements.css">
+	<link rel="stylesheet" href="css/footer-distributed-with-address-and-phones.css">
+	<link rel="stylesheet" href="fonts/font.css">
+	<!-- Custom CSS -->
+	<link href="css/blog-home.css" rel="stylesheet">
+	<link rel="stylesheet" href="css/style.css">
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!--[if lt IE 9]>
+	<script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+	<script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+</head>
+<body>
+<!-- Navigation -->
+<nav class="navbar navbar-inverse navbar-fixed-top"> <!--role="navigation">-->
+	<div class="container">
+		<!-- Brand and toggle get grouped for better mobile display -->
+		<div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+				<span class="sr-only">Toggle navigation</span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand1" href="index.html">OutOfBounds</a>
+		</div>
+		<!-- Collect the nav links, forms, and other content for toggling -->
+		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="#" class="btn btn-link btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Admin</a>
+				</li>
+				<li role="presentation" class="active"><a href="#">Messages<span class="badge">42</span></a></li>
+				<li role="presentation"><a href="#">Profile</a></li>
+			</ul>
+		</div>
+		<!-- /.navbar-collapse -->
+	</div>
+	<!-- /.container -->
+</nav>
+<!-- BEGIN # MODAL LOGIN -->
+<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-hidden="true" style="display: none;"> <!-- aria-labelledby="myModalLabel" -->
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<!-- Begin # DIV Form -->
+			<div id="div-forms">
+				<!-- Begin # Login Form -->
+				<div class="col-sm-12 col-sm-offset-1 form-box">
+					<div class="form-bottom">
+						<ul class="nav nav-tabs">
+							<li class="active"><a href="#login" data-toggle="tab">Login</a></li>
+							<li><a href="#create" data-toggle="tab">Register</a></li>
+						</ul>
+						<div id="myTabContent" class="tab-content">
+							<div class="tab-pane active in" id="login">
+								<fieldset>
+									<form action="doNothing.php" method="post" class="login-form"> <!--role="form"-->
+										<div class="form-group">
+											<label class="sr-only" for="form-username">Username</label>
+											<input type="text" name="form-username" placeholder="Username..." class="form-username form-control" id="form-username">
+										</div>
+										<div class="form-group">
+											<label class="sr-only" for="form-password">Password</label>
+											<input type="password" name="form-password" placeholder="Password..." class="form-password form-control" id="form-password">
+										</div>
+										<button type="submit" class="btn">Login!</button>
+									</form>
+									<div class="col-sm-11 col-sm-offset-1 form-box">
+										<a class="btn btn-link-1 btn-link-1-facebook" href="#">
+											<i class="fa fa-facebook"></i> Facebook
+										</a>
+										<a class="btn btn-link-1 btn-link-1-google-plus" href="#">
+											<i class="fa fa-google-plus"></i> Google +
+										</a>
+										<a class="btn btn-link-1 btn-link-1-twitter" href="#">
+											<i class="fa fa-twitter"></i> Twitter
+										</a>
+									</div>
+								</fieldset>
+							</div>
+
+						</div>
+					</div>
+				</div>
+				<!-- End # Login Form -->
+			</div>
+			<!-- End # DIV Form -->
+		</div>
+	</div>
+</div>
+<!-- END # MODAL LOGIN -->
+<!-- Page Content -->
+<div class="container">
+	<div class="row">
+		<!-- Blog Entries Column -->
+		<div class="col-md-8">
+			<h2>Admin area</h2>
+
+
+			<ul class="nav nav-tabs">
+
+				<li class="tab"><a data-toggle="tab" href="#moderators">Moderators</a></li>
+				<li class="tab"><a data-toggle="tab" href="#categories">Categories</a></li>
+				<li class="active"><a data-toggle="tab" href="#users">Users</a></li>
+
+			</ul>
+
+
+			<div class="tab-content">
+				<div id="users" class="tab-pane fade in active">
+					<table class="tab-table" style="margin-top:1.5rem; margin-bottom:2rem; width:100%;text-align:left;">
+						<tr>
+							<th> Name </th>
+							<th> Rating </th>
+							<th> Questions </th>
+							<th> Answers </th>
+						</tr>
+						<tr>
+							<td><a href="#">Lola</a></td>
+							<td>1564</td>
+							<td>0</td>
+							<td>350</td>
+						</tr>
+						<tr>
+							<td><a href="#">Rico</a></td>
+							<td>1542</td>
+							<td>0</td>
+							<td>201</td>
+						</tr>
+						<tr>
+							<td><a href="#">Copa</a></td>
+							<td>1562</td>
+							<td>0</td>
+							<td>105</td>
+						</tr>
+						<tr>
+							<td><a href="#">Cabana</a></td>
+							<td>-10</td>
+							<td>14</td>
+							<td>3</td>
+						</tr>
+					</table>
+				</div>
+
+
+				<div id="categories" class="tab-pane fade">
+					<table class="tab-table" style="margin-top:1.5rem; margin-bottom:2rem; width:100%;text-align:left;">
+						<tr>
+							<th> Name </th>
+							<th> Moderators </th>
+							<th> Questions </th>
+						</tr>
+						<tr>
+							<td><a href="#">Web Development</a></td>
+							<td><a href="#">Lola</a>, <a href="#">Rico</a>, <a href="#">Copa</a></td>
+							<td>2472</td>
+						</tr>
+						<tr>
+							<td><a href="#">Existential Queries</a></td>
+							<td><a href="#">Cabana</a></a></td>
+							<td>0</td>
+						</tr>
+					</table>
+					<div>
+						<a href="#" class="btn btn-primary btn-sm btn-danger"><span class="glyphicon glyphicon-plus"></span>Add Category</a>
+						<a href="#" class="btn btn-primary btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span>Attribute Category</a>
+					</div>
+				</div>
+
+				<div id="moderators" class="tab-pane fade">
+					<table class="tab-table" style="margin-top:1.5rem; margin-bottom:2rem; width:100%;text-align:left;">
+						<tr>
+							<th> Name </th>
+							<th> Categories </th>
+							<th> Tasks </th>
+							<th> Completed </th>
+						</tr>
+						<tr>
+							<td><a href="#">Lola</a></td>
+							<td><a href="#">Web Development</a></td>
+							<td>285</td>
+							<td>285</td>
+						</tr>
+						<tr>
+							<td><a href="#">Rico</a></td>
+							<td><a href="#">Web Development</a></td>
+							<td>145</td>
+							<td>145</td>
+						</tr>
+						<tr>
+							<td><a href="#">Copa</a></td>
+							<td><a href="#">Web Development</a></td>
+							<td>178</td>
+							<td>178</td>
+						</tr>
+						<tr>
+							<td><a href="#">Cabana</a></td>
+							<td><a href="#">Existential Queries</a></td>
+							<td>1</td>
+							<td>0</td>
+						</tr>
+					</table>
+					
+					<div>
+						<a href="#" class="btn btn-primary btn-sm btn-danger"><span class="glyphicon glyphicon-plus"></span>Add Moderator</a>
+						<a href="#" class="btn btn-primary btn-sm btn-primary"><span class="glyphicon glyphicon-check"></span>Attribute Category</a>
+					</div>
+				</div>
+
+			</div>
+		</div>
+
+		<!-- Blog Sidebar Widgets Column -->
+		<div class="col-md-4">
+			<!-- Blog Search Well -->
+			<div class="well">
+				<h4>Search</h4>
+				<div class="input-group">
+					<input type="text" class="form-control">
+  						<span class="input-group-btn">
+  							<button class="btn btn-default" type="button">
+								<span class="glyphicon glyphicon-search"></span>
+							</button>
+  						</span>
+				</div>
+				<!-- /.input-group -->
+			</div>
+			<div class="well col-md-12">
+				<div class="browse">
+					<h4>Categories</h4><br>
+					<ul class="browseAlign">
+						<li><label class="tree-toggle nav-header"><span class="glyphicon glyphicon-menu-right"></span>Bootstrap</label>
+							<ul class="tree">
+								<li><a href="#">JavaScript</a></li>
+								<li><a href="#">CSS</a></li>
+								<li><label class="tree-toggle nav-header"><span class="glyphicon glyphicon-menu-right"></span>Buttons</label>
+									<ul class="tree">
+										<li><a href="#">Colors</a></li>
+										<li><a href="#">Sizes</a></li>
+										<li><label class="tree-toggle nav-header"><span class="glyphicon glyphicon-menu-right"></span>Forms</label>
+											<ul class="tree">
+												<li><a href="#">Horizontal</a></li>
+												<li><a href="#">Vertical</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+						<li class="divider"></li>
+						<li><label class="tree-toggle nav-header"><span class="glyphicon glyphicon-menu-right"></span>Responsive</label>
+							<ul class="tree">
+								<li><a href="#">Overview</a></li>
+								<li><a href="#">CSS</a></li>
+								<li><label class="tree-toggle nav-header"><span class="glyphicon glyphicon-menu-right"></span>Media Queries</label>
+									<ul class="tree">
+										<li><a href="#">Text</a></li>
+										<li><a href="#">Images</a></li>
+										<li><label class="tree-toggle nav-header"><span class="glyphicon glyphicon-menu-right"></span>Mobile Devices</label>
+											<ul class="tree">
+												<li><a href="#">iPhone</a></li>
+												<li><a href="#">Samsung</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+								<li><label class="tree-toggle nav-header"><span class="glyphicon glyphicon-menu-right"></span>Coding</label>
+									<ul class="tree">
+										<li><a href="#">JavaScript</a></li>
+										<li><a href="#">jQuery</a></li>
+										<li><label class="tree-toggle nav-header"><span class="glyphicon glyphicon-menu-right"></span>HTML DOM</label>
+											<ul class="tree">
+												<li><a href="#">DOM Elements</a></li>
+												<li><a href="#">Recursive</a></li>
+											</ul>
+										</li>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+				</div>
+			</div>
+			<!-- Tags Well -->
+			<div class="well">
+				<a href="#" class="btn" role="button"> <span class="glyphicon glyphicon-tags"></span> All Tags</a>
+				<br>
+				<div class="row">
+					<div class="col-lg-4">
+						<ul class="list-unstyled">
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>c++</a>
+							</li>
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>java</a>
+							</li>
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>c</a>
+							</li>
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>eclipse</a>
+							</li>
+						</ul>
+					</div>
+					<div class="col-lg-4">
+						<ul class="list-unstyled">
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>c#</a>
+							</li>
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>ajax</a>
+							</li>
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>json</a>
+							</li>
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>cdt</a>
+							</li>
+						</ul>
+					</div>
+					<!-- /.col-lg-6 -->
+					<div class="col-lg-4">
+						<ul class="list-unstyled">
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>overflow</a>
+							</li>
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>html</a>
+							</li>
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>css</a>
+							</li>
+							<li><a class="Taag btn btn-danger" role="button"><span class="glyphicon glyphicon-tag"></span>jquery</a>
+							</li>
+						</ul>
+					</div>
+					<!-- /.col-lg-6 -->
+				</div>
+				<!-- /.row -->
+			</div>
+		</div>
+
+	</div>
+</div>
+
+<!-- Footer -->
+<footer class="footer-distributed" style="margin-bottom: 0;">
+
+	<div class="footer-left">
+		<a href="question.html">Question</a>
+		<a href="admin2.html">Admin</a>
+		<a href="moderator.html">Moderator</a>
+		<a href="member.html">Member</a>
+		<h2>OutOfBounds</h2>
+
+		<p class="footer-links">
+			<a href="#">Home</a>
+			·
+			<a href="#">About</a>
+			·
+			<a href="#">Faq</a>
+			·
+			<a href="#">Contact</a>
+		</p>
+
+		<p class="footer-company-name">OutOfBounds &copy; 2016</p>
+	</div>
+
+	<div class="footer-center">
+
+		<div>
+			<i class="fa fa-map-marker"></i>
+			<p><span>21 Revolution Street</span> Paris, France</p>
+		</div>
+
+		<div>
+			<i class="fa fa-phone"></i>
+			<p>+1 555 123456</p>
+		</div>
+
+		<div>
+			<i class="fa fa-envelope"></i>
+			<p><a href="mailto:support@outofbounds.com">support@company.com</a></p>
+		</div>
+
+	</div>
+
+	<div class="footer-right">
+
+		<p class="footer-company-about">
+			<span>About the company</span>
+			Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+		</p>
+
+		<div class="footer-icons">
+
+			<a href="#"><i class="fa fa-facebook"></i></a>
+			<a href="#"><i class="fa fa-twitter"></i></a>
+			<a href="#"><i class="fa fa-linkedin"></i></a>
+			<a href="#"><i class="fa fa-github"></i></a>
+
+		</div>
+
+	</div>
+
+</footer>
+<!-- /.container -->
+<!-- jQuery -->
+<script src="js/jquery.js"></script>
+<!-- Bootstrap Core JavaScript -->
+<script src="js/bootstrap.min.js"></script>
+<script>
+	$( document ).ready(function() {
+		$('.tree-toggle').click(function () {
+			$(this).parent().children('ul.tree').toggle(200);
+		});
+
+		$(function(){
+			$('.tree-toggle').parent().children('ul.tree').toggle(200);
+
+		});
+
+		$('.tree-toggle').click( function(){
+			$(this).find('span').toggleClass('glyphicon-menu-right').toggleClass('glyphicon-menu-left');
+		});
+	});
+</script>
+</body>
+</html>
