@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 17:52:52
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-03 16:02:01
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/common/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:185982695057220fe7c1e362-82864490%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '07afcfc00b1751b5696a9dca0e6e50f1ea11d0cf' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/common/header.tpl',
-      1 => 1461858763,
+      1 => 1462283937,
       2 => 'file',
     ),
   ),
@@ -47,12 +47,14 @@ css/form-elements.css">
 css/footer-distributed-with-address-and-phones.css">
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 fonts/font.css">
+
     <!-- Custom CSS -->
     <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 css/blog-home.css" rel="stylesheet">
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 css/style.css">
-
+    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/listquestion.css">
 
 
 </head>
@@ -69,7 +71,8 @@ css/style.css">
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand1" href="index.html">OutOfBounds</a>
+            <a class="navbar-brand1" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+index.php">OutOfBounds</a>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <!-- Collect the nav links, forms, and other content for toggling -->
@@ -101,6 +104,4 @@ css/style.css">
     </div>
     <!-- /.container -->
 </nav>
-
-
 <?php }} ?>

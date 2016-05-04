@@ -27,15 +27,6 @@ textarea.form-control {
   height: 100%;
 }
 
-#question{
-	height:200px;
-}
-
-#tagsofquestion{
-	padding-top:2rem;
-	padding-left:1rem;
-}
-
 
 #log{
 	padding-top:40px;

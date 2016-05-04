@@ -4,6 +4,24 @@ SELECT *
 FROM FullTextPost
 WHERE tsvPost @@ to_tsquery('java');
 
+SELECT
+  post.postid AS questionid,
+  post.postauthorid,
+  member.name,
+  post.postcreationdate,
+  posttitle AS title,
+  post.postrating,
+  question.views,
+  question.answers,
+  question.categoryid,
+  postcategory AS categoryname,
+  posttags AS tagnames
+FROM fulltextpost, post, member, question
+WHERE fulltextpost.postid = post.postid
+      AND post.postauthorid = member.memberid
+      AND post.postid = question.questionid
+      AND tsvPost @@ to_tsquery('java');
+
 -- questions from a certain category
 SELECT DISTINCT ON (questionID)
   questionID,
@@ -187,3 +205,39 @@ SELECT * FROM userType('moderator');
 -- all members
 SELECT * FROM userType('member');
 
+
+
+-- recent n questions
+
+SELECT
+  Question.questionid,
+  Post.postauthorid,
+  Member.name,
+  Post.postcreationdate,
+  Question.title,
+  Post.postrating,
+  Question.views,
+  Question.answers,
+  Question.categoryid,
+  Category.categoryname,
+  string_agg(text(Tag.tagid), ' ') AS tagids,
+  string_agg(tagname, ' ') AS tagnames
+FROM Question
+INNER JOIN Post ON Post.postid = Question.questionid
+INNER JOIN Member ON Post.postAuthorid = Member.memberid
+INNER JOIN Category ON Category.categoryid = Question.categoryid
+INNER JOIN Classification ON Classification.questionid = Question.questionid
+INNER JOIN Tag ON Classification.tagid = Tag.tagid
+WHERE deletorid IS NULL
+GROUP BY Question.questionid,
+  Post.postauthorid,
+  Member.name,
+  Post.postcreationdate,
+  Question.title,
+  Post.postrating,
+  Question.views,
+  Question.answers,
+  Question.categoryid,
+  Category.categoryname
+ORDER BY postcreationdate DESC
+LIMIT 10;

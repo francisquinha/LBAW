@@ -3,6 +3,8 @@ DROP SCHEMA IF EXISTS public CASCADE;
 
 CREATE SCHEMA public;
 
+SET SCHEMA 'public';
+
 DROP TABLE IF EXISTS Answer CASCADE;
 
 DROP TABLE IF EXISTS Category CASCADE;
@@ -70,11 +72,9 @@ CREATE TABLE Member(
   password TEXT NOT NULL,
   name TEXT NOT NULL,
   picture TEXT,
-  birthDate TIMESTAMP NOT NULL,
   registrationDate TIMESTAMP NOT NULL DEFAULT current_timestamp(0),
   memberRating INTEGER NOT NULL DEFAULT 0,
-  permissionType permissionEnum NOT NULL DEFAULT 'member',
-  CONSTRAINT MemberDates CHECK (registrationDate >= birthDate)
+  permissionType permissionEnum NOT NULL DEFAULT 'member'
 );
 
 CREATE TABLE Permission(
@@ -163,8 +163,8 @@ CREATE TABLE Vote(
 );
 
 -- inserts before triggers
-INSERT INTO Member (username, email, password, name, birthDate, registrationDate, permissionType) VALUES
-  ('system', 'system@system.com', '', 'system', TIMESTAMP '1984-02-24 16:30:56', TIMESTAMP '1984-02-24 16:30:56', 'system');
+INSERT INTO Member (username, email, password, name, registrationDate, permissionType) VALUES
+  ('system', 'system@system.com', '', 'system', TIMESTAMP '1984-02-24 16:30:56', 'system');
 
 INSERT INTO Permission (beginDate, permissionType, giverID, ownerID) VALUES
   (TIMESTAMP '1984-02-24 16:30:56', 'system', 1, 1);

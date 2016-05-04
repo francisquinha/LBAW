@@ -20,12 +20,15 @@
                     {foreach $questions as $question}
                         <div id="question">
                             <div id="questiontitlesquare">
-                                <a id="questiontitle" href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
+                                <a id="questiontitle"
+                                   href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
                                     {$question.title}
                                 </a>
                             </div>
-                            <div id="questionusersquare"><a id="questionusers" href="#"
-                                >{$question.name}</a>
+                            <div id="questionbodysquare">
+                                {$question.versionbody}
+                            </div>
+                            <div id="questionusersquare"><a id="questionusers" href="#">{$question.name}</a>
                                 <span id="timeago">asked {$question.timeago}</span></div>
                             <div id="questioncategorysquare"><a href="#">{$question.categoryname}</a>
                             </div>
@@ -49,11 +52,35 @@
                         <hr>
                     {/foreach}
 
+                    {foreach $answers as $answer}
+                        <div id="answer">
+                            <div id="answerbodysquare">
+                                {$answer.versionbody}
+                            </div>
+                            <div id="answerusersquare">
+                                <a id="answerusers" href="#">{$answer.name}</a>
+                                <span id="timeago">answered {$answer.timeago}</span>
+                            </div>
+                            <div id="answerbuttonsection">
+                                <a href="#" class="btn btn-primary btn-sm btn-success">
+                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    {$answer.postrating}
+                                </a>
+                            </div>
+                        </div>
+                        <hr>
+                    {/foreach}
+
+                    <div class="form-group">
+                        <textarea class="form-control" placeholder="Your Answer.." rows="3"></textarea>
+                    </div>
+
+                    <hr>
                 </div>
             </div>
         </div>
 
 
-<!--        <script>last_question_id = {$last_question_id}</script>-->
+        <script>last_question_id = {$last_question_id}</script>
 
         <!--<script src="{$base_url}javascript/tweets.js"></script>-->

@@ -1,37 +1,37 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-03 16:56:26
-         compiled from "/opt/lbaw/lbaw1553/public_html/templates/right-side/right-side.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:42377209157225d302f14e2-78697301%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 13:30:36
+         compiled from "/opt/lbaw/lbaw1553/public_html/templates/common/menu_side.tpl" */ ?>
+<?php /*%%SmartyHeaderCode:21047243155728c25c620839-27304064%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
-    '78dae7ee7b56cd5d1cd019bf9a498ecb804217d9' => 
+    '2d485be7d4e813e244f977c8a63a73b7af034fc5' => 
     array (
-      0 => '/opt/lbaw/lbaw1553/public_html/templates/right-side/right-side.tpl',
-      1 => 1462287366,
+      0 => '/opt/lbaw/lbaw1553/public_html/templates/common/menu_side.tpl',
+      1 => 1462361420,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '42377209157225d302f14e2-78697301',
+  'nocache_hash' => '21047243155728c25c620839-27304064',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_57225d302f8d08_88723732',
+  'unifunc' => 'content_5728c25c699e67_82450566',
   'variables' => 
   array (
     'BASE_URL' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57225d302f8d08_88723732')) {function content_57225d302f8d08_88723732($_smarty_tpl) {?><!-- Blog Sidebar Widgets Column -->
+<?php if ($_valid && !is_callable('content_5728c25c699e67_82450566')) {function content_5728c25c699e67_82450566($_smarty_tpl) {?><!-- Blog Sidebar Widgets Column -->
 <div class="col-md-4">
     <!-- Blog Search Well -->
 
 
     <div class="well">
-        <h4>Search</h4>
+        <a id="questiontitle">Search</a>
         <form class="input-group" action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-actions/questions/search.php" method="post">
+pages/questions/list_search.php" method="post">
             <input type="text" name="search" class="form-control">
          <span class="input-group-btn">
             <button class="btn btn-default" type="submit">
@@ -43,7 +43,7 @@ actions/questions/search.php" method="post">
     </div>
     <div class="well col-md-12">
         <div class="browse">
-            <h4>Categories</h4><br>
+            <a id="questiontitle">Categories</a>
             <ul class="browseAlign">
                 <li><label class="tree-toggle nav-header"><span class="glyphicon glyphicon-menu-right"></span>Bootstrap</label>
                     <ul class="tree">
@@ -101,10 +101,5 @@ actions/questions/search.php" method="post">
             </ul>
         </div>
     </div>
-    
 
-</div>
-</div>
-<!-- /.row -->
-</div>
-</div><?php }} ?>
+<?php }} ?>

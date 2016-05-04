@@ -1,6 +1,6 @@
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family:'QuanticoRegular','Roboto', sans-serif;
     font-size: 16px;
     font-weight: 300;
     color: #888;
@@ -43,13 +43,7 @@ a, a:hover, a:focus {
 	
 }
 
-#question{
-		margin:0;
-		background-color:#F8F8F8;
-		padding:1.5rem;
-		padding-bottom:6rem;
-	
-}
+
 
 #titleofquestion{
 	color:black;
@@ -64,59 +58,7 @@ a, a:hover, a:focus {
 
 }
 
-#questionbuttonsection{
-	float:left;
-	margin:0;
-	padding:0;
-	padding-top:3rem;
-	padding-bottom:3rem;
-	
-}
-#questionbuttonsection > a > span{
-	margin:0;
-	padding:0;
 
-}
-
-#tagsofquestion{
-	float:right;
-	padding:0;
-	margin-left:0;
-	padding-left:0.2rem;
-	padding-right:0.2rem;
-	padding-top:3rem;
-	padding-bottom:0.5rem;
-	margin:0;
-	
-}
-#tagsofquestion > a{
-	padding-left:0.2rem;
-	padding-right:0.2rem;
-	padding-top:0.2rem;
-	padding-bottom:0.5rem;
-	margin:0.2 rem;
-	
-	
-}
-
-#questionbuttonsection > a{
-	font-size:80%;
-	padding-left:0.2rem;
-	padding-right:0.2rem;
-	padding-top:0.2rem;
-	padding-bottom:0.5rem;
-	margin:0.2 rem;
-	
-}
-
-#tagsofquestion > a > span{
-	padding-left:0.1rem;
-	padding-right:0;
-	padding-top:0;
-	padding-bottom:0.5rem;
-	margin:0;
-
-}
 
 #log{
 	float:right;
@@ -294,32 +236,6 @@ img { max-width: 100%; }
 
 }
 
-.Taags {
-  list-style: none;
-  margin: 0;
-  overflow: hidden; 
-  padding: 0;
-  padding-right:0;
-	padding-bottom: 1rem;
-}
-
-.Taags li {
-  float: left; 
-}
-
-.Taag {
-	color: white;
-	height: 2.3rem;
-	max-width:15rem;
-	display: inline-block;
-	position: relative;
-	margin:0.1rem;
-	padding-left:0;
-	text-decoration: none;
-	-webkit-transition: color 0.2s;
-}
-
-
 /*
 .Taag:hover {
   background-color: white;
@@ -348,9 +264,6 @@ table.tab-table th, table.tab-table td{
 	padding: 2px 15px;
 }
 
-table.question-table td {
-	padding: 0 5rem;
-}
 
 a > span{
 	margin:0;
@@ -363,5 +276,54 @@ a > span{
 }
 
 .container {
-	margin:1 0rem;
+	margin: 1 0rem;
+}
+
+.hide-tab{
+	display:none;
+}
+
+.btn {
+	 font-family: 'QuanticoRegular';
+
+ }
+
+.footer-distributed{
+	font-family: 'QuanticoRegular';
+}
+
+a , input, form, button{
+	font-family: 'QuanticoRegular';
+}
+
+::-webkit-input-placeholder {
+	color: orange;
+	font-family: 'QuanticoRegular';
+
+}
+
+:-moz-placeholder {
+	color: orange;
+	font-family: 'QuanticoRegular';
+
+}
+
+::-moz-placeholder {
+	color: orange;
+	font-family: 'QuanticoRegular';
+
+}
+
+:-ms-input-placeholder {
+	color: orange;
+	font-family: 'QuanticoRegular';
+
+}
+
+#tabname{
+	font-family: 'QuanticoRegular';
+}
+
+#buttonlog{
+	font-family: 'QuanticoRegular';
 }

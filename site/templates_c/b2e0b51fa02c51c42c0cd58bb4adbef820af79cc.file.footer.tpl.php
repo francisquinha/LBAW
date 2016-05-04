@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 16:13:39
+<?php /* Smarty version Smarty-3.1.15, created on 2016-04-29 10:52:37
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/common/footer.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:115943009557220fe7ca1d42-02884698%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b2e0b51fa02c51c42c0cd58bb4adbef820af79cc' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/common/footer.tpl',
-      1 => 1461852777,
+      1 => 1461915379,
       2 => 'file',
     ),
   ),
@@ -28,14 +28,15 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <footer class="footer-distributed" style="margin-bottom: 0;">
 
     <div class="footer-left">
-        <a href="question.html">Question</a>
-        <a href="admin.html">Admin</a>
-        <a href="moderator.html">Moderator</a>
-        <a href="member.html">Member</a>
+        <a href="#">Question</a>
+        <a href="#">Admin</a>
+        <a href="#">Moderator</a>
+        <a href="#">Member</a>
         <h2>OutOfBounds</h2>
 
         <p class="footer-links">
-            <a href="index.html">Home</a>
+            <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+index.php">Home</a>
             ·
             <a href="#">About</a>
             ·

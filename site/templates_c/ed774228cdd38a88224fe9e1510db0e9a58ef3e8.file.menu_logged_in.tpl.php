@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-28 22:44:24
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 13:27:43
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/common/menu_logged_in.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:62283844457220fe7ed9da4-17030683%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'ed774228cdd38a88224fe9e1510db0e9a58ef3e8' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/common/menu_logged_in.tpl',
-      1 => 1461876250,
+      1 => 1462361062,
       2 => 'file',
     ),
   ),
@@ -32,6 +32,6 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
     <li><a href="#">My Profile</a></li>
     <li><a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-actions/users/logout.php" >Logout <span style="color:#cc0000;align:right;padding-bottom:0;"class="glyphicon glyphicon-remove"></span> </a></li>
+actions/members/logout.php" >Logout <span style="color:#cc0000;align:right;padding-bottom:0;"class="glyphicon glyphicon-remove"></span> </a></li>
 </ul>
 <?php }} ?>

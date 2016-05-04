@@ -3,7 +3,7 @@
 <section id="register">
   <h2>Register</h2>
 
-  <form action="{$BASE_URL}actions/users/register.php" method="post" enctype="multipart/form-data">
+  <form action="{$BASE_URL}actions/members/register.php" method="post" enctype="multipart/form-data">
     <label>Name:<br> 
       <input type="text" name="realname" value="{$FORM_VALUES.realname}"> 
       <span class="field_error">{$FIELD_ERRORS.username}</span>

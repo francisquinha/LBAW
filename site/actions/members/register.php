@@ -1,6 +1,6 @@
 <?php
 include_once('../../config/init.php');
-include_once($BASE_DIR . 'database/users.php');
+include_once($BASE_DIR . 'database/members.php');
 
 if (!$_POST['form-username'] || !$_POST['form-name'] || !$_POST['form-password'] || !$_POST['form-email']) {
     $_SESSION['error_messages'][] = 'All fields are mandatory';

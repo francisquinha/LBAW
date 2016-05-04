@@ -1,0 +1,139 @@
+#question{
+    margin:0;
+    background-color:white;
+    padding:1.5rem;
+    min-height: 200px;
+    min-width: 200px;
+}
+
+
+#questiontitle{
+    font-family: 'QuanticoRegular';
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60ch;
+
+}
+#questiontitlesquare{
+    padding:0;
+    margin:0;
+    width: 100%;
+    float:left;
+}
+
+#questioncategorysquare{
+    float:left;
+    width: 20%;
+}
+
+#questioncategorysquare > a{
+    color:black;
+    font-family: 'QuanticoRegular';
+
+}
+
+#questionusersquare{
+    width: 80%;
+    float:left;
+    text-align: left;
+    padding-left: 1rem;
+}
+
+#questionusers{
+    font-size:80%;
+    color: #008CBA;
+    font-family: 'QuanticoRegular';
+
+
+}
+
+#timeago{
+    font-size:70%;
+    font-family: 'QuanticoRegular';
+
+
+}
+
+
+#questionbuttonsection{
+    clear: both;
+    float:left;
+    margin:0;
+    padding:0;
+    padding-top:1rem;
+
+}
+#questionbuttonsection > a > span{
+    margin:0;
+    padding:0;
+
+}
+
+#tagsofquestion{
+    float:right;
+    padding:0;
+    margin-left:0;
+    padding-left:0.2rem;
+    padding-right:0.2rem;
+    padding-top:1rem;
+    padding-bottom:0.5rem;
+    margin:0;
+
+}
+#tagsofquestion > a{
+    padding-left:0.2rem;
+    padding-right:0.2rem;
+    padding-top:0.2rem;
+    padding-bottom:0.5rem;
+    margin:0.2 rem;
+
+
+}
+
+#questionbuttonsection > a{
+    font-size:80%;
+    padding-left:0.2rem;
+    padding-right:0.2rem;
+    padding-top:0.2rem;
+    padding-bottom:0.5rem;
+    margin:0.2 rem;
+
+}
+
+#tagsofquestion > a > span{
+    padding-left:0.1rem;
+    padding-right:0;
+    padding-top:0;
+    padding-bottom:0.5rem;
+    margin:0;
+
+}
+
+.Taags {
+    list-style: none;
+    margin: 0;
+    overflow: hidden;
+    padding: 0;
+    padding-right:0;
+    padding-bottom: 1rem;
+}
+
+.Taag {
+    color: #c9302c;
+    font-size: 80%;
+    padding:1rem;
+    font-family: 'QuanticoRegular';
+}
+
+#button_tag{
+    color: #c9302c;
+    font-size: 80%;
+    padding:1rem;
+    font-family: 'QuanticoRegular';
+}
+
+#tabname{
+    font-family: 'QuanticoRegular';
+}
