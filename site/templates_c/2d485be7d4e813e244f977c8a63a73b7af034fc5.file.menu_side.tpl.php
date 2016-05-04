@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 13:30:36
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 17:20:22
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/common/menu_side.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:21047243155728c25c620839-27304064%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '2d485be7d4e813e244f977c8a63a73b7af034fc5' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/common/menu_side.tpl',
-      1 => 1462361420,
+      1 => 1462375187,
       2 => 'file',
     ),
   ),
@@ -31,13 +31,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <div class="well">
         <a id="questiontitle">Search</a>
         <form class="input-group" action="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
-pages/questions/list_search.php" method="post">
+pages/questions/list_search.php" method="get">
             <input type="text" name="search" class="form-control">
-         <span class="input-group-btn">
-            <button class="btn btn-default" type="submit">
-                <span class="glyphicon glyphicon-search"></span>
-            </button>
-         </span>
+            <span class="input-group-btn">
+                <button class="btn btn-default" type="submit">
+                    <span class="glyphicon glyphicon-search"></span>
+                </button>
+            </span>
         </form>
         <!-- /.input-group -->
     </div>
@@ -74,8 +74,9 @@ pages/questions/list_search.php" method="post">
                             <ul class="tree">
                                 <li><a href="#">Text</a></li>
                                 <li><a href="#">Images</a></li>
-                                <li><label class="tree-toggle nav-header"><span
-                                                class="glyphicon glyphicon-menu-right"></span>Mobile Devices</label>
+                                <li><label class="tree-toggle nav-header">
+                                        <span class="glyphicon glyphicon-menu-right"></span>Mobile Devices
+                                    </label>
                                     <ul class="tree">
                                         <li><a href="#">iPhone</a></li>
                                         <li><a href="#">Samsung</a></li>

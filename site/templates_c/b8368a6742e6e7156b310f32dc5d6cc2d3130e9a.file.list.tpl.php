@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-03 18:07:20
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 17:29:56
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/tags/list.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:17785879275728c3513ab802-92504070%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'b8368a6742e6e7156b310f32dc5d6cc2d3130e9a' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/tags/list.tpl',
-      1 => 1462291633,
+      1 => 1462375784,
       2 => 'file',
     ),
   ),
@@ -20,6 +20,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   'variables' => 
   array (
     'tags' => 0,
+    'BASE_URL' => 0,
     'tag' => 0,
   ),
   'has_nocache_code' => false,
@@ -34,8 +35,13 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 foreach ($_from as $_smarty_tpl->tpl_vars['tag']->key => $_smarty_tpl->tpl_vars['tag']->value) {
 $_smarty_tpl->tpl_vars['tag']->_loop = true;
 ?>
-                    <a id="button_tag" style="display:inline-flex; padding-left:0; margin:0;"><span style=" padding:0; margin:0;" class="glyphicon glyphicon-tag"></span><?php echo $_smarty_tpl->tpl_vars['tag']->value['tagname'];?>
-</a>
+                    <a id="button_tag" style="display:inline-flex; padding-left:0; margin:0;"
+                       href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/questions/list_tag.php?tagid=<?php echo $_smarty_tpl->tpl_vars['tag']->value['tagid'];?>
+">
+                        </span><?php echo $_smarty_tpl->tpl_vars['tag']->value['tagname'];?>
+
+                    </a>
                 <?php } ?>
     </div>
     <!-- /.row -->

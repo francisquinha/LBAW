@@ -5,22 +5,13 @@
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-7">
-            <h3 id="topquestion">{$subtitle}</h3>
-            <ul class="nav nav-tabs right-side">
-                <li class="active"><a id="tabname" data-toggle="tab" href="#recent" style={$style_tab1}><span
-                                class={$class_tab1} style={$style_tab1}> </span>{$tab1}</a></li>
-                <li><a id="tabname" data-toggle="tab" href="#hot" style={$style_tab1}><span
-                                class={$class_tab2} style={$style_tab2}> </span>{$tab2}</a></li>
-            </ul>
-
+        <div class="col-md-12">
             <div class="tab-content">
                 <div id="recent" class=" tab-pane fade in active">
-
                     {foreach $questions as $question}
                         <div id="question">
                             <div id="questiontitlesquare">
-                                <a id="questiontitle"
+                                <a id="qpagequestiontitle"
                                    href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
                                     {$question.title}
                                 </a>
@@ -28,18 +19,22 @@
                             <div id="questionbodysquare">
                                 {$question.versionbody}
                             </div>
+                            <br>
+                            <a href="#" class="btn-lg" ><span
+                                        class="glyphicon glyphicon-thumbs-up"></span></a>
+                            <br>
                             <div id="questionusersquare"><a id="questionusers" href="#">{$question.name}</a>
                                 <span id="timeago">asked {$question.timeago}</span></div>
                             <div id="questioncategorysquare"><a href="#">{$question.categoryname}</a>
                             </div>
 
 
-                            <div id="questionbuttonsection">
-                                <a href="#" class="btn btn-primary btn-sm btn-success"><span
+                            <div id="questionbuttonsection" >
+                                <a href="#" class="-success" ><span
                                             class="glyphicon glyphicon-thumbs-up"></span> {$question.postrating}</a>
-                                <a href="#" class="btn btn-primary btn-sm btn-warning"><span
+                                <a href="#" class="-warning"><span
                                             class="fa fa-pencil"></span> {$question.answers}</a>
-                                <a href="#" class="btn btn-sm btn-primary"><span
+                                <a href="#" class="-primary"><span
                                             class="glyphicon glyphicon-eye-open"></span> {$question.views}</a>
                             </div>
                             <div id="tagsofquestion">
@@ -49,6 +44,7 @@
                                 {/foreach}
                             </div>
                         </div>
+                        <br>
                         <hr>
                     {/foreach}
 
@@ -61,25 +57,28 @@
                                 <a id="answerusers" href="#">{$answer.name}</a>
                                 <span id="timeago">answered {$answer.timeago}</span>
                             </div>
-                            <div id="answerbuttonsection">
-                                <a href="#" class="btn btn-primary btn-sm btn-success">
+                            <div id="questionbuttonsection">
+                                <a href="#" class="-success">
                                     <span class="glyphicon glyphicon-thumbs-up"></span>
                                     {$answer.postrating}
                                 </a>
                             </div>
                         </div>
+                        <br>
                         <hr>
                     {/foreach}
 
-                    <div class="form-group">
-                        <textarea class="form-control" placeholder="Your Answer.." rows="3"></textarea>
+                        <div class="form-group">
+                            <textarea id="message" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
+                        </div>
+                        <button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Answer</button>
                     </div>
-
-                    <hr>
+                    <br>
                 </div>
             </div>
         </div>
-
+    </div>
+</div>
 
         <script>last_question_id = {$last_question_id}</script>
 

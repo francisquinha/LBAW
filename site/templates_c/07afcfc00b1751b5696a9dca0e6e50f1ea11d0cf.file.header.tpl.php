@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-03 16:02:01
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 19:12:49
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/common/header.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:185982695057220fe7c1e362-82864490%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '07afcfc00b1751b5696a9dca0e6e50f1ea11d0cf' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/common/header.tpl',
-      1 => 1462283937,
+      1 => 1462381861,
       2 => 'file',
     ),
   ),
@@ -55,7 +55,8 @@ css/blog-home.css" rel="stylesheet">
 css/style.css">
     <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 css/listquestion.css">
-
+    <link rel="stylesheet" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+css/question.css">
 
 </head>
 <body>

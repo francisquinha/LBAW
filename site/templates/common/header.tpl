@@ -20,7 +20,7 @@
     <link href="{$BASE_URL}css/blog-home.css" rel="stylesheet">
     <link rel="stylesheet" href="{$BASE_URL}css/style.css">
     <link rel="stylesheet" href="{$BASE_URL}css/listquestion.css">
-
+    <link rel="stylesheet" href="{$BASE_URL}css/question.css">
 
 </head>
 <body>
