@@ -3,10 +3,9 @@ include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/questions.php');
 include_once($BASE_DIR . 'pages/questions/time.php');
 
-if (isset($_GET['search']) && $_GET['search'] != "") {
+if (isset($_GET['categoryid'])) {
 
-    $text = pg_escape_string($_GET['search']);
-    $questions = getSearchPosts([$text]);
+    $questions = getCategoryQuestions([$_GET['categoryid']]);
 
     foreach ($questions as $key => $question) {
         unset($timeago);
@@ -27,14 +26,14 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
         $questions[$key]['tagarray'] = $tagarray;
     }
 
-    $smarty->assign('last_question_id', $questions[0]['questionID']);
+    $smarty->assign('last_question_id', $questions[0]['questionid']);
     $smarty->assign('questions', $questions);
-    $subtitle = "Search Results";
+    $subtitle = "";
     $smarty->assign('subtitle', $subtitle);
-    $tab = "''";
+    $tab = "";
     $smarty->assign('tab1', $tab);
     $smarty->assign('tab2', $tab);
-    $class_tab = "''";
+    $class_tab = "";
     $smarty->assign('class_tab1', $class_tab);
     $smarty->assign('class_tab2', $class_tab);
     $style_tab = "'display: none;'";

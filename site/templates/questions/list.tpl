@@ -1,5 +1,33 @@
 {include file='common/header.tpl'}
 
+<script language="javascript">
+
+    function myFunction(){
+
+            var status=true;
+
+            if(status) {
+                $('.alert-success').show();
+            }
+    }
+</script>
+
+<div class = "alert alert-success hide">
+    <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+        &times;
+    </button>
+
+    Success! Well done its submitted.
+</div>
+
+<div class = "alert alert-unsuccess hide">
+    <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+        &times;
+    </button>
+
+    Error ! Change few things.
+</div>
+
 <br>
 <br>
 <div class="container">
@@ -24,25 +52,39 @@
                                     {$question.title}
                                 </a>
                             </div>
-                            <div id="questionusersquare"><a id="questionusers" href="#"
-                                >{$question.name}</a>
-                                <span id="timeago">asked {$question.timeago}</span></div>
-                            <div id="questioncategorysquare"><a href="#">{$question.categoryname}</a>
+                            <div id="questionusersquare">
+                                <a id="questionusers" href="#">
+                                    {$question.name}
+                                </a>
+                                <span id="timeago">
+                                    asked {$question.timeago}
+                                </span>
                             </div>
-
-
+                            <div id="questioncategorysquare">
+                                <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
+                                    {$question.categoryname}
+                                </a>
+                            </div>
                             <div id="questionbuttonsection">
-                                <a href="#" class="btn btn-primary btn-sm btn-success"><span
-                                            class="glyphicon glyphicon-thumbs-up"></span> {$question.postrating}</a>
-                                <a href="#" class="btn btn-primary btn-sm btn-warning"><span
-                                            class="fa fa-pencil"></span> {$question.answers}</a>
-                                <a href="#" class="btn btn-sm btn-primary"><span
-                                            class="glyphicon glyphicon-eye-open"></span> {$question.views}</a>
+                                <a class="btn btn-primary btn-sm btn-success">
+                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    {$question.postrating}
+                                </a>
+                                <a class="btn btn-primary btn-sm btn-warning">
+                                    <span class="fa fa-pencil"></span>
+                                    {$question.answers}
+                                </a>
+                                <a class="btn btn-sm btn-primary">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    {$question.views}
+                                </a>
                             </div>
                             <div id="tagsofquestion">
                                 {foreach $question.tagarray as $tag}
-                                    <a id="button_tag" style="display:inline-flex;"><span
-                                                class="glyphicon glyphicon-tag"></span>{$tag}</a>
+                                    <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}" style="display:inline-flex;">
+                                        <span class="glyphicon glyphicon-tag"></span>
+                                        {$tag.tagname}
+                                    </a>
                                 {/foreach}
                             </div>
                         </div>

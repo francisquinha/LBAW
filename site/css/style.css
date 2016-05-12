@@ -327,3 +327,20 @@ a , input, form, button{
 #buttonlog{
 	font-family: 'QuanticoRegular';
 }
+
+.force-grey {
+	color:#888;
+	font-weight: normal;
+	font-size: 125%;
+}
+.force-grey2 {
+	color:#888;
+	font-weight: normal;
+}
+.cat{
+	font-weight: normal;
+}
+
+.noBullets{
+	list-style-type: none;
+}

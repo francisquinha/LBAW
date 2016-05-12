@@ -104,6 +104,44 @@ GROUP BY Question.questionid,
     return $stmt->fetchAll();
 }
 
+function getCategoryQuestions($id) {
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+  Question.questionid,
+  Post.postauthorid,
+  Member.name,
+  Post.postcreationdate,
+  Question.title,
+  Post.postrating,
+  Question.views,
+  Question.answers,
+  Question.categoryid,
+  Category.categoryname,
+  string_agg(text(Tag.tagid), ' ') AS tagids,
+  string_agg(tagname, ' ') AS tagnames
+FROM Question
+INNER JOIN Post ON Post.postid = Question.questionid
+INNER JOIN Member ON Post.postAuthorid = Member.memberid
+INNER JOIN Category ON Category.categoryid = Question.categoryid
+LEFT JOIN Classification ON Classification.questionid = Question.questionid
+LEFT JOIN Tag ON Classification.tagid = Tag.tagid
+WHERE deletorid IS NULL AND Question.categoryid = ?
+GROUP BY Question.questionid,
+  Post.postauthorid,
+  Member.name,
+  Post.postcreationdate,
+  Question.title,
+  Post.postrating,
+  Question.views,
+  Question.answers,
+  Question.categoryid,
+  Category.categoryname;");
+    $stmt->execute($id);
+    return $stmt->fetchAll();
+}
+
+
 function getQuestion($id)
 {
     global $conn;

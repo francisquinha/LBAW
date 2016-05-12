@@ -1,30 +1,30 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 19:12:49
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-10 20:00:31
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/common/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:185982695057220fe7c1e362-82864490%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1150416205573221bf28c800-39190847%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '07afcfc00b1751b5696a9dca0e6e50f1ea11d0cf' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/common/header.tpl',
-      1 => 1462381861,
+      1 => 1462896009,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '185982695057220fe7c1e362-82864490',
+  'nocache_hash' => '1150416205573221bf28c800-39190847',
   'function' => 
   array (
   ),
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_57220fe7c8a2d2_59905518',
   'variables' => 
   array (
     'BASE_URL' => 0,
     'USERNAME' => 0,
   ),
   'has_nocache_code' => false,
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_573221bf2ebbf8_86432907',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57220fe7c8a2d2_59905518')) {function content_57220fe7c8a2d2_59905518($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_573221bf2ebbf8_86432907')) {function content_573221bf2ebbf8_86432907($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -83,10 +83,12 @@ index.php">OutOfBounds</a>
                     <a href="#" class="btn btn-link btn-lg">Users</a>
                 </li>
                 <li>
-                    <a href="#" class="btn btn-link btn-lg">Tags</a>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/tags/list_all.php" class="btn btn-link btn-lg">Tags</a>
                 </li>
                 <li>
-                    <a href="#" class="btn btn-link btn-lg">About</a>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/about/about.php" class="btn btn-link btn-lg">About</a>
                 </li>
                 <li>
                     <?php if ($_smarty_tpl->tpl_vars['USERNAME']->value) {?>

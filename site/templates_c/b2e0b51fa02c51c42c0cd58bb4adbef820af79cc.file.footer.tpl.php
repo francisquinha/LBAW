@@ -1,29 +1,29 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-04-29 10:52:37
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-11 12:56:40
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/common/footer.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:115943009557220fe7ca1d42-02884698%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:2039358984573221bf49d507-20025872%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'b2e0b51fa02c51c42c0cd58bb4adbef820af79cc' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/common/footer.tpl',
-      1 => 1461915379,
+      1 => 1462956970,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '115943009557220fe7ca1d42-02884698',
+  'nocache_hash' => '2039358984573221bf49d507-20025872',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_57220fe7ca4171_60592226',
+  'unifunc' => 'content_573221bf4bda83_12049678',
   'variables' => 
   array (
     'BASE_URL' => 0,
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57220fe7ca4171_60592226')) {function content_57220fe7ca4171_60592226($_smarty_tpl) {?>
+<?php if ($_valid && !is_callable('content_573221bf4bda83_12049678')) {function content_573221bf4bda83_12049678($_smarty_tpl) {?>
 <!-- Footer -->
 <footer class="footer-distributed" style="margin-bottom: 0;">
 
@@ -38,7 +38,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
             <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 index.php">Home</a>
             ·
-            <a href="#">About</a>
+            <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/about/about.php">About</a>
             ·
             <a href="#">Faq</a>
             ·
@@ -90,9 +91,13 @@ index.php">Home</a>
 <!-- jQuery -->
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/jquery.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 javascript/bootstrap.min.js"></script>
+<!-- Validate Login JavaScript -->
+<script src="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+javascript/login.js"></script>
 <script>
     $( document ).ready(function() {
 

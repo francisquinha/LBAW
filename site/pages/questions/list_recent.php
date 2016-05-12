@@ -21,8 +21,18 @@ foreach ($questions as $key => $question) {
     unset($timeago);
     $timeago = time_elapsed_string(strtotime($question['postcreationdate']));
     $questions[$key]['timeago'] = $timeago;
+    unset($tagnamearray);
+    $tagnamearray = explode(" ", $question['tagnames']);
+    unset($tagidarray);
+    $tagidarray = explode(" ", $question['tagids']);
     unset($tagarray);
-    $tagarray = explode(" ", $question['tagnames']);
+    $tagarray = array();
+    for ($i = 0; $i < sizeof($tagnamearray); $i++) {
+        unset($tag);
+        $tag['tagid'] = $tagidarray[$i];
+        $tag['tagname'] = $tagnamearray[$i];
+        array_push($tagarray, $tag);
+    }
     $questions[$key]['tagarray'] = $tagarray;
 }
 
@@ -44,6 +54,7 @@ $smarty->assign('style_tab2', $style_tab);
 $smarty->display('questions/list.tpl');
 
 $smarty->display('common/menu_side.tpl');
-include_once($BASE_DIR .'pages/tags/list_all.php');
+include_once($BASE_DIR .'pages/categories/list_top.php');
+include_once($BASE_DIR .'pages/tags/list_top.php');
 $smarty->display('common/footer.tpl');
 ?>

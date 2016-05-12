@@ -27,7 +27,7 @@
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane active in" id="login">
                                 <fieldset>
-                                    <form role="form" action="{$BASE_URL}actions/members/login.php" method="post" class="login-form">
+                                    <form role="form" class="login-form">
                                         <div class="form-group">
                                             <label class="sr-only" for="form-username">Username</label>
                                             <input type="text" name="username" placeholder="Username..."
@@ -38,7 +38,10 @@
                                             <input type="password" name="password" placeholder="Password..."
                                                    class="form-password form-control" id="form-password">
                                         </div>
-                                        <button id="buttonlog" type="submit" class="btn">Login!</button>
+                                        <button id="buttonlog" type="submit"
+                                                onclick="return validateLogin(this.form, this.form.username, this.form.password);"
+                                                class="btn">Login!</button>
+
                                         <div class="col-sm-11 col-sm-offset-1 form-box">
                                             <a class="btn btn-link-1 btn-link-1-facebook" href="#">
                                                 <i class="fa fa-facebook"></i> Facebook
@@ -50,6 +53,7 @@
                                                 <i class="fa fa-twitter"></i> Twitter
                                             </a>
                                         </div>
+                                        <div id='response'></div>
                                     </form>
                                 </fieldset>
                             </div>
@@ -82,7 +86,6 @@
                     </div>
                 </div>
                 <!-- End # Login Form -->
-            </div>
             <!-- End # DIV Form -->
         </div>
     </div>

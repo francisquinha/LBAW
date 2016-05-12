@@ -11,8 +11,7 @@
                     {foreach $questions as $question}
                         <div id="question">
                             <div id="questiontitlesquare">
-                                <a id="qpagequestiontitle"
-                                   href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
+                                <a id="qpagequestiontitle" href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
                                     {$question.title}
                                 </a>
                             </div>
@@ -20,27 +19,34 @@
                                 {$question.versionbody}
                             </div>
                             <br>
-                            <a href="#" class="btn-lg" ><span
+                            <a href="#" class="btn-lg" style="color:#008CBA;"><span
                                         class="glyphicon glyphicon-thumbs-up"></span></a>
+                            <a href="#" class="btn-lg" style="color:#c9302c;" ><span
+                                        class="glyphicon glyphicon-thumbs-down"></span></a>
                             <br>
                             <div id="questionusersquare"><a id="questionusers" href="#">{$question.name}</a>
                                 <span id="timeago">asked {$question.timeago}</span></div>
-                            <div id="questioncategorysquare"><a href="#">{$question.categoryname}</a>
+                            <div id="questioncategorysquare">
+                                <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
+                                    {$question.categoryname}
+                                </a>
                             </div>
 
 
                             <div id="questionbuttonsection" >
-                                <a href="#" class="-success" ><span
+                                <a class="-success" ><span
                                             class="glyphicon glyphicon-thumbs-up"></span> {$question.postrating}</a>
-                                <a href="#" class="-warning"><span
+                                <a class="-warning"><span
                                             class="fa fa-pencil"></span> {$question.answers}</a>
-                                <a href="#" class="-primary"><span
+                                <a class="-primary"><span
                                             class="glyphicon glyphicon-eye-open"></span> {$question.views}</a>
                             </div>
                             <div id="tagsofquestion">
                                 {foreach $question.tagarray as $tag}
-                                    <a id="button_tag" style="display:inline-flex;"><span
-                                                class="glyphicon glyphicon-tag"></span>{$tag}</a>
+                                    <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}" style="display:inline-flex;">
+                                        <span class="glyphicon glyphicon-tag"></span>
+                                        {$tag.tagname}
+                                    </a>
                                 {/foreach}
                             </div>
                         </div>
@@ -58,7 +64,7 @@
                                 <span id="timeago">answered {$answer.timeago}</span>
                             </div>
                             <div id="questionbuttonsection">
-                                <a href="#" class="-success">
+                                <a class="-success">
                                     <span class="glyphicon glyphicon-thumbs-up"></span>
                                     {$answer.postrating}
                                 </a>

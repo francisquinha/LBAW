@@ -9,6 +9,13 @@
           </mappings>
         </serverdata>
       </paths>
+      <paths name="up200204375">
+        <serverdata>
+          <mappings>
+            <mapping deploy="/" local="$PROJECT_DIR$/../../../../3A1S/LTW/practice/site" web="/~up200204375" />
+          </mappings>
+        </serverdata>
+      </paths>
     </serverData>
   </component>
 </project>

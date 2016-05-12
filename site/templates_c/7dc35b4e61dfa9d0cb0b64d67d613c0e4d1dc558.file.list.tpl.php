@@ -1,22 +1,22 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-04 15:58:31
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-12 13:13:23
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/questions/list.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:43455306657223f788144e2-81551863%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:508422181573221bf175460-98288647%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '7dc35b4e61dfa9d0cb0b64d67d613c0e4d1dc558' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/questions/list.tpl',
-      1 => 1462370298,
+      1 => 1463051567,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '43455306657223f788144e2-81551863',
+  'nocache_hash' => '508422181573221bf175460-98288647',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_57223f788fd435_17743976',
+  'unifunc' => 'content_573221bf282c07_22668564',
   'variables' => 
   array (
     'subtitle' => 0,
@@ -35,8 +35,36 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_57223f788fd435_17743976')) {function content_57223f788fd435_17743976($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_573221bf282c07_22668564')) {function content_573221bf282c07_22668564($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
+
+<script language="javascript">
+
+    function myFunction(){
+
+            var status=true;
+
+            if(status) {
+                $('.alert-success').show();
+            }
+    }
+</script>
+
+<div class = "alert alert-success hide">
+    <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+        &times;
+    </button>
+
+    Success! Well done its submitted.
+</div>
+
+<div class = "alert alert-unsuccess hide">
+    <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
+        &times;
+    </button>
+
+    Error ! Change few things.
+</div>
 
 <br>
 <br>
@@ -78,26 +106,40 @@ pages/questions/details.php?questionid=<?php echo $_smarty_tpl->tpl_vars['questi
 
                                 </a>
                             </div>
-                            <div id="questionusersquare"><a id="questionusers" href="#"
-                                ><?php echo $_smarty_tpl->tpl_vars['question']->value['name'];?>
-</a>
-                                <span id="timeago">asked <?php echo $_smarty_tpl->tpl_vars['question']->value['timeago'];?>
-</span></div>
-                            <div id="questioncategorysquare"><a href="#"><?php echo $_smarty_tpl->tpl_vars['question']->value['categoryname'];?>
-</a>
+                            <div id="questionusersquare">
+                                <a id="questionusers" href="#">
+                                    <?php echo $_smarty_tpl->tpl_vars['question']->value['name'];?>
+
+                                </a>
+                                <span id="timeago">
+                                    asked <?php echo $_smarty_tpl->tpl_vars['question']->value['timeago'];?>
+
+                                </span>
                             </div>
+                            <div id="questioncategorysquare">
+                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/questions/list_category.php?categoryid=<?php echo $_smarty_tpl->tpl_vars['question']->value['categoryid'];?>
+">
+                                    <?php echo $_smarty_tpl->tpl_vars['question']->value['categoryname'];?>
 
-
+                                </a>
+                            </div>
                             <div id="questionbuttonsection">
-                                <a href="#" class="btn btn-primary btn-sm btn-success"><span
-                                            class="glyphicon glyphicon-thumbs-up"></span> <?php echo $_smarty_tpl->tpl_vars['question']->value['postrating'];?>
-</a>
-                                <a href="#" class="btn btn-primary btn-sm btn-warning"><span
-                                            class="fa fa-pencil"></span> <?php echo $_smarty_tpl->tpl_vars['question']->value['answers'];?>
-</a>
-                                <a href="#" class="btn btn-sm btn-primary"><span
-                                            class="glyphicon glyphicon-eye-open"></span> <?php echo $_smarty_tpl->tpl_vars['question']->value['views'];?>
-</a>
+                                <a class="btn btn-primary btn-sm btn-success">
+                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    <?php echo $_smarty_tpl->tpl_vars['question']->value['postrating'];?>
+
+                                </a>
+                                <a class="btn btn-primary btn-sm btn-warning">
+                                    <span class="fa fa-pencil"></span>
+                                    <?php echo $_smarty_tpl->tpl_vars['question']->value['answers'];?>
+
+                                </a>
+                                <a class="btn btn-sm btn-primary">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <?php echo $_smarty_tpl->tpl_vars['question']->value['views'];?>
+
+                                </a>
                             </div>
                             <div id="tagsofquestion">
                                 <?php  $_smarty_tpl->tpl_vars['tag'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['tag']->_loop = false;
@@ -105,9 +147,13 @@ pages/questions/details.php?questionid=<?php echo $_smarty_tpl->tpl_vars['questi
 foreach ($_from as $_smarty_tpl->tpl_vars['tag']->key => $_smarty_tpl->tpl_vars['tag']->value) {
 $_smarty_tpl->tpl_vars['tag']->_loop = true;
 ?>
-                                    <a id="button_tag" style="display:inline-flex;"><span
-                                                class="glyphicon glyphicon-tag"></span><?php echo $_smarty_tpl->tpl_vars['tag']->value;?>
-</a>
+                                    <a id="button_tag" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/questions/list_tag.php?tagid=<?php echo $_smarty_tpl->tpl_vars['tag']->value['tagid'];?>
+" style="display:inline-flex;">
+                                        <span class="glyphicon glyphicon-tag"></span>
+                                        <?php echo $_smarty_tpl->tpl_vars['tag']->value['tagname'];?>
+
+                                    </a>
                                 <?php } ?>
                             </div>
                         </div>

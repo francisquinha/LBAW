@@ -46,10 +46,10 @@
                     <a href="#" class="btn btn-link btn-lg">Users</a>
                 </li>
                 <li>
-                    <a href="#" class="btn btn-link btn-lg">Tags</a>
+                    <a href="{$BASE_URL}pages/tags/list_all.php" class="btn btn-link btn-lg">Tags</a>
                 </li>
                 <li>
-                    <a href="#" class="btn btn-link btn-lg">About</a>
+                    <a href="{$BASE_URL}pages/about/about.php" class="btn btn-link btn-lg">About</a>
                 </li>
                 <li>
                     {if $USERNAME}

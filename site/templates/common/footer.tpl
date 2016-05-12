@@ -12,7 +12,7 @@
         <p class="footer-links">
             <a href="{$BASE_URL}index.php">Home</a>
             ·
-            <a href="#">About</a>
+            <a href="{$BASE_URL}pages/about/about.php">About</a>
             ·
             <a href="#">Faq</a>
             ·
@@ -63,8 +63,11 @@
 <!-- /.container -->
 <!-- jQuery -->
 <script src="{$BASE_URL}javascript/jquery.js"></script>
+
 <!-- Bootstrap Core JavaScript -->
 <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
+<!-- Validate Login JavaScript -->
+<script src="{$BASE_URL}javascript/login.js"></script>
 <script>
     $( document ).ready(function() {
 
