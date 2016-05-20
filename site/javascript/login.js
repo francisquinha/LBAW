@@ -1,3 +1,4 @@
+
 function validateLogin(form, username, password){
     if (username.value == '' || password.value == '') {
         alert('You must provide both a username and password');
@@ -67,11 +68,11 @@ $.getScript("main.js", function(){
 });*/
 
 $(document).ready(function() {
+    console.log(BASE_URL+'/actions/members/login.php');
     $('.login-form').submit(function () {
-      
         $.ajax({
             type: 'POST',
-            url: "https://gnomo.fe.up.pt/~lbaw1553/actions/members/login.php", // fix this
+            url: BASE_URL+'/actions/members/login.php', // fix this
             data: $(this).serialize()
         })
             .done(function (data) {
@@ -96,7 +97,7 @@ $(document).ready(function() {
         //event.preventDefault();
         $.ajax({
             type: 'POST',
-            url: "https://gnomo.fe.up.pt/~lbaw1553/actions/members/register.php", // fix this
+            url: BASE_URL+'/actions/members/register.php', // fix this
             data: $(this).serialize()
         })
             .done(function(data) {

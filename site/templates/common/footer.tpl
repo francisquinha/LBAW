@@ -62,6 +62,9 @@
 </footer>
 <!-- /.container -->
 <!-- jQuery -->
+
+<script src="{$BASE_URL}javascript/main.js"></script>
+
 <script src="{$BASE_URL}javascript/jquery.js"></script>
 
 <!-- Bootstrap Core JavaScript -->

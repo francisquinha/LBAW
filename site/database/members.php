@@ -15,4 +15,36 @@ WHERE username = ? AND password = ? AND permissiontype NOT IN ('banned', 'disabl
     $stmt->execute(array($username, sha1($password)));
     return $stmt->fetch() == true;
   }
+
+function getMembersStartingWith($n , $t)
+{
+  global $conn;
+  $stmt = $conn->prepare("
+SELECT 
+  username,
+  email,
+  memberrating
+FROM Member
+WHERE username LIKE '$n' OR username LIKE '$t'
+ORDER BY username;");
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
+
+function getAllMembers()
+{
+  global $conn;
+  $stmt = $conn->prepare("
+SELECT
+  username,
+  email,
+  memberrating
+FROM Member
+ORDER BY username;");
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
+
+
+
 ?>
