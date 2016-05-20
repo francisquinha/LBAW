@@ -190,6 +190,33 @@ function getAnswers($id)
 {
     global $conn;
     $stmt = $conn->prepare("
+SELECT *
+FROM (SELECT DISTINCT ON (Answer.answerid)
+        Answer.answerid,
+        Answer.questionid,
+        Post.postcreationdate,
+        Post.postauthorid,
+        Member.name,
+        Post.postrating,
+        PostVersion.postversionid,
+        PostVersion.versionbody
+      FROM Answer, Post, PostVersion, Member, Question
+      WHERE Answer.answerid = Post.postid
+            AND Post.postid = PostVersion.postid
+            AND Post.postauthorid = Member.memberid
+            AND Answer.questionid = ?
+            AND Answer.questionid = Question.questionid
+            AND (Answer.answerid != Question.bestanswerid OR Question.bestanswerid IS NULL)
+      ORDER BY answerid, postversionid DESC) AS unordered
+ORDER BY postrating DESC, postcreationdate DESC;");
+    $stmt->execute($id);
+    return $stmt->fetchAll();
+}
+
+function getBestAnswer($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
 SELECT DISTINCT ON (Answer.answerid)
   Answer.answerid,
   Answer.questionid,
@@ -199,11 +226,13 @@ SELECT DISTINCT ON (Answer.answerid)
   Post.postrating,
   PostVersion.postversionid,
   PostVersion.versionbody
-FROM Answer, Post, PostVersion, Member
+FROM Answer, Post, PostVersion, Member, Question
 WHERE Answer.answerid = Post.postid
       AND Post.postid = PostVersion.postid
       AND Post.postauthorid = Member.memberid
-      AND Answer.questionID = ?
+      AND Answer.questionid = ?
+      AND Answer.questionid = Question.questionid
+      AND Answer.answerid = Question.bestanswerid
 ORDER BY answerid, postversionid DESC;");
     $stmt->execute($id);
     return $stmt->fetchAll();

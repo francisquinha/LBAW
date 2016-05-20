@@ -1,17 +1,17 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-11 01:48:08
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-13 14:51:00
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/categories/list.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:16958456225732733843f084-66821007%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:69835629557358e21c87af2-16135740%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '4b5016391e32009129aac8b25af84db9fdb7fe99' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/categories/list.tpl',
-      1 => 1462901357,
+      1 => 1463143847,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '16958456225732733843f084-66821007',
+  'nocache_hash' => '69835629557358e21c87af2-16135740',
   'function' => 
   array (
     'recursive_children' => 
@@ -22,6 +22,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
       'compiled' => '',
     ),
   ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_57358e21d87059_02489287',
   'variables' => 
   array (
     'child_categories' => 0,
@@ -31,10 +33,8 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     'root_category' => 0,
   ),
   'has_nocache_code' => 0,
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_5732733853b0f9_94359344',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5732733853b0f9_94359344')) {function content_5732733853b0f9_94359344($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_57358e21d87059_02489287')) {function content_57358e21d87059_02489287($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 
 <?php if (!function_exists('smarty_template_function_recursive_children')) {
@@ -98,6 +98,4 @@ pages/questions/list_category.php?categoryid=<?php echo $_smarty_tpl->tpl_vars['
         </div>
     </div>
 </div>
-
-
 <?php }} ?>

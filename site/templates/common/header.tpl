@@ -8,6 +8,9 @@
     <meta name="author" content="">
     <title>OutOfBounds</title>
 
+    <!-- add summernote -->
+    <link href="{$BASE_URL}text_editor/dist/summernote.css" rel="stylesheet">
+
     <!-- Bootstrap Core CSS -->
     <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{$BASE_URL}font-awesome/css/font-awesome.min.css">
@@ -43,7 +46,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#" class="btn btn-link btn-lg">Users</a>
+                    <a href="{$BASE_URL}pages/users/list_all.php" class="btn btn-link btn-lg">Users</a>
                 </li>
                 <li>
                     <a href="{$BASE_URL}pages/tags/list_all.php" class="btn btn-link btn-lg">Tags</a>

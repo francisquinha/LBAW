@@ -43,7 +43,7 @@
                                                 class="btn">Login!</button>
 
                                         <div class="col-sm-11 col-sm-offset-1 form-box">
-                                            <a class="btn btn-link-1 btn-link-1-facebook" href="#">
+                                            <a class="btn btn-link-1 btn-link-1-facebook" href="https://www.facebook.com/dialog/oauth?client_id=<b>104463303035318</b>&amp;scope=<b>email,user_website,user_location</b>&amp;redirect_uri=<b>https://gnomo.fe.up.pt/~lbaw1553/pages/questions/list_recent.php</b>">
                                                 <i class="fa fa-facebook"></i> Facebook
                                             </a>
                                             <a class="btn btn-link-1 btn-link-1-google-plus" href="#">
@@ -53,33 +53,37 @@
                                                 <i class="fa fa-twitter"></i> Twitter
                                             </a>
                                         </div>
-                                        <div id='response'></div>
+                                        <div id='response-login'></div>
                                     </form>
                                 </fieldset>
                             </div>
                             <div class="tab-pane fade" id="create">
-                                <form role="form" action="{$BASE_URL}actions/members/register.php" method="post" enctype="multipart/form-data" class="register-form">
+                                <form role="form" class="register-form">
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Username</label>
-                                        <input type="text" name="form-username" placeholder="Username..."
+                                        <input type="text" name="username" placeholder="Username..."
                                                class="form-username form-control" id="form-username">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Email</label>
-                                        <input type="text" name="form-email" placeholder="Email..."
-                                               class="form-username form-control" id="form-username">
+                                        <input type="text" name="email" placeholder="Email..."
+                                               class="form-email form-control" id="form-username">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Password</label>
-                                        <input type="password" name="form-password" placeholder="Password..."
-                                               class="form-username form-control" id="form-username">
+                                        <input type="password" name="password" placeholder="Password..."
+                                               class="form-password form-control" id="form-username">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Last Name</label>
-                                        <input type="text" name="form-name" placeholder="Name..."
-                                               class="form-username form-control" id="form-username">
+                                        <input type="text" name="name" placeholder="Name..."
+                                               class="form-name form-control" id="form-username">
                                     </div>
-                                    <button id="buttonlog" type="submit" class="btn">Register!</button>
+                                    <button id="buttonreg" type="submit"
+                                            onclick="return validateRegister(this.form, this.form.username, this.form.email, this.form.password, this.form.name);"
+                                            class="btn">Register!
+                                    </button>
+                                    <div id='response-register'></div>
                                 </form>
                             </div>
                         </div>

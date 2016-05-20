@@ -1,28 +1,30 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-12 13:15:43
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-19 18:11:05
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/questions/details.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:18256495825732eae3e69917-22302656%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:1543299823573504c243cb40-29623404%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     'a09e1a81cfe1f816da330f1fc685f534a76e3d51' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/questions/details.tpl',
-      1 => 1463051715,
+      1 => 1463673757,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '18256495825732eae3e69917-22302656',
+  'nocache_hash' => '1543299823573504c243cb40-29623404',
   'function' => 
   array (
   ),
   'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_5732eae4035050_06671592',
+  'unifunc' => 'content_573504c257feb4_28928397',
   'variables' => 
   array (
     'questions' => 0,
     'BASE_URL' => 0,
     'question' => 0,
     'tag' => 0,
+    'bestanswers' => 0,
+    'bestanswer' => 0,
     'answers' => 0,
     'answer' => 0,
     'last_question_id' => 0,
@@ -30,7 +32,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
   ),
   'has_nocache_code' => false,
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_5732eae4035050_06671592')) {function content_5732eae4035050_06671592($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
+<?php if ($_valid && !is_callable('content_573504c257feb4_28928397')) {function content_573504c257feb4_28928397($_smarty_tpl) {?><?php echo $_smarty_tpl->getSubTemplate ('common/header.tpl', $_smarty_tpl->cache_id, $_smarty_tpl->compile_id, 0, null, array(), 0);?>
 
 
 <br>
@@ -38,121 +40,159 @@ $_valid = $_smarty_tpl->decodeProperties(array (
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-12">
-            <div class="tab-content">
-                <div id="recent" class=" tab-pane fade in active">
-                    <?php  $_smarty_tpl->tpl_vars['question'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['question']->_loop = false;
+        <div class="col-md-7">
+            <br>
+            <?php  $_smarty_tpl->tpl_vars['question'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['question']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['questions']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['question']->key => $_smarty_tpl->tpl_vars['question']->value) {
 $_smarty_tpl->tpl_vars['question']->_loop = true;
 ?>
-                        <div id="question">
-                            <div id="questiontitlesquare">
-                                <a id="qpagequestiontitle" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+                <div id="questionpq">
+                    <div id="questiontitlesquare">
+                        <a id="qpagequestiontitle"
+                           href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/questions/details.php?questionid=<?php echo $_smarty_tpl->tpl_vars['question']->value['questionid'];?>
 ">
-                                    <?php echo $_smarty_tpl->tpl_vars['question']->value['title'];?>
+                            <?php echo $_smarty_tpl->tpl_vars['question']->value['title'];?>
 
-                                </a>
-                            </div>
-                            <div id="questionbodysquare">
-                                <?php echo $_smarty_tpl->tpl_vars['question']->value['versionbody'];?>
+                        </a>
+                    </div>
+                    <div id="questionbodysquare" align="left">
+                        <?php echo $_smarty_tpl->tpl_vars['question']->value['versionbody'];?>
 
-                            </div>
-                            <br>
-                            <a href="#" class="btn-lg" style="color:#008CBA;"><span
-                                        class="glyphicon glyphicon-thumbs-up"></span></a>
-                            <a href="#" class="btn-lg" style="color:#c9302c;" ><span
-                                        class="glyphicon glyphicon-thumbs-down"></span></a>
-                            <br>
-                            <div id="questionusersquare"><a id="questionusers" href="#"><?php echo $_smarty_tpl->tpl_vars['question']->value['name'];?>
+                    </div>
+                    <br>
+                    <div id="questionusersquare"><a id="questionusers" href="#"><?php echo $_smarty_tpl->tpl_vars['question']->value['name'];?>
 </a>
-                                <span id="timeago">asked <?php echo $_smarty_tpl->tpl_vars['question']->value['timeago'];?>
+                        <span id="timeago">asked <?php echo $_smarty_tpl->tpl_vars['question']->value['timeago'];?>
 </span></div>
-                            <div id="questioncategorysquare">
-                                <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+                    <div id="questioncategorysquare">
+                        <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/questions/list_category.php?categoryid=<?php echo $_smarty_tpl->tpl_vars['question']->value['categoryid'];?>
 ">
-                                    <?php echo $_smarty_tpl->tpl_vars['question']->value['categoryname'];?>
+                            <?php echo $_smarty_tpl->tpl_vars['question']->value['categoryname'];?>
 
-                                </a>
-                            </div>
+                        </a>
+                    </div>
 
+                    <div id="questionvotesection">
+                        <a href="#" class="btn-lg" style="color:black;"><span
+                                    class="glyphicon glyphicon-thumbs-up"
+                                    style="padding:0; margin:0;color:#4aaf51;"></span> <?php echo $_smarty_tpl->tpl_vars['question']->value['postrating'];?>
 
-                            <div id="questionbuttonsection" >
-                                <a class="-success" ><span
-                                            class="glyphicon glyphicon-thumbs-up"></span> <?php echo $_smarty_tpl->tpl_vars['question']->value['postrating'];?>
-</a>
-                                <a class="-warning"><span
-                                            class="fa fa-pencil"></span> <?php echo $_smarty_tpl->tpl_vars['question']->value['answers'];?>
-</a>
-                                <a class="-primary"><span
-                                            class="glyphicon glyphicon-eye-open"></span> <?php echo $_smarty_tpl->tpl_vars['question']->value['views'];?>
-</a>
-                            </div>
-                            <div id="tagsofquestion">
-                                <?php  $_smarty_tpl->tpl_vars['tag'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['tag']->_loop = false;
+                            <span
+                                    class="glyphicon glyphicon-thumbs-down"
+                                    style="padding:0; margin:0;color:#c9302c;"></span></a>
+                    </div>
+
+                    <div id="tagsofquestion">
+                        <?php  $_smarty_tpl->tpl_vars['tag'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['tag']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['question']->value['tagarray']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['tag']->key => $_smarty_tpl->tpl_vars['tag']->value) {
 $_smarty_tpl->tpl_vars['tag']->_loop = true;
 ?>
-                                    <a id="button_tag" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+                            <a id="button_tag" href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
 pages/questions/list_tag.php?tagid=<?php echo $_smarty_tpl->tpl_vars['tag']->value['tagid'];?>
-" style="display:inline-flex;">
-                                        <span class="glyphicon glyphicon-tag"></span>
-                                        <?php echo $_smarty_tpl->tpl_vars['tag']->value['tagname'];?>
+"
+                               style="display:inline-flex;">
+                                <span class="glyphicon glyphicon-tag"></span><?php echo $_smarty_tpl->tpl_vars['tag']->value['tagname'];?>
 
-                                    </a>
-                                <?php } ?>
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                    <?php } ?>
+                            </a>
+                        <?php } ?>
+                    </div>
 
-                    <?php  $_smarty_tpl->tpl_vars['answer'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['answer']->_loop = false;
+                    <div id="questionbuttonsection">
+                        <a>
+                            <span class="fa fa-pencil"></span>
+                            <?php echo $_smarty_tpl->tpl_vars['question']->value['answers'];?>
+
+                        </a>
+                        <a>
+                            <span class="glyphicon glyphicon-eye-open"></span>
+                            <?php echo $_smarty_tpl->tpl_vars['question']->value['views'];?>
+
+                        </a>
+                    </div>
+
+                </div>
+
+                <hr style="margin-top:0;">
+            <?php } ?>
+
+
+            <?php  $_smarty_tpl->tpl_vars['bestanswer'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['bestanswer']->_loop = false;
+ $_from = $_smarty_tpl->tpl_vars['bestanswers']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
+foreach ($_from as $_smarty_tpl->tpl_vars['bestanswer']->key => $_smarty_tpl->tpl_vars['bestanswer']->value) {
+$_smarty_tpl->tpl_vars['bestanswer']->_loop = true;
+?>
+                <div class="bestanswer">
+                    <span class="glyphicon glyphicon-star" style="float:right;color:#4aaf51;"></span>
+                    <div id="answerbodysquare" align="left">
+                        <?php echo $_smarty_tpl->tpl_vars['bestanswer']->value['versionbody'];?>
+
+                    </div>
+                    <br>
+                    <div id="answerusersquare">
+                        <a id="answerusers" href="#"><?php echo $_smarty_tpl->tpl_vars['bestanswer']->value['name'];?>
+</a>
+                        <span id="timeago">answered <?php echo $_smarty_tpl->tpl_vars['bestanswer']->value['timeago'];?>
+</span>
+                    </div>
+                    <div id="questionvotesection">
+                        <a href="#" class="btn-lg" style="color:black;"><span
+                                    class="glyphicon glyphicon-thumbs-up"
+                                    style="padding:0; margin:0;color:#4aaf51;"></span> <?php echo $_smarty_tpl->tpl_vars['bestanswer']->value['postrating'];?>
+
+                            <span
+                                    class="glyphicon glyphicon-thumbs-down"
+                                    style="padding:0; margin:0;color:#c9302c;"></span></a>
+                    </div>
+
+
+                </div>
+                <hr style="margin-top:0;">
+            <?php } ?>
+
+            <?php  $_smarty_tpl->tpl_vars['answer'] = new Smarty_Variable; $_smarty_tpl->tpl_vars['answer']->_loop = false;
  $_from = $_smarty_tpl->tpl_vars['answers']->value; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array');}
 foreach ($_from as $_smarty_tpl->tpl_vars['answer']->key => $_smarty_tpl->tpl_vars['answer']->value) {
 $_smarty_tpl->tpl_vars['answer']->_loop = true;
 ?>
-                        <div id="answer">
-                            <div id="answerbodysquare">
-                                <?php echo $_smarty_tpl->tpl_vars['answer']->value['versionbody'];?>
+                <div id="answer">
+                    <div id="answerbodysquare" align="left">
+                        <?php echo $_smarty_tpl->tpl_vars['answer']->value['versionbody'];?>
 
-                            </div>
-                            <div id="answerusersquare">
-                                <a id="answerusers" href="#"><?php echo $_smarty_tpl->tpl_vars['answer']->value['name'];?>
-</a>
-                                <span id="timeago">answered <?php echo $_smarty_tpl->tpl_vars['answer']->value['timeago'];?>
-</span>
-                            </div>
-                            <div id="questionbuttonsection">
-                                <a class="-success">
-                                    <span class="glyphicon glyphicon-thumbs-up"></span>
-                                    <?php echo $_smarty_tpl->tpl_vars['answer']->value['postrating'];?>
-
-                                </a>
-                            </div>
-                        </div>
-                        <br>
-                        <hr>
-                    <?php } ?>
-
-                        <div class="form-group">
-                            <textarea id="message" class="form-control" rows="5" placeholder="Enter your message" required></textarea>
-                        </div>
-                        <button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Answer</button>
                     </div>
                     <br>
+
+                    <div id="answerusersquare">
+                        <a id="answerusers" href="#"><?php echo $_smarty_tpl->tpl_vars['answer']->value['name'];?>
+</a>
+                        <span id="timeago">answered <?php echo $_smarty_tpl->tpl_vars['answer']->value['timeago'];?>
+</span>
+                    </div>
+                    <div id="questionvotesection">
+                        <a href="#" class="btn-lg" style="color:black;"><span
+                                    class="glyphicon glyphicon-thumbs-up"
+                                    style="padding:0; margin:0;color:#4aaf51;"></span> <?php echo $_smarty_tpl->tpl_vars['answer']->value['postrating'];?>
+
+                            <span
+                                    class="glyphicon glyphicon-thumbs-down"
+                                    style="padding:0; margin:0;color:#c9302c;"></span></a>
+                    </div>
+
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
+                <hr>
+            <?php } ?>
+               <!-- <textarea id="message" class="form-control" rows="5" placeholder="Enter your answer"
+                                  required></textarea>-->
+           <!-- <button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Answer<span class="glyphicon glyphicon-send"></span></button>
+-->
+            <div id="summernote"></div>
+           </div>
+<!--<script> last_question_id=<?php echo $_smarty_tpl->tpl_vars['last_question_id']->value;?>
+ </script> -->
 
-        <script>last_question_id = <?php echo $_smarty_tpl->tpl_vars['last_question_id']->value;?>
-</script>
-
-        <!--<script src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
+<!--<script src="<?php echo $_smarty_tpl->tpl_vars['base_url']->value;?>
 javascript/tweets.js"></script>-->
 <?php }} ?>

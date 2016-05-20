@@ -344,3 +344,33 @@ a , input, form, button{
 .noBullets{
 	list-style-type: none;
 }
+
+.messageErrorLogin{
+	color: red;
+	text-align: center;
+	margin-top: 200px;
+}
+
+.messageErrorRegister{
+	color: red;
+	text-align: center;
+	margin-top: 100px;
+}
+
+.userlistmemberrating{
+	color:#888;
+}
+
+.userlistusername{
+	font-size: 125%;
+	font-weight: bold;
+
+}
+.userlist{
+	list-style-type: none;
+	display:inline-table;
+}
+
+.userlist > li{
+	list-style-type: none;
+}

@@ -1,30 +1,30 @@
-<?php /* Smarty version Smarty-3.1.15, created on 2016-05-10 20:00:31
+<?php /* Smarty version Smarty-3.1.15, created on 2016-05-19 18:11:05
          compiled from "/opt/lbaw/lbaw1553/public_html/templates/common/header.tpl" */ ?>
-<?php /*%%SmartyHeaderCode:1150416205573221bf28c800-39190847%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
+<?php /*%%SmartyHeaderCode:797656403573504c2588c30-08770355%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
   'file_dependency' => 
   array (
     '07afcfc00b1751b5696a9dca0e6e50f1ea11d0cf' => 
     array (
       0 => '/opt/lbaw/lbaw1553/public_html/templates/common/header.tpl',
-      1 => 1462896009,
+      1 => 1463666209,
       2 => 'file',
     ),
   ),
-  'nocache_hash' => '1150416205573221bf28c800-39190847',
+  'nocache_hash' => '797656403573504c2588c30-08770355',
   'function' => 
   array (
   ),
+  'version' => 'Smarty-3.1.15',
+  'unifunc' => 'content_573504c25eb734_72683876',
   'variables' => 
   array (
     'BASE_URL' => 0,
     'USERNAME' => 0,
   ),
   'has_nocache_code' => false,
-  'version' => 'Smarty-3.1.15',
-  'unifunc' => 'content_573221bf2ebbf8_86432907',
 ),false); /*/%%SmartyHeaderCode%%*/?>
-<?php if ($_valid && !is_callable('content_573221bf2ebbf8_86432907')) {function content_573221bf2ebbf8_86432907($_smarty_tpl) {?><!DOCTYPE html>
+<?php if ($_valid && !is_callable('content_573504c25eb734_72683876')) {function content_573504c25eb734_72683876($_smarty_tpl) {?><!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8">
@@ -33,6 +33,10 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     <meta name="description" content="">
     <meta name="author" content="">
     <title>OutOfBounds</title>
+
+    <!-- add summernote -->
+    <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+text_editor/dist/summernote.css" rel="stylesheet">
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
@@ -80,7 +84,8 @@ index.php">OutOfBounds</a>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="#" class="btn btn-link btn-lg">Users</a>
+                    <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>
+pages/users/list_all.php" class="btn btn-link btn-lg">Users</a>
                 </li>
                 <li>
                     <a href="<?php echo $_smarty_tpl->tpl_vars['BASE_URL']->value;?>

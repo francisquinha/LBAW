@@ -16,7 +16,7 @@
             ·
             <a href="#">Faq</a>
             ·
-            <a href="#">Contact</a>
+            <a href="{$BASE_URL}pages/contact/contact.php">Contact</a>
         </p>
 
         <p class="footer-company-name">OutOfBounds &copy; 2016</p>
@@ -72,8 +72,9 @@
     $( document ).ready(function() {
 
 
-        $('.tree-toggle').click(function () {
+        $('.tree-toggle').on('click', function(e) {
             $(this).parent().children('ul.tree').toggle(200);
+            e.stopPropagation();
         });
 
         $(function(){
@@ -86,5 +87,9 @@
         });
     });
 </script>
+
+<script src="https://gnomo.fe.up.pt/~lbaw1553/javascript/text_editor.js"></script>
+<script src="{$BASE_URL}text_editor/dist/summernote.js"></script>
+
 </body>
 </html>

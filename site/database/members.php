@@ -8,9 +8,10 @@
 
   function isLoginCorrect($username, $password) {
     global $conn;
-    $stmt = $conn->prepare("SELECT * 
-                            FROM member 
-                            WHERE username = ? AND password = ?");
+    $stmt = $conn->prepare("
+SELECT *
+FROM member
+WHERE username = ? AND password = ? AND permissiontype NOT IN ('banned', 'disabled', 'suspended');");
     $stmt->execute(array($username, sha1($password)));
     return $stmt->fetch() == true;
   }
