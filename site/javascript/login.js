@@ -68,11 +68,10 @@ $.getScript("main.js", function(){
 });*/
 
 $(document).ready(function() {
-    console.log(BASE_URL+'/actions/members/login.php');
     $('.login-form').submit(function () {
         $.ajax({
             type: 'POST',
-            url: BASE_URL+'/actions/members/login.php', // fix this
+            url: '../../actions/members/login.php', // fix this
             data: $(this).serialize()
         })
             .done(function (data) {
@@ -97,7 +96,7 @@ $(document).ready(function() {
         //event.preventDefault();
         $.ajax({
             type: 'POST',
-            url: BASE_URL+'/actions/members/register.php', // fix this
+            url: '../../actions/members/register.php', // fix this
             data: $(this).serialize()
         })
             .done(function(data) {
