@@ -45,6 +45,21 @@ ORDER BY username;");
   return $stmt->fetchAll();
 }
 
-
+function getUser($id)
+{
+  global $conn;
+  $stmt = $conn->prepare("
+SELECT
+  username,
+  email,
+  memberrating,
+  birthDate,
+  registrationDate,
+  name
+FROM Member
+WHERE username = $id;");
+  $stmt->execute();
+  return $stmt->fetchAll();
+}
 
 ?>

@@ -52,7 +52,7 @@
                     {foreach $members as $member}
                         <ul class="userlist">
                             <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$members.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
