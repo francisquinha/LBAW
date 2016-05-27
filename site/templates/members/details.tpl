@@ -78,7 +78,7 @@
                         {foreach $member as $membern}
                         {if $USERNAME eq $membern.username}
                         {if {$membern.permissiontype} eq 'moderator'}
-                            {if empty($questions)}
+                            {if empty($reports)}
                             {else}
                                 <table class="table table-striped table-bordered">
                                     <thead>
@@ -108,21 +108,20 @@
                         {foreach $member as $membern}
                             {if $USERNAME eq $membern.username}
                                 {if {$membern.permissiontype} eq 'administrator'}
-                                    {if empty($questions)}
+                                    {if empty($moderators)}
                                     {else}
                                         <table class="table table-striped table-bordered">
                                             <thead>
                                             <tr>
-                                                <th>ReportID</th>
-                                                <th>Times</th>
+                                                <th>Moderator</th>
+                                                <th>Rating</th>
                                             </tr>
                                             </thead>
                                             <tbody>
-                                            {foreach $reports as $report}
+                                            {foreach $moderators as $moderator}
                                                 <tr>
-                                                    <td><a href="">{$report.postid}</a></td>
-                                                    <td>{$report.numberreports}</td>
-
+                                                    <td><a href="{$BASE_URL}pages/members/details.php?membersid={$moderator.memberid}">{$moderator.username}</a></td>
+                                                    <td>{$moderator.memberrating}</td>
                                                 </tr>
                                             {/foreach}
 
