@@ -51,8 +51,8 @@
 
                     {foreach $members as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$members.memberid}">{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -65,8 +65,8 @@
                     {foreach $membersa as $member}
                         <ul class="userlist">
 
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -77,8 +77,8 @@
 
                     {foreach $membersb as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -89,8 +89,8 @@
 
                     {foreach $membersc as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -101,8 +101,8 @@
 
                     {foreach $membersd as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -113,8 +113,8 @@
 
                     {foreach $memberse as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -125,8 +125,8 @@
 
                     {foreach $membersf as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -137,8 +137,8 @@
 
                     {foreach $membersg as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -149,8 +149,8 @@
 
                     {foreach $membersh as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -161,8 +161,8 @@
 
                     {foreach $membersi as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -173,8 +173,8 @@
 
                     {foreach $membersj as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -185,8 +185,8 @@
 
                     {foreach $membersk as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -197,8 +197,8 @@
 
                     {foreach $membersl as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -209,8 +209,8 @@
 
                     {foreach $membersm as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -221,8 +221,8 @@
 
                     {foreach $membersn as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -233,8 +233,8 @@
 
                     {foreach $memberso as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -245,8 +245,8 @@
 
                     {foreach $membersp as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -257,8 +257,8 @@
 
                     {foreach $membersq as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -269,8 +269,8 @@
 
                     {foreach $membersr as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -281,8 +281,8 @@
 
                     {foreach $memberss as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -293,8 +293,8 @@
 
                     {foreach $memberst as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -305,8 +305,8 @@
 
                     {foreach $membersu as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -317,8 +317,8 @@
 
                     {foreach $membersv as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -329,8 +329,8 @@
 
                     {foreach $membersw as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -341,8 +341,8 @@
 
                     {foreach $membersx as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -353,8 +353,8 @@
 
                     {foreach $membersy as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}
@@ -365,8 +365,8 @@
 
                     {foreach $membersz as $member}
                         <ul class="userlist">
-                            <img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro">
-                            <li class="userlistusername"><a>{$member.username}</a></li>
+                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
                             <li class="userlistmemberrating">{$member.memberrating}</li>
                         </ul>
                     {/foreach}

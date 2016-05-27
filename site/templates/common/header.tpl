@@ -24,6 +24,8 @@
     <link rel="stylesheet" href="{$BASE_URL}css/style.css">
     <link rel="stylesheet" href="{$BASE_URL}css/listquestion.css">
     <link rel="stylesheet" href="{$BASE_URL}css/question.css">
+    <link rel="stylesheet" href="{$BASE_URL}css/userpage.css">
+
 
 </head>
 <body>
