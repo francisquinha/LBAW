@@ -75,22 +75,22 @@
                                 </tbody>
                             </table>
                         {/if}
-
-                        {if $USERNAME}
+                        {foreach $member as $membern}
+                        {if $USERNAME eq $membern.username}
                         {if {$membern.permissiontype} eq 'moderator'}
                             {if empty($questions)}
                             {else}
                                 <table class="table table-striped table-bordered">
                                     <thead>
                                     <tr>
-                                        <th>Report</th>
+                                        <th>ReportID</th>
                                         <th>Times</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     {foreach $reports as $report}
                                         <tr>
-                                            <td>{$report.postid}</td>
+                                            <td><a href="">{$report.postid}</a></td>
                                             <td>{$report.numberreports}</td>
 
                                         </tr>
@@ -103,8 +103,37 @@
                         {else}
                         {/if}
                         {/if}
+                        {/foreach}
 
+                        {foreach $member as $membern}
+                            {if $USERNAME eq $membern.username}
+                                {if {$membern.permissiontype} eq 'administrator'}
+                                    {if empty($questions)}
+                                    {else}
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>ReportID</th>
+                                                <th>Times</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {foreach $reports as $report}
+                                                <tr>
+                                                    <td><a href="">{$report.postid}</a></td>
+                                                    <td>{$report.numberreports}</td>
 
+                                                </tr>
+                                            {/foreach}
+
+                                            </tbody>
+                                        </table>
+                                    {/if}
+
+                                {else}
+                                {/if}
+                            {/if}
+                        {/foreach}
 
 
 
