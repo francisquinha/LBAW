@@ -76,6 +76,38 @@
                             </table>
                         {/if}
 
+                        {if $USERNAME}
+                        {if {$membern.permissiontype} eq 'moderator'}
+                            {if empty($questions)}
+                            {else}
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>Report</th>
+                                        <th>Times</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {foreach $reports as $report}
+                                        <tr>
+                                            <td>{$report.postid}</td>
+                                            <td>{$report.numberreports}</td>
+
+                                        </tr>
+                                    {/foreach}
+
+                                    </tbody>
+                                </table>
+                            {/if}
+
+                        {else}
+                        {/if}
+                        {/if}
+
+
+
+
+
 
                     </div>
 
