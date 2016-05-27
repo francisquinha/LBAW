@@ -53,7 +53,7 @@
                                 </a>
                             </div>
                             <div id="questionusersquare">
-                                <a id="questionusers" href="#">
+                                <a id="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">
                                     {$question.name}
                                 </a>
                                 <span id="timeago">

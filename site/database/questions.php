@@ -1,5 +1,26 @@
 <?php
 
+function getMemberQuestions($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+  question.questionid,
+  post.postcreationdate,
+  question.title,
+  post.postrating,
+  question.views,
+  question.answers,
+  question.categoryid
+FROM post, question
+WHERE
+  post.postauthorid = ?
+  AND question.questionid = post.postid
+ORDER BY postcreationdate DESC;");
+    $stmt->execute($id);
+    return $stmt->fetchAll();
+}
+
 function getRecentQuestions($n)
 {
     global $conn;

@@ -21,9 +21,7 @@ function getMembersStartingWith($n , $t)
   global $conn;
   $stmt = $conn->prepare("
 SELECT 
-  username,
-  email,
-  memberrating
+  *
 FROM Member
 WHERE username LIKE '$n' OR username LIKE '$t'
 ORDER BY username;");
@@ -38,13 +36,23 @@ function getAllMembers()
 SELECT
   username,
   email,
-  memberrating
+  memberrating,
+  memberid
 FROM Member
 ORDER BY username;");
   $stmt->execute();
   return $stmt->fetchAll();
 }
 
-
+function getMember($id)
+{
+  global $conn;
+  $stmt = $conn->prepare("
+SELECT *
+FROM member
+WHERE memberid =?;");
+  $stmt->execute($id);
+  return $stmt->fetchAll();
+}
 
 ?>
