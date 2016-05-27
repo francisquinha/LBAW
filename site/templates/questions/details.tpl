@@ -19,7 +19,7 @@
                         {$question.versionbody}
                     </div>
                     <br>
-                    <div id="questionusersquare"><a id="questionusers" href="#">{$question.name}</a>
+                    <div id="questionusersquare"><a id="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">{$question.name}</a>
                         <span id="timeago">asked {$question.timeago}</span></div>
                     <div id="questioncategorysquare">
                         <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
@@ -70,7 +70,7 @@
                     </div>
                     <br>
                     <div id="answerusersquare">
-                        <a id="answerusers" href="#">{$bestanswer.name}</a>
+                        <a id="answerusers" href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
                         <span id="timeago">answered {$bestanswer.timeago}</span>
                     </div>
                     <div id="questionvotesection">
@@ -95,7 +95,7 @@
                     <br>
 
                     <div id="answerusersquare">
-                        <a id="answerusers" href="#">{$answer.name}</a>
+                        <a id="answerusers" href="{$BASE_URL}pages/members/details.php?membersid={$answer.postauthorid}">{$answer.name}</a>
                         <span id="timeago">answered {$answer.timeago}</span>
                     </div>
                     <div id="questionvotesection">

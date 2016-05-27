@@ -14,7 +14,7 @@
                     <div id="left">
                         <ul>
                             <li><img src="http://www.gravatar.com/avatar/{$membern.emailhash}?s=80&d=retro"></li>
-                            <li><a id="username">{$membern.username}</a></li>
+                            <li><a href="#" id="username">{$membern.username}</a></li>
 
                         </ul>
 
@@ -28,9 +28,12 @@
                             {/if}
                             <li><span>Regist on: </span>{$membern.registrationdate}</li>
                             <li><span>Rating: </span>{$membern.memberrating}</li>
-                            {if {$membern.permissiontype} eq 'member' }
+                            {if {$membern.permissiontype} eq 'member'}
                             {else}
-                                <li><span>Permission: </span>{$membern.permissiontype}</li>
+                                {if $USERNAME}
+                                    <li><span>Permission: </span>{$membern.permissiontype}</li>
+                                {else}
+                                {/if}
                             {/if}
                         </ul>
                     </div>
