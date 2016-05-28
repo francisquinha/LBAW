@@ -71,12 +71,13 @@ $(document).ready(function() {
     $('.login-form').submit(function () {
         $.ajax({
             type: 'POST',
-            url: '../../actions/members/login.php', // fix this
+            url: BASE_URL + '/actions/members/login.php', // fix this
             data: $(this).serialize()
         })
             .done(function (data) {
                 if (data == 'true') {
-                    window.location = 'list_recent.php';
+                    window.location.reload();
+                    //window.location = BASE_URL + '/pages/questions/list_recent.php'
                 } else if (data == 'false') {
                     $('#response-login').html('<p class="messageErrorLogin">' + "Invalid username or password" + '</p>');
                 }
@@ -96,7 +97,7 @@ $(document).ready(function() {
         //event.preventDefault();
         $.ajax({
             type: 'POST',
-            url: '../../actions/members/register.php', // fix this
+            url: BASE_URL + '/actions/members/register.php', // fix this
             data: $(this).serialize()
         })
             .done(function(data) {
