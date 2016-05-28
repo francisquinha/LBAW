@@ -75,6 +75,66 @@
                                 </tbody>
                             </table>
                         {/if}
+                        {foreach $member as $membern}
+                        {if $USERNAME eq $membern.username}
+                        {if {$membern.permissiontype} eq 'moderator'}
+                            {if empty($reports)}
+                            {else}
+                                <table class="table table-striped table-bordered">
+                                    <thead>
+                                    <tr>
+                                        <th>ReportID</th>
+                                        <th>Times</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    {foreach $reports as $report}
+                                        <tr>
+                                            <td><a href="">{$report.postid}</a></td>
+                                            <td>{$report.numberreports}</td>
+
+                                        </tr>
+                                    {/foreach}
+
+                                    </tbody>
+                                </table>
+                            {/if}
+
+                        {else}
+                        {/if}
+                        {/if}
+                        {/foreach}
+
+                        {foreach $member as $membern}
+                            {if $USERNAME eq $membern.username}
+                                {if {$membern.permissiontype} eq 'administrator'}
+                                    {if empty($moderators)}
+                                    {else}
+                                        <table class="table table-striped table-bordered">
+                                            <thead>
+                                            <tr>
+                                                <th>Moderator</th>
+                                                <th>Rating</th>
+                                            </tr>
+                                            </thead>
+                                            <tbody>
+                                            {foreach $moderators as $moderator}
+                                                <tr>
+                                                    <td><a href="{$BASE_URL}pages/members/details.php?membersid={$moderator.memberid}">{$moderator.username}</a></td>
+                                                    <td>{$moderator.memberrating}</td>
+                                                </tr>
+                                            {/foreach}
+
+                                            </tbody>
+                                        </table>
+                                    {/if}
+
+                                {else}
+                                {/if}
+                            {/if}
+                        {/foreach}
+
+
 
 
                     </div>
