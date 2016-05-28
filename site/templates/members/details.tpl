@@ -77,7 +77,8 @@
                         {/if}
                         {foreach $member as $membern}
                         {if $USERNAME eq $membern.username}
-                        {if {$membern.permissiontype} eq 'moderator'}
+                            {if $permissiontype eq 'moderator'}
+                                {if {$membern.permissiontype} eq 'moderator'}
                             {if empty($reports)}
                             {else}
                                 <table class="table table-striped table-bordered">
@@ -103,10 +104,13 @@
                         {else}
                         {/if}
                         {/if}
+                        {/if}
+
                         {/foreach}
 
                         {foreach $member as $membern}
                             {if $USERNAME eq $membern.username}
+                            {if $permissiontype eq 'administrator'}
                                 {if {$membern.permissiontype} eq 'administrator'}
                                     {if empty($moderators)}
                                     {else}
@@ -131,6 +135,32 @@
 
                                 {else}
                                 {/if}
+                            {/if}
+                            {/if}
+
+                        {/foreach}
+
+                        {foreach $member as $membern}
+                            {if $USERNAME}
+                                {if {$permissiontype} neq 'member'}
+                                    {if $USERNAME neq $membern.username}
+                                {if {$membern.permissiontype} eq 'administrator'}
+                                        <button type="button" class="btn-xs">Moderator</button>
+                                    <button type="button" class="btn-xs">Member</button>
+                                {else}
+                                    {if {$membern.permissiontype} eq 'moderator'}
+                                        <button type="button" class="btn-xs">Administrator</button>
+                                        <button type="button" class="btn-xs">Member</button>
+                                    {else}
+                                        {if {$membern.permissiontype} eq 'member'}
+                                            <button type="button" class="btn-xs">Administrator</button>
+                                            <button type="button" class="btn-xs">Moderator</button>
+                                        {else}
+                                        {/if}
+                                    {/if}
+                                {/if}
+                            {/if}
+                            {/if}
                             {/if}
                         {/foreach}
 
