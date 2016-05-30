@@ -33,7 +33,7 @@
                 <li><a data-toggle="tab" href="#P">P</a></li>
                 <li><a data-toggle="tab" href="#Q">Q</a></li>
                 <li><a data-toggle="tab" href="#R">R</a></li>
-                <li><a data-toggle="tab" href="#S" style="margin-left: 45px;">S</a></li>
+                <li><a data-toggle="tab" href="#S">S</a></li>
                 <li><a data-toggle="tab" href="#T">T</a></li>
                 <li><a data-toggle="tab" href="#U">U</a></li>
                 <li><a data-toggle="tab" href="#V">V</a></li>

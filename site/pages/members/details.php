@@ -10,7 +10,9 @@ $member = getMember([$_GET['membersid']]);
 $questions = getMemberQuestions([$_GET['membersid']]);
 $reports = getAllReports();
 $moderators = getAllModerator();
+$premissions = $userinfo['permissiontype'];
 
+print_r($premissions);
 $smarty->assign('member', $member);
 $smarty->assign('questions', $questions);
 $smarty->assign('reports', $reports);
