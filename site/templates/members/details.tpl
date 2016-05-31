@@ -92,7 +92,7 @@
                                                 <tbody>
                                                 {foreach $reports as $report}
                                                     <tr>
-                                                        <td><a href="">{$report.postid}</a></td>
+                                                        <td><a href="{$BASE_URL}pages/report/details.php?postid={$report.postid}">{$report.postid}</a></td>
                                                         <td>{$report.numberreports}</td>
 
                                                     </tr>
