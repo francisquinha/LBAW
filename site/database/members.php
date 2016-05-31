@@ -61,4 +61,36 @@ WHERE memberid =?;");
   $stmt->execute($id);
   return $stmt->fetchAll();
 }
+
+function Demote_Moderator($giverID, $ownerID)
+{
+  global $conn;
+  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+  ('member', ?, ?);");
+  $stmt->execute(array($giverID, $ownerID));
+}
+
+function Promote_Moderator($giverID, $ownerID)
+{
+  global $conn;
+  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+  ('moderator', ?, ?);");
+  $stmt->execute(array($giverID, $ownerID));
+}
+
+function Promote_Admin($giverID, $ownerID)
+{
+  global $conn;
+  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+  ('administrator', ?, ?);");
+  $stmt->execute(array($giverID, $ownerID));
+}
+
+function Ban($giverID, $ownerID)
+{
+  global $conn;
+  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+  ('banned', ?, ?);");
+  $stmt->execute(array($giverID, $ownerID));
+}
 ?>

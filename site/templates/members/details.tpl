@@ -92,7 +92,9 @@
                                                 <tbody>
                                                 {foreach $reports as $report}
                                                     <tr>
-                                                        <td><a href="{$BASE_URL}pages/report/details.php?postid={$report.postid}">{$report.postid}</a></td>
+                                                        <td>
+                                                            <a href="{$BASE_URL}pages/report/details.php?postid={$report.postid}">{$report.postid}</a>
+                                                        </td>
                                                         <td>{$report.numberreports}</td>
 
                                                     </tr>
@@ -141,8 +143,12 @@
                                     {if $USERNAME neq $membern.username}
                                         {if {$membern.permissiontype} eq 'administrator'}
                                             {if $smarty.session.permissiontype eq 'administrator'}
-                                                <button type="button" class="btn-xs">Moderator</button>
-                                                <button type="button" class="btn-xs">Member</button>
+                                                <a href="{$BASE_URL}actions/members/promotemoderator.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
+                                                    <button type="button" class="btn-xs">Moderator</button>
+                                                </a>
+                                                <a href="{$BASE_URL}actions/members/demotemoderator.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
+                                                    <button type="button" class="btn-xs">Membern</button>
+                                                </a>
                                                 <button type="button" class="btn-xs">Ban</button>
                                                 <button type="button" class="btn-xs">Disable</button>
                                                 <button type="button" class="btn-xs">Suspend</button>
@@ -150,8 +156,12 @@
                                         {else}
                                             {if {$membern.permissiontype} eq 'moderator'}
                                                 {if $smarty.session.permissiontype eq 'administrator'}
-                                                    <button type="button" class="btn-xs">Administrator</button>
-                                                    <button type="button" class="btn-xs">Member</button>
+                                                    <a href="{$BASE_URL}actions/members/promoteadmin.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
+                                                        <button type="button" class="btn-xs">Administrator</button>
+                                                    </a>
+                                                    <a href="{$BASE_URL}actions/members/demotemoderator.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
+                                                        <button type="button" class="btn-xs">Membern</button>
+                                                    </a>
                                                     <button type="button" class="btn-xs">Ban</button>
                                                     <button type="button" class="btn-xs">Disable</button>
                                                     <button type="button" class="btn-xs">Suspend</button>
@@ -159,9 +169,15 @@
                                             {else}
                                                 {if {$membern.permissiontype} eq 'member'}
                                                     {if $smarty.session.permissiontype eq 'administrator'}
-                                                        <button type="button" class="btn-xs">Administrator</button>
-                                                        <button type="button" class="btn-xs">Moderator</button>
-                                                        <button type="button" class="btn-xs">Ban</button>
+                                                        <a href="{$BASE_URL}actions/members/promoteadmin.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
+                                                            <button type="button" class="btn-xs">Administrator</button>
+                                                        </a>
+                                                        <a href="{$BASE_URL}actions/members/promotemoderator.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
+                                                            <button type="button" class="btn-xs">Moderator</button>
+                                                        </a>
+                                                        <a href="{$BASE_URL}actions/members/ban.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
+                                                            <button type="button" class="btn-xs">Ban</button>
+                                                        </a>
                                                         <button type="button" class="btn-xs">Disable</button>
                                                         <button type="button" class="btn-xs">Suspend</button>
                                                     {/if}
@@ -173,7 +189,9 @@
                                                 {else}
                                                     {if {$membern.permissiontype} eq 'banned'}
                                                         {if $smarty.session.permissiontype eq 'administrator'}
-                                                            <button type="button" class="btn-xs">Rehabilitate</button>
+                                                            <a href="{$BASE_URL}actions/members/demotemoderator.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
+                                                                <button type="button" class="btn-xs">Rehabilitate</button>
+                                                            </a>
                                                         {/if}
                                                         {if $smarty.session.permissiontype eq 'moderator'}
                                                             <button type="button" class="btn-xs">Rehabilitate</button>
@@ -189,10 +207,12 @@
                                                         {else}
                                                             {if {$membern.permissiontype} eq 'disabled'}
                                                                 {if $smarty.session.permissiontype eq 'administrator'}
-                                                                    <button type="button" class="btn-xs">Activate</button>
+                                                                    <button type="button" class="btn-xs">Activate
+                                                                    </button>
                                                                 {/if}
                                                                 {if $smarty.session.permissiontype eq 'moderator'}
-                                                                    <button type="button" class="btn-xs">Activate</button>
+                                                                    <button type="button" class="btn-xs">Activate
+                                                                    </button>
                                                                 {/if}
                                                             {/if}
                                                         {/if}
