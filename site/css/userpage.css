@@ -43,3 +43,13 @@ span{
 td{
     text-align: left;
 }
+
+#ALL > button{
+background-color: #4aaf51;
+    color:white;
+    font-family: 'QuanticoRegular';
+}
+
+#ALL > button:hover{
+    background-color: #33cc33 ;
+}
