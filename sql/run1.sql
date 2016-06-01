@@ -466,3 +466,32 @@ CREATE TRIGGER enforce5Tags
 BEFORE INSERT OR UPDATE ON Classification
 FOR EACH ROW
 EXECUTE PROCEDURE enforce5TagsProc();
+
+
+-- functions for inserts
+CREATE OR REPLACE FUNCTION insertquestion(question_title TEXT, question_body TEXT, question_category INTEGER,
+  question_tags INTEGER[], question_member INTEGER) RETURNS INTEGER AS $$
+DECLARE
+  newpostid INTEGER;
+  tagid INTEGER;
+BEGIN
+  INSERT INTO post (postauthorid) VALUES (question_member) RETURNING postid INTO newpostid;
+  INSERT INTO postversion (versionauthorid, postid, versionbody) VALUES (question_member, newpostid, question_body);
+  INSERT INTO question (title, categoryid, questionid) VALUES (question_title, question_category, newpostid);
+  FOREACH tagid IN ARRAY question_tags LOOP
+    INSERT INTO classification (questionid, tagid) VALUES (newpostid, tagid);
+  END LOOP;
+  RETURN newpostid;
+END;
+$$ LANGUAGE plpgsql;
+
+CREATE OR REPLACE FUNCTION insertanswer(answer_question INTEGER, answer_body TEXT, answer_member INTEGER) RETURNS INTEGER AS $$
+DECLARE
+  newpostid INTEGER;
+BEGIN
+  INSERT INTO post (postauthorid) VALUES (answer_member) RETURNING postid INTO newpostid;
+  INSERT INTO postversion (versionauthorid, postid, versionbody) VALUES (answer_member, newpostid, answer_body);
+  INSERT INTO answer (answerid, questionid) VALUES (newpostid, answer_question);
+  RETURN newpostid;
+END;
+$$ LANGUAGE plpgsql;
