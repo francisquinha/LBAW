@@ -1,34 +1,38 @@
 <?php
+
 function createUser($realname, $username, $password, $email)
 {
-  global $conn;
-  $stmt = $conn->prepare("INSERT INTO Member(name, username, email, password) VALUES (?, ?, ?, ?)");
-  $stmt->execute(array($realname, $username, $email, sha1($password)));
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO Member(name, username, email, password) VALUES (?, ?, ?, ?)");
+    $stmt->execute(array($realname, $username, $email, sha1($password)));
 }
+
 function isLoginCorrect($username, $password)
 {
-  global $conn;
-  $stmt = $conn->prepare("
+    global $conn;
+    $stmt = $conn->prepare("
 SELECT *
 FROM member
 WHERE username = ? AND password = ? AND permissiontype NOT IN ('banned', 'disabled', 'suspended');");
-  $stmt->execute(array($username, sha1($password)));
-  return $stmt->fetch() == true;
+    $stmt->execute(array($username, sha1($password)));
+    return $stmt->fetch() == true;
 }
+
 function getLogin($username, $password)
 {
-  global $conn;
-  $stmt = $conn->prepare("
+    global $conn;
+    $stmt = $conn->prepare("
 SELECT memberid, permissiontype
 FROM member
 WHERE username = ? AND password = ? AND permissiontype NOT IN ('banned', 'disabled', 'suspended');");
-  $stmt->execute(array($username, sha1($password)));
-  return $stmt->fetch();
+    $stmt->execute(array($username, sha1($password)));
+    return $stmt->fetch();
 }
+
 function getMembersStartingWith($n, $t)
 {
-  global $conn;
-  $stmt = $conn->prepare("
+    global $conn;
+    $stmt = $conn->prepare("
 SELECT 
   *
 FROM Member
@@ -37,6 +41,7 @@ ORDER BY username;");
   $stmt->execute();
   return $stmt->fetchAll();
 }
+
 function getAllMembers()
 {
   global $conn;
@@ -51,6 +56,7 @@ ORDER BY username;");
   $stmt->execute();
   return $stmt->fetchAll();
 }
+
 function getMember($id)
 {
   global $conn;
@@ -58,8 +64,8 @@ function getMember($id)
 SELECT *
 FROM member
 WHERE memberid =?;");
-  $stmt->execute($id);
-  return $stmt->fetchAll();
+    $stmt->execute($id);
+    return $stmt->fetchAll();
 }
 
 function Demote_Moderator($giverID, $ownerID)

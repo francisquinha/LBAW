@@ -6,14 +6,14 @@ INSERT INTO Member (name, username, email, password, registrationDate) VALUES
 	('Ricardo Pereira', 'Ricardo', 'ei01020@fe.up.pt', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', TIMESTAMP '2016-02-24 16:30:56');
 
 INSERT INTO Member (name, username, email, password, registrationDate) VALUES
-	('Nadine O. Wilkinson','Matthew', 'non@Fuscefeugiat.co.uk', 'NAX06ENT8AB', TIMESTAMP '2015-09-03 09:06:08'),
-	('Nash H. Ramirez','Janna195', 'Cras.lorem@fermentum.ca', 'JRB02EPT8VK', TIMESTAMP '2015-08-11 04:00:00'),
-	('Kameko R. Greene','Lee2', 'varius@at.org', 'UPH03JWX9VS', TIMESTAMP '2014-06-02 00:00:00'),
-	('Kenyon T. Watson','Karly192', 'purus.Nullam.scelerisque@quamvel.com', 'KAX27NJP8NN', TIMESTAMP '2015-09-04'),
-	('Asher S. Aguirre','Sydnee171', 'ante.lectus.convallis@tempusmauriserat.org', 'ZFF01WFB7BA', TIMESTAMP '2016-02-21 08:06:00'),
-	('Larissa H. Barber','Adele146', 'tincidunt.aliquam.arcu@risusvarius.org', 'FOL23YSX8YB', TIMESTAMP '2015-04-09 04:07:00'),
-	('Kennan I. Gamble','Lara248', 'Curabitur@posuereatvelit.edu', 'KNB81NJS0JI', TIMESTAMP '2015-09-08 14:01:54'),
-	('Renee E. Sampson','Melinda602', 'Duis417@nec.com', 'FKN43XIF0JF', TIMESTAMP '2015-05-08 22:14:59'),
+	('Nadine O. Wilkinson','Matthew', 'non@Fuscefeugiat.co.uk', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', TIMESTAMP '2015-09-03 09:06:08'),
+	('Nash H. Ramirez','Janna195', 'Cras.lorem@fermentum.ca', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', TIMESTAMP '2015-08-11 04:00:00'),
+	('Kameko R. Greene','Lee2', 'varius@at.org', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', TIMESTAMP '2014-06-02 00:00:00'),
+	('Kenyon T. Watson','Karly192', 'purus.Nullam.scelerisque@quamvel.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', TIMESTAMP '2015-09-04'),
+	('Asher S. Aguirre','Sydnee171', 'ante.lectus.convallis@tempusmauriserat.org', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', TIMESTAMP '2016-02-21 08:06:00'),
+	('Larissa H. Barber','Adele146', 'tincidunt.aliquam.arcu@risusvarius.org', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', TIMESTAMP '2015-04-09 04:07:00'),
+	('Kennan I. Gamble','Lara248', 'Curabitur@posuereatvelit.edu', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', TIMESTAMP '2015-09-08 14:01:54'),
+	('Renee E. Sampson','Melinda602', 'Duis417@nec.com', 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3', TIMESTAMP '2015-05-08 22:14:59'),
 	('Aline K. Snider','Shaeleigh240', 'Sed.congue@consectetuer.com', 'TBQ53KPZ0NX', TIMESTAMP '2016-01-04 09:14:59'),
 	('Destiny L. Ewing','Wyatt291', 'sit.amet.metus@euismod.com', 'JVU92QLA7PR', TIMESTAMP '2015-01-08 04:51:45'),
 	('Jescie I. Riddle','Melvin', 'tortor@enim.edu', 'NZD03NKE7MS', TIMESTAMP '2016-01-01 14:02:57'),
