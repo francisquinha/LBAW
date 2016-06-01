@@ -63,8 +63,6 @@
                         {include file='common/menu_logged_out.tpl'}
                     {/if}
                 </li>
-
-
             </ul>
         </div>
         <!-- /.navbar-collapse -->
