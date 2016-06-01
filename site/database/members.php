@@ -93,4 +93,20 @@ function Ban($giverID, $ownerID)
   ('banned', ?, ?);");
   $stmt->execute(array($giverID, $ownerID));
 }
+
+function Suspended($giverID, $ownerID)
+{
+  global $conn;
+  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+  ('suspended', ?, ?);");
+  $stmt->execute(array($giverID, $ownerID));
+}
+
+function Disabled($giverID, $ownerID)
+{
+  global $conn;
+  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+  ('disabled', ?, ?);");
+  $stmt->execute(array($giverID, $ownerID));
+}
 ?>
