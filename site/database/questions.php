@@ -21,67 +21,57 @@ ORDER BY postcreationdate DESC;");
     return $stmt->fetchAll();
 }
 
-function getRecentQuestions($n)
+function getRecentQuestions($n, $m)
 {
     global $conn;
     $stmt = $conn->prepare("
 SELECT
-  Question.questionid,
-  Post.postauthorid,
-  Member.name,
-  Post.postcreationdate,
-  Question.title,
-  Post.postrating,
-  Question.views,
-  Question.answers,
-  Question.categoryid,
-  Category.categoryname,
-  string_agg(text(Tag.tagid), ' ') AS tagids,
-  string_agg(tagname, ' ') AS tagnames
-FROM Question
-INNER JOIN Post ON Post.postid = Question.questionid
-INNER JOIN Member ON Post.postAuthorid = Member.memberid
-INNER JOIN Category ON Category.categoryid = Question.categoryid
-LEFT JOIN Classification ON Classification.questionid = Question.questionid
-LEFT JOIN Tag ON Classification.tagid = Tag.tagid
-WHERE deletorid IS NULL
-GROUP BY Question.questionid,
-  Post.postauthorid,
-  Member.name,
-  Post.postcreationdate,
-  Question.title,
-  Post.postrating,
-  Question.views,
-  Question.answers,
-  Question.categoryid,
-  Category.categoryname
-ORDER BY postcreationdate DESC
-LIMIT ?;");
-    $stmt->execute($n);
-    return $stmt->fetchAll();
-}
-
-function getSearchPosts($text) {
-    global $conn;
-    $stmt = $conn->prepare("
-SELECT
-  post.postid AS questionid,
+  question.questionid,
   post.postauthorid,
-  member.name,
   post.postcreationdate,
-  posttitle AS title,
+  question.title,
   post.postrating,
   question.views,
   question.answers,
-  question.categoryid,
-  postcategory AS categoryname,
-  posttags AS tagnames
-FROM fulltextpost, post, member, question
-WHERE fulltextpost.postid = post.postid
-      AND post.postauthorid = member.memberid
-      AND post.postid = question.questionid
-      AND tsvPost @@ plainto_tsquery(?);");
-    $stmt->execute($text);
+  question.categoryid
+FROM post, question
+WHERE
+  deletorid IS NULL
+  AND question.questionid = post.postid
+  AND post.deletorid IS NULL
+ORDER BY postcreationdate DESC
+LIMIT :n
+OFFSET :m;");
+    $stmt->bindParam(':n', $n);
+    $stmt->bindParam(':m', $m);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+function getSearchPosts($text, $n, $m) {
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+  post.postid,
+  post.postauthorid,
+  post.postcreationdate,
+  post.postrating,
+  question.title,
+  question.views,
+  question.answers,
+  question.categoryid
+FROM post, question, fulltextpost
+WHERE
+  post.postid = fulltextpost.postid
+  AND post.postid = question.questionid
+  AND tsvPost @@ plainto_tsquery(:text)
+  AND post.deletorid IS NULL
+LIMIT :n
+OFFSET :m;");
+    $stmt->bindParam(':n', $n);
+    $stmt->bindParam(':m', $m);
+    $stmt->bindParam(':text', $text);
+    $stmt->execute();
     return $stmt->fetchAll();
 }
 
@@ -89,38 +79,19 @@ function getTagQuestions($id) {
     global $conn;
     $stmt = $conn->prepare("
 SELECT
-  Question.questionid,
-  Post.postauthorid,
-  Member.name,
-  Post.postcreationdate,
-  Question.title,
-  Post.postrating,
-  Question.views,
-  Question.answers,
-  Question.categoryid,
-  Category.categoryname,
-  string_agg(text(Tag.tagid), ' ') AS tagids,
-  string_agg(tagname, ' ') AS tagnames
-FROM Question
-INNER JOIN (SELECT Question.questionid
-            FROM Question, Classification
-            WHERE Question.questionid = Classification.questionid AND Classification.tagid = ?) AS A ON A.questionid = Question.questionid
-INNER JOIN Post ON Post.postid = Question.questionid
-INNER JOIN Member ON Post.postAuthorid = Member.memberid
-INNER JOIN Category ON Category.categoryid = Question.categoryid
-LEFT JOIN Classification ON Classification.questionid = Question.questionid
-LEFT JOIN Tag ON Classification.tagid = Tag.tagid
-WHERE deletorid IS NULL
-GROUP BY Question.questionid,
-  Post.postauthorid,
-  Member.name,
-  Post.postcreationdate,
-  Question.title,
-  Post.postrating,
-  Question.views,
-  Question.answers,
-  Question.categoryid,
-  Category.categoryname;");
+  question.questionid,
+  post.postauthorid,
+  post.postcreationdate,
+  question.title,
+  post.postrating,
+  question.views,
+  question.answers,
+  question.categoryid
+FROM post, question, classification
+WHERE question.questionid = classification.questionid 
+  AND classification.tagid = ? 
+  AND post.postid = question.questionid
+  AND post.deletorid IS NULL;");
     $stmt->execute($id);
     return $stmt->fetchAll();
 }
@@ -129,35 +100,18 @@ function getCategoryQuestions($id) {
     global $conn;
     $stmt = $conn->prepare("
 SELECT
-  Question.questionid,
-  Post.postauthorid,
-  Member.name,
-  Post.postcreationdate,
-  Question.title,
-  Post.postrating,
-  Question.views,
-  Question.answers,
-  Question.categoryid,
-  Category.categoryname,
-  string_agg(text(Tag.tagid), ' ') AS tagids,
-  string_agg(tagname, ' ') AS tagnames
-FROM Question
-INNER JOIN Post ON Post.postid = Question.questionid
-INNER JOIN Member ON Post.postAuthorid = Member.memberid
-INNER JOIN Category ON Category.categoryid = Question.categoryid
-LEFT JOIN Classification ON Classification.questionid = Question.questionid
-LEFT JOIN Tag ON Classification.tagid = Tag.tagid
-WHERE deletorid IS NULL AND Question.categoryid = ?
-GROUP BY Question.questionid,
-  Post.postauthorid,
-  Member.name,
-  Post.postcreationdate,
-  Question.title,
-  Post.postrating,
-  Question.views,
-  Question.answers,
-  Question.categoryid,
-  Category.categoryname;");
+  question.questionid,
+  post.postauthorid,
+  post.postcreationdate,
+  question.title,
+  post.postrating,
+  question.views,
+  question.answers,
+  question.categoryid
+FROM post, question
+WHERE question.categoryid = ? 
+  AND post.postid = question.questionid
+  AND post.deletorid IS NULL;");
     $stmt->execute($id);
     return $stmt->fetchAll();
 }
