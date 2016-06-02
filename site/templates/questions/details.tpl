@@ -110,12 +110,24 @@
                 </div>
                 <hr>
             {/foreach}
-               <!-- <textarea id="message" class="form-control" rows="5" placeholder="Enter your answer"
-                                  required></textarea>-->
-           <!-- <button type="submit" id="form-submit" class="btn btn-success btn-lg pull-right ">Answer<span class="glyphicon glyphicon-send"></span></button>
--->
-            <div id="summernote"></div>
-           </div>
-<!--<script> last_question_id={$last_question_id} </script> -->
 
+
+                <button id="edit" class="btn btn-primary" type="button">Answer</button>
+
+            <form action="../../actions/posts/answer.php" name="confirmationForm" method="post">
+                <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
+
+                <input type="submit" value="Post" class="submitButton">
+            </form>
+<!--
+            <div class="summernote"></div>
+
+            <button id="post_answer" type="submit" hidden="hidden"
+                        onclick="return validateTextArea(this.text);"
+                        class="btn">Post Answer!<span class="glyphicon glyphicon-send"></span>
+                </button>
+-->
+
+        </div>
+<!--<script>last_question_id={$last_question_id}</script>-->
 <!--<script src="{$base_url}javascript/tweets.js"></script>-->

@@ -91,8 +91,9 @@
     });
 </script>
 
-<script src="https://gnomo.fe.up.pt/~lbaw1553/javascript/text_editor.js"></script>
+<script src="{$BASE_URL}javascript/text_editor.js"></script>
 <script src="{$BASE_URL}text_editor/dist/summernote.js"></script>
+<script src="{$BASE_URL}codemirror/lib/codemirror.js"></script>
 
 </body>
 </html>
