@@ -162,47 +162,115 @@ GROUP BY Question.questionid,
     return $stmt->fetchAll();
 }
 
+function updateViews($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+UPDATE question
+SET views = views + 1
+WHERE question.questionid = ?;");
+    $stmt->execute($id);
+    return true;
+}
 
 function getQuestion($id)
 {
     global $conn;
     $stmt = $conn->prepare("
-SELECT DISTINCT ON (Question.questionid)
-  Question.questionid,
-  Post.postauthorid,
-  Member.name,
-  Post.postcreationdate,
-  Question.title,
-  Post.postrating,
-  Question.views,
-  Question.answers,
-  Question.categoryid,
-  Category.categoryname,
-  string_agg(text(Tag.tagid), ' ') AS tagids,
-  string_agg(tagname, ' ') AS tagnames,
-  PostVersion.postversionid,
-  PostVersion.versionbody
-FROM Post
-  INNER JOIN Member ON Post.postauthorID = Member.memberID
-  INNER JOIN Question ON Post.postID = Question.questionID
-  INNER JOIN postVersion ON Post.postID = PostVersion.postID
-  INNER JOIN Category ON Question.categoryID = Category.categoryid
-  LEFT JOIN Classification ON Question.questionID = Classification.questionID
-  LEFT JOIN Tag ON Classification.tagID = Tag.tagID
-WHERE Question.questionid = ?
-GROUP BY Question.questionid,
-  Post.postauthorid,
-  Member.name,
-  Post.postcreationdate,
-  Question.title,
-  Post.postrating,
-  Question.views,
-  Question.answers,
-  Question.categoryid,
-  Category.categoryname,
-  PostVersion.postversionid,
-  PostVersion.versionbody
-ORDER BY questionid, postversionid DESC;");
+SELECT
+  question.questionid,
+  question.title,
+  question.views,
+  question.answers,
+  question.categoryid
+FROM question
+WHERE question.questionid = ?;");
+    $stmt->execute($id);
+    return $stmt->fetch();
+}
+
+function getPost($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+  post.postauthorid,
+  post.postcreationdate,
+  post.postrating
+FROM post
+WHERE post.postid = ?;");
+    $stmt->execute($id);
+    return $stmt->fetch();
+}
+
+function getPostCurrentBody($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT DISTINCT ON (postversion.postid)
+  postversion.postversionid,
+  postversion.versionbody
+FROM postversion
+WHERE postid = ?
+ORDER BY postversion.postid, postversion.postversionid DESC;");
+    $stmt->execute($id);
+    return $stmt->fetch();
+}
+
+function getQuestionAnswers($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+  answer.answerid,
+  post.postcreationdate,
+  post.postauthorid,
+  post.postrating
+FROM answer, post
+WHERE
+  answer.answerid = post.postid
+  AND answer.questionid = ?;");
+    $stmt->execute($id);
+    return $stmt->fetchAll();
+}
+
+function getMemberName($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+  member.name
+FROM member
+WHERE
+  member.memberid = ?;");
+    $stmt->execute($id);
+    return $stmt->fetch();
+}
+
+function getCategoryName($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+  category.categoryname
+FROM category
+WHERE category.categoryid = ?;");
+    $stmt->execute($id);
+    return $stmt->fetch();
+}
+
+
+function getQuestionTags($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+  tag.tagid,
+  tagname
+FROM classification, tag
+WHERE
+  questionid = ?
+AND classification.tagid = tag.tagid;");
     $stmt->execute($id);
     return $stmt->fetchAll();
 }
