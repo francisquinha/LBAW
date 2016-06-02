@@ -35,10 +35,8 @@ $(document).ready(function() {
                 ['view', ['fullscreen', 'codeview']]
             ]
         });
-      /*  var exp = $(document.createElement('div'));
-        exp.after().html('<button id="post_answer" type="submit" class="btn">' +
-            "Post Answer!" + '<span class="glyphicon glyphicon-send"></span></button>');
-        exp.insertAfter(".note-editor");*/
+        var button = '<button id="post_answer" type="submit" class="btn">Post Answer!<span class="glyphicon glyphicon-send"></span></button>';
+        $('.note-resizebar').append(button).html();
     });
 
 
@@ -46,19 +44,12 @@ $(document).ready(function() {
 
 });
 
-$('#post_answer').click(function(){
+function send_answer(questionID) {
+        var body = $('.summernote').summernote('code');
+        $.post(BASE_URL + '/actions/posts/answer.php?questionid=' + questionID, {body: body})
+            .done(function () {
+                $('.summernote').summernote('destroy');
+                window.location.reload();
+            });
 
-    var text = $('.summernote').summernote('code');
-    console.log(text);
-
-    $('.note-editor').insertBefore(text);
-    /*$('.summernote').summernote('destroy');
-     $('#post_answer').remove();*/
-});
-
-function validateTextArea(form, text)
-{
-    var re = /^\w+$/;
-
-    return true;
 }

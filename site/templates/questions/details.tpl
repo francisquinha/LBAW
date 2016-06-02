@@ -114,19 +114,15 @@
 
                 <button id="edit" class="btn btn-primary" type="button">Answer</button>
 
-            <form action="../../actions/posts/answer.php" name="confirmationForm" method="post">
-                <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
+            <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
 
-                <input type="submit" value="Post" class="submitButton">
+                  <!--  <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
+                    <input type="submit" value="Post" class="submitButton">-->
+
+                <div class="summernote"></div>
             </form>
-<!--
-            <div class="summernote"></div>
 
-            <button id="post_answer" type="submit" hidden="hidden"
-                        onclick="return validateTextArea(this.text);"
-                        class="btn">Post Answer!<span class="glyphicon glyphicon-send"></span>
-                </button>
--->
+
 
         </div>
 <!--<script>last_question_id={$last_question_id}</script>-->

@@ -41,8 +41,8 @@ if (isset($_GET['questionid'])) {
         $timeago = time_elapsed_string(strtotime($answer['postcreationdate']));
         $answers[$key]['timeago'] = $timeago;
     }
-
-    $smarty->assign('last_answer_id', $answers[0]['answerid']);
+    
+    $smarty->assign('question_id', $_GET['questionid']);
     $smarty->assign('bestanswers', $bestanswers);
     $smarty->assign('answers', $answers);
     $smarty->assign('questions', $questions);
