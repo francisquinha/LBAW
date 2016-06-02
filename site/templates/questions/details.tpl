@@ -28,12 +28,20 @@
                     </div>
 
                     <div id="questionvotesection">
-                        <a href="#" class="btn-lg" style="color:black;"><span
+                        <form role="form" action="javascript:votes({$question.questionid})" class="updownquestion">
+                        <button id="upquestion" type="submit">
+                        <span
                                     class="glyphicon glyphicon-thumbs-up"
-                                    style="padding:0; margin:0;color:#4aaf51;"></span> {$question.postrating}
+                                    style="padding:0; margin:0;color:#4aaf51;"></span>
+
+                        </button>
+                            {$question.postrating}
+                            <button id="downquestion" type="submit">
                             <span
                                     class="glyphicon glyphicon-thumbs-down"
-                                    style="padding:0; margin:0;color:#c9302c;"></span></a>
+                                    style="padding:0; margin:0;color:#c9302c;"></span>
+                                </button>
+                        </form>
                     </div>
 
                     <div id="tagsofquestion">

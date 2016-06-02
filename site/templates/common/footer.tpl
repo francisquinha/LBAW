@@ -71,6 +71,7 @@
 <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
 <!-- Validate Login JavaScript -->
 <script src="{$BASE_URL}javascript/login.js"></script>
+<script src="{$BASE_URL}javascript/updownvotes.js"></script>
 <script>
     $( document ).ready(function() {
 
