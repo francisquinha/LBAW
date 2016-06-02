@@ -78,14 +78,14 @@ CREATE TABLE Member(
   password TEXT NOT NULL,
   name TEXT NOT NULL,
   picture TEXT,
-  registrationDate TIMESTAMP NOT NULL DEFAULT current_timestamp(0),
+  registrationDate TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_timestamp(0),
   memberRating INTEGER NOT NULL DEFAULT 0,
   permissionType permissionEnum NOT NULL DEFAULT 'member'
 );
 
 CREATE TABLE Permission(
   permissionID INTEGER PRIMARY KEY DEFAULT nextval('permission_permissionid_seq'),
-  beginDate TIMESTAMP NOT NULL DEFAULT current_timestamp(0),
+  beginDate TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_timestamp(0),
   permissionType permissionEnum NOT NULL,
   giverID INTEGER NOT NULL REFERENCES Member (memberID) ON DELETE RESTRICT ON UPDATE CASCADE,
   ownerID INTEGER NOT NULL REFERENCES Member (memberID) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -96,8 +96,8 @@ CREATE TABLE Post(
   postID INTEGER PRIMARY KEY DEFAULT nextval('post_postid_seq'),
   postAuthorID INTEGER NOT NULL REFERENCES Member (memberID) ON DELETE RESTRICT ON UPDATE CASCADE,
   postRating INTEGER NOT NULL DEFAULT 0,
-  postCreationDate TIMESTAMP NOT NULL DEFAULT current_timestamp(0),
-  postDeletionDate TIMESTAMP,
+  postCreationDate TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_timestamp(0),
+  postDeletionDate TIMESTAMP WITH TIME ZONE,
   deletorID INTEGER REFERENCES Member (memberID) ON DELETE RESTRICT ON UPDATE CASCADE,
   CONSTRAINT PostDates CHECK (postDeletionDate IS NULL OR postDeletionDate >= postCreationDate),
   CONSTRAINT PostNulls CHECK ((deletorID IS NULL AND postDeletionDate IS NULL) OR (deletorID IS NOT NULL AND postDeletionDate IS NOT NULL))
@@ -106,7 +106,7 @@ CREATE TABLE Post(
 CREATE TABLE PostVersion(
   postVersionID INTEGER PRIMARY KEY DEFAULT nextval('postversion_postversionid_seq'),
   versionBody TEXT NOT NULL,
-  versionDate TIMESTAMP NOT NULL DEFAULT current_timestamp(0),
+  versionDate TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_timestamp(0),
   versionAuthorID INTEGER NOT NULL REFERENCES Member (memberID) ON DELETE RESTRICT ON UPDATE CASCADE,
   postID INTEGER NOT NULL REFERENCES Post (postID) ON DELETE RESTRICT ON UPDATE CASCADE
 );
@@ -141,7 +141,7 @@ ALTER TABLE Question ADD CONSTRAINT FK_Question_bestAnswerID FOREIGN KEY (bestAn
 CREATE TABLE Report(
   reportID INTEGER PRIMARY KEY DEFAULT nextval('report_reportid_seq'),
   reportBody TEXT NOT NULL,
-  reportDate TIMESTAMP NOT NULL DEFAULT current_timestamp(0),
+  reportDate TIMESTAMP WITH TIME ZONE NOT NULL DEFAULT current_timestamp(0),
   reportSolution TEXT,
   authorID INTEGER NOT NULL REFERENCES Member (memberID) ON DELETE RESTRICT ON UPDATE CASCADE,
   postID INTEGER NOT NULL REFERENCES Post (postID) ON DELETE RESTRICT ON UPDATE CASCADE,
@@ -209,7 +209,7 @@ EXECUTE PROCEDURE checkPermissionHierarchyProc();
 
 CREATE OR REPLACE FUNCTION checkPermissionDateProc() RETURNS TRIGGER AS $checkPermissionDateProc$
 DECLARE
-  registDate TIMESTAMP;
+  registDate TIMESTAMP WITH TIME ZONE;
 BEGIN
   SELECT registrationDate INTO registDate FROM Member
   WHERE memberID = NEW.ownerID;
@@ -257,7 +257,7 @@ EXECUTE PROCEDURE checkVersionAuthorProc();
 
 CREATE OR REPLACE FUNCTION checkVersionDateProc() RETURNS TRIGGER AS $checkVersionDateProc$
 DECLARE
-  postDate TIMESTAMP;
+  postDate TIMESTAMP WITH TIME ZONE;
 BEGIN
   SELECT postCreationDate INTO postDate FROM Post
   WHERE postID = NEW.postID;
@@ -426,7 +426,7 @@ EXECUTE PROCEDURE addVoteRatingsProc();
 
 CREATE OR REPLACE FUNCTION checkReportDateProc() RETURNS TRIGGER AS $checkReportDateProc$
 DECLARE
-  postDate TIMESTAMP;
+  postDate TIMESTAMP WITH TIME ZONE;
 BEGIN
   SELECT postCreationDate INTO postDate FROM Post
   WHERE postID = NEW.postID;
