@@ -217,23 +217,6 @@ ORDER BY postversion.postid, postversion.postversionid DESC;");
     return $stmt->fetch();
 }
 
-function getQuestionAnswers($id)
-{
-    global $conn;
-    $stmt = $conn->prepare("
-SELECT
-  answer.answerid,
-  post.postcreationdate,
-  post.postauthorid,
-  post.postrating
-FROM answer, post
-WHERE
-  answer.answerid = post.postid
-  AND answer.questionid = ?;");
-    $stmt->execute($id);
-    return $stmt->fetchAll();
-}
-
 function getMemberName($id)
 {
     global $conn;
@@ -259,7 +242,6 @@ WHERE category.categoryid = ?;");
     return $stmt->fetch();
 }
 
-
 function getQuestionTags($id)
 {
     global $conn;
@@ -275,193 +257,59 @@ AND classification.tagid = tag.tagid;");
     return $stmt->fetchAll();
 }
 
-function getReportQuestion($id)
-{
-    global $conn;
-    $stmt = $conn->prepare("
-SELECT DISTINCT ON (Question.questionid)
-  Question.questionid,
-  Post.postauthorid,
-  Member.name,
-  Post.postcreationdate,
-  Question.title,
-  Post.postrating,
-  Question.views,
-  Question.answers,
-  Question.categoryid,
-  Category.categoryname,
-  string_agg(text(Tag.tagid), ' ') AS tagids,
-  string_agg(tagname, ' ') AS tagnames,
-  PostVersion.postversionid,
-  PostVersion.versionbody
-FROM Post
-  INNER JOIN Member ON Post.postauthorID = Member.memberID
-  INNER JOIN Question ON Post.postID = Question.questionID
-  INNER JOIN postVersion ON Post.postID = PostVersion.postID
-  INNER JOIN Category ON Question.categoryID = Category.categoryid
-  LEFT JOIN Classification ON Question.questionID = Classification.questionID
-  LEFT JOIN Tag ON Classification.tagID = Tag.tagID
-WHERE Post.postid = ?
-GROUP BY Question.questionid,
-  Post.postauthorid,
-  Member.name,
-  Post.postcreationdate,
-  Question.title,
-  Post.postrating,
-  Question.views,
-  Question.answers,
-  Question.categoryid,
-  Category.categoryname,
-  PostVersion.postversionid,
-  PostVersion.versionbody
-ORDER BY questionid, postversionid DESC;");
-    $stmt->execute($id);
-    return $stmt->fetchAll();
-}
-
 function getAnswers($id)
 {
     global $conn;
     $stmt = $conn->prepare("
-SELECT *
-FROM (SELECT DISTINCT ON (Answer.answerid)
-        Answer.answerid,
-        Answer.questionid,
-        Post.postcreationdate,
-        Post.postauthorid,
-        Member.name,
-        Post.postrating,
-        PostVersion.postversionid,
-        PostVersion.versionbody
-      FROM Answer, Post, PostVersion, Member, Question
-      WHERE Answer.answerid = Post.postid
-            AND Post.postid = PostVersion.postid
-            AND Post.postauthorid = Member.memberid
-            AND Answer.questionid = ?
-            AND Answer.questionid = Question.questionid
-            AND (Answer.answerid != Question.bestanswerid OR Question.bestanswerid IS NULL)
-      ORDER BY answerid, postversionid DESC) AS unordered
-ORDER BY postrating DESC, postcreationdate DESC;");
+SELECT
+  answer.answerid,
+  post.postcreationdate,
+  post.postauthorid,
+  post.postrating
+FROM answer, post, question
+WHERE
+  answer.questionid = ?
+  AND answer.answerid = post.postid
+  AND question.questionid = answer.questionid
+  AND question.bestanswerid IS NULL;");
     $stmt->execute($id);
     return $stmt->fetchAll();
 }
 
-function getReportAnswers($id)
+function getAnswer($id)
 {
     global $conn;
     $stmt = $conn->prepare("
-SELECT *
-FROM (SELECT DISTINCT ON (Answer.answerid)
-        Answer.answerid,
-        Answer.questionid,
-        Post.postcreationdate,
-        Post.postauthorid,
-        Member.name,
-        Post.postrating,
-        PostVersion.postversionid,
-        PostVersion.versionbody
-      FROM Answer, Post, PostVersion, Member, Question
-      WHERE Answer.answerid = Post.postid
-            AND Post.postid = ?
-            AND Post.postauthorid = Member.memberid
-            AND Answer.questionid = Question.questionid
-            AND (Answer.answerid != Question.bestanswerid OR Question.bestanswerid IS NULL)
-      ORDER BY answerid, postversionid DESC) AS unordered
-ORDER BY postrating DESC, postcreationdate DESC;");
+SELECT
+  answer.answerid,
+  post.postcreationdate,
+  post.postauthorid,
+  post.postrating
+FROM answer, post
+WHERE
+  answer.answerid = ?
+  AND answer.answerid = post.postid;");
     $stmt->execute($id);
-    return $stmt->fetchAll();
+    return $stmt->fetch();
 }
 
 function getBestAnswer($id)
 {
     global $conn;
     $stmt = $conn->prepare("
-SELECT DISTINCT ON (Answer.answerid)
-  Answer.answerid,
-  Answer.questionid,
-  Post.postcreationdate,
-  Post.postauthorid,
-  Member.name,
-  Post.postrating,
-  PostVersion.postversionid,
-  PostVersion.versionbody
-FROM Answer, Post, PostVersion, Member, Question
-WHERE Answer.answerid = Post.postid
-      AND Post.postid = PostVersion.postid
-      AND Post.postauthorid = Member.memberid
-      AND Answer.questionid = ?
-      AND Answer.questionid = Question.questionid
-      AND Answer.answerid = Question.bestanswerid
-ORDER BY answerid, postversionid DESC;");
+SELECT
+  answer.answerid,
+  post.postcreationdate,
+  post.postauthorid,
+  post.postrating
+FROM answer, post, question
+WHERE
+  answer.questionid = ?
+  AND answer.answerid = post.postid
+  AND question.questionid = answer.questionid
+  AND question.bestanswerid = answer.answerid;");
     $stmt->execute($id);
-    return $stmt->fetchAll();
-}
-
-function getReportBestAnswer($id)
-{
-    global $conn;
-    $stmt = $conn->prepare("
-SELECT DISTINCT ON (Answer.answerid)
-  Answer.answerid,
-  Answer.questionid,
-  Post.postcreationdate,
-  Post.postauthorid,
-  Member.name,
-  Post.postrating,
-  PostVersion.postversionid,
-  PostVersion.versionbody
-FROM Answer, Post, PostVersion, Member, Question
-WHERE Answer.answerid = Post.postid
-      AND Post.postid = ?
-      AND Post.postauthorid = Member.memberid
-      AND Answer.questionid = Question.questionid
-      AND Answer.answerid = Question.bestanswerid
-ORDER BY answerid, postversionid DESC;");
-    $stmt->execute($id);
-    return $stmt->fetchAll();
-}
-
-function getUserTweets($username)
-{
-    global $conn;
-    $stmt = $conn->prepare("SELECT * 
-                            FROM tweets JOIN 
-                                 users USING(username) 
-                            WHERE username = ? 
-                            ORDER BY time DESC");
-    $stmt->execute(array($username));
-    return $stmt->fetchAll();
-}
-
-function createTweet($username, $tweet)
-{
-    global $conn;
-    $stmt = $conn->prepare("INSERT INTO tweets 
-                            VALUES (DEFAULT, ?, ?, ?)");
-    $stmt->execute(array(date('Y-m-d H:i:s'), $username, $tweet));
-}
-
-function getTweetCountAfter($id)
-{
-    global $conn;
-    $stmt = $conn->prepare("SELECT COUNT(*) AS count
-                            FROM tweets 
-                            WHERE id > ?");
-    $stmt->execute(array($id));
-    $result = $stmt->fetch();
-    return $result['count'];
-}
-
-function getTweetsAfter($id)
-{
-    global $conn;
-    $stmt = $conn->prepare("SELECT * 
-                            FROM tweets JOIN 
-                                 users USING(username) 
-                            WHERE id > ?
-                            ORDER BY time");
-    $stmt->execute(array($id));
-    return $stmt->fetchAll();
+    return $stmt->fetch();
 }
 
 ?>

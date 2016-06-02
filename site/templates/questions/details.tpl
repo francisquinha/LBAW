@@ -60,31 +60,31 @@
 
             <hr style="margin-top:0;">
 
-
-            {foreach $bestanswers as $bestanswer}
-                <div class="bestanswer">
-                    <span class="glyphicon glyphicon-star" style="float:right;color:#4aaf51;"></span>
-                    <div id="answerbodysquare" align="left">
-                        {$bestanswer.versionbody}
-                    </div>
-                    <br>
-                    <div id="answerusersquare">
-                        <a id="answerusers" href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
-                        <span id="timeago">answered {$bestanswer.timeago}</span>
-                    </div>
-                    <div id="questionvotesection">
-                        <a href="#" class="btn-lg" style="color:black;"><span
-                                    class="glyphicon glyphicon-thumbs-up"
-                                    style="padding:0; margin:0;color:#4aaf51;"></span> {$bestanswer.postrating}
-                            <span
-                                    class="glyphicon glyphicon-thumbs-down"
-                                    style="padding:0; margin:0;color:#c9302c;"></span></a>
-                    </div>
-
-
+            {if  $bestanswer.answerid != NULL}
+            <div class="bestanswer">
+                <span class="glyphicon glyphicon-star" style="float:right;color:#4aaf51;"></span>
+                <div id="answerbodysquare" align="left">
+                    {$bestanswer.versionbody}
                 </div>
-                <hr style="margin-top:0;">
-            {/foreach}
+                <br>
+                <div id="answerusersquare">
+                    <a id="answerusers"
+                       href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
+                    <span id="timeago">answered {$bestanswer.timeago}</span>
+                </div>
+                <div id="questionvotesection">
+                    <a href="#" class="btn-lg" style="color:black;"><span
+                                class="glyphicon glyphicon-thumbs-up"
+                                style="padding:0; margin:0;color:#4aaf51;"></span> {$bestanswer.postrating}
+                        <span
+                                class="glyphicon glyphicon-thumbs-down"
+                                style="padding:0; margin:0;color:#c9302c;"></span></a>
+                </div>
+
+
+            </div>
+            <hr style="margin-top:0;">
+            {/if}
 
             {foreach $answers as $answer}
                 <div id="answer">
