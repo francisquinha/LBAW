@@ -5,52 +5,51 @@ include_once($BASE_DIR . 'pages/questions/time.php');
 
 
 if (isset($_GET['questionid'])) {
-    $questions = getQuestion([$_GET['questionid']]);
-    $bestanswers = getBestAnswer([$_GET['questionid']]);
+    updateViews([$_GET['questionid']]);
+    $question = getQuestion([$_GET['questionid']]);
+    unset($question_post);
+    $question_post = getPost([$_GET['questionid']]);
+    $question['postauthorid'] = $question_post['postauthorid'];
+    $question['postcreationdate'] = $question_post['postcreationdate'];
+    $question['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
+    $question['postrating'] = $question_post['postrating'];
+    unset($question_body);
+    $question_body = getPostCurrentBody([$_GET['questionid']]);
+    $question['postversionid'] = $question_body['postversionid'];
+    $question['versionbody'] = $question_body['versionbody'];
+    $question['name'] = getMemberName([$question_post['postauthorid']])['name'];
+    $question['categoryname'] = getCategoryName([$question['categoryid']])['categoryname'];
+    $question['tagarray'] = getQuestionTags([$_GET['questionid']]);
+
+    $bestanswer = getBestAnswer([$_GET['questionid']]);
+    if ($bestanswer) {
+        $bestanswer['timeago'] = time_elapsed_string(strtotime($bestanswer['postcreationdate']));
+        $bestanswer['name'] = getMemberName([$bestanswer['postauthorid']])['name'];
+        unset($bestanswer_body);
+        $bestanswer_body = getPostCurrentBody([$bestanswer['answerid']]);
+        $bestanswer['postversionid'] = $bestanswer_body['postversionid'];
+        $bestanswer['versionbody'] = $bestanswer_body['versionbody'];
+    }
+
     $answers = getAnswers([$_GET['questionid']]);
 
-    foreach ($questions as $key => $question) {
-        unset($timeago);
-        $timeago = time_elapsed_string(strtotime($question['postcreationdate']));
-        $questions[$key]['timeago'] = $timeago;
-        unset($tagarray);
-        $tagarray = array();
-        if ($question['tagnames'] != "") {
-            unset($tagnamearray);
-            $tagnamearray = explode(" ", $question['tagnames']);
-            unset($tagidarray);
-            $tagidarray = explode(" ", $question['tagids']);
-            for ($i = 0; $i < sizeof($tagnamearray); $i++) {
-                unset($tag);
-                $tag['tagid'] = $tagidarray[$i];
-                $tag['tagname'] = $tagnamearray[$i];
-                array_push($tagarray, $tag);
-            }
-        }
-        $questions[$key]['tagarray'] = $tagarray;
-    }
-
-    foreach ($bestanswers as $key => $bestanswer) {
-        unset($timeago);
-        $timeago = time_elapsed_string(strtotime($bestanswer['postcreationdate']));
-        $bestanswers[$key]['timeago'] = $timeago;
-    }
-
     foreach ($answers as $key => $answer) {
-        unset($timeago);
-        $timeago = time_elapsed_string(strtotime($answer['postcreationdate']));
-        $answers[$key]['timeago'] = $timeago;
+        $answers[$key]['timeago'] = time_elapsed_string(strtotime($answer['postcreationdate']));
+        $answers[$key]['name'] = getMemberName([$answer['postauthorid']])['name'];
+        unset($answer_body);
+        $answer_body = getPostCurrentBody([$answer['answerid']]);
+        $answers[$key]['postversionid'] = $answer_body['postversionid'];
+        $answers[$key]['versionbody'] = $answer_body['versionbody'];
     }
 
-    $smarty->assign('last_answer_id', $answers[0]['answerid']);
-    $smarty->assign('bestanswers', $bestanswers);
+    $smarty->assign('bestanswer', $bestanswer);
     $smarty->assign('answers', $answers);
-    $smarty->assign('questions', $questions);
+    $smarty->assign('question', $question);
     $smarty->display('questions/details.tpl');
 
     $smarty->display('common/menu_side.tpl');
-    include_once($BASE_DIR .'pages/categories/list_top.php');
-    include_once($BASE_DIR .'pages/tags/list_top.php');
+    include_once($BASE_DIR . 'pages/categories/list_top.php');
+    include_once($BASE_DIR . 'pages/tags/list_top.php');
     $smarty->display('common/footer.tpl');
 }
 

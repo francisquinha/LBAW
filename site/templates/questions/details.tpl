@@ -7,85 +7,84 @@
         <!-- Blog Entries Column -->
         <div class="col-md-7">
             <br>
-            {foreach $questions as $question}
-                <div id="questionpq">
-                    <div id="questiontitlesquare">
-                        <a id="qpagequestiontitle"
-                           href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
-                            {$question.title}
-                        </a>
-                    </div>
-                    <div id="questionbodysquare" align="left">
-                        {$question.versionbody}
-                    </div>
-                    <br>
-                    <div id="questionusersquare"><a id="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">{$question.name}</a>
-                        <span id="timeago">asked {$question.timeago}</span></div>
-                    <div id="questioncategorysquare">
-                        <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
-                            {$question.categoryname}
-                        </a>
-                    </div>
-
-                    <div id="questionvotesection">
-                        <a href="#" class="btn-lg" style="color:black;"><span
-                                    class="glyphicon glyphicon-thumbs-up"
-                                    style="padding:0; margin:0;color:#4aaf51;"></span> {$question.postrating}
-                            <span
-                                    class="glyphicon glyphicon-thumbs-down"
-                                    style="padding:0; margin:0;color:#c9302c;"></span></a>
-                    </div>
-
-                    <div id="tagsofquestion">
-                        {foreach $question.tagarray as $tag}
-                            <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}"
-                               style="display:inline-flex;">
-                                <span class="glyphicon glyphicon-tag"></span>{$tag.tagname}
-                            </a>
-                        {/foreach}
-                    </div>
-
-                    <div id="questionbuttonsection">
-                        <a>
-                            <span class="fa fa-pencil"></span>
-                            {$question.answers}
-                        </a>
-                        <a>
-                            <span class="glyphicon glyphicon-eye-open"></span>
-                            {$question.views}
-                        </a>
-                    </div>
-
+            <div id="questionpq">
+                <div id="questiontitlesquare">
+                    <a id="qpagequestiontitle"
+                       href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
+                        {$question.title}
+                    </a>
+                </div>
+                <div id="questionbodysquare" align="left">
+                    {$question.versionbody}
+                </div>
+                <br>
+                <div id="questionusersquare"><a id="questionusers"
+                                                href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">{$question.name}</a>
+                    <span id="timeago">asked {$question.timeago}</span></div>
+                <div id="questioncategorysquare">
+                    <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
+                        {$question.categoryname}
+                    </a>
                 </div>
 
-                <hr style="margin-top:0;">
-            {/foreach}
-
-
-            {foreach $bestanswers as $bestanswer}
-                <div class="bestanswer">
-                    <span class="glyphicon glyphicon-star" style="float:right;color:#4aaf51;"></span>
-                    <div id="answerbodysquare" align="left">
-                        {$bestanswer.versionbody}
-                    </div>
-                    <br>
-                    <div id="answerusersquare">
-                        <a id="answerusers" href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
-                        <span id="timeago">answered {$bestanswer.timeago}</span>
-                    </div>
-                    <div id="questionvotesection">
-                        <a href="#" class="btn-lg" style="color:black;"><span
-                                    class="glyphicon glyphicon-thumbs-up"
-                                    style="padding:0; margin:0;color:#4aaf51;"></span> {$bestanswer.postrating}
-                            <span
-                                    class="glyphicon glyphicon-thumbs-down"
-                                    style="padding:0; margin:0;color:#c9302c;"></span></a>
-                    </div>
-
-
+                <div id="questionvotesection">
+                    <a href="#" class="btn-lg" style="color:black;"><span
+                                class="glyphicon glyphicon-thumbs-up"
+                                style="padding:0; margin:0;color:#4aaf51;"></span> {$question.postrating}
+                        <span
+                                class="glyphicon glyphicon-thumbs-down"
+                                style="padding:0; margin:0;color:#c9302c;"></span></a>
                 </div>
-                <hr style="margin-top:0;">
-            {/foreach}
+
+                <div id="tagsofquestion">
+                    {foreach $question.tagarray as $tag}
+                        <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}"
+                           style="display:inline-flex;">
+                            <span class="glyphicon glyphicon-tag"></span>{$tag.tagname}
+                        </a>
+                    {/foreach}
+                </div>
+
+                <div id="questionbuttonsection">
+                    <a>
+                        <span class="fa fa-pencil"></span>
+                        {$question.answers}
+                    </a>
+                    <a>
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        {$question.views}
+                    </a>
+                </div>
+
+            </div>
+
+            <hr style="margin-top:0;">
+
+            {if  $bestanswer.answerid != NULL}
+            <div class="bestanswer">
+                <span class="glyphicon glyphicon-star" style="float:right;color:#4aaf51;"></span>
+                <div id="answerbodysquare" align="left">
+                    {$bestanswer.versionbody}
+                </div>
+                <br>
+                <div id="answerusersquare">
+                    <a id="answerusers"
+                       href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
+                    <span id="timeago">answered {$bestanswer.timeago}</span>
+                </div>
+                <div id="questionvotesection">
+                    <a href="#" class="btn-lg" style="color:black;"><span
+                                class="glyphicon glyphicon-thumbs-up"
+                                style="padding:0; margin:0;color:#4aaf51;"></span> {$bestanswer.postrating}
+                        <span
+                                class="glyphicon glyphicon-thumbs-down"
+                                style="padding:0; margin:0;color:#c9302c;"></span></a>
+                </div>
+
+
+            </div>
+            <hr style="margin-top:0;">
+            {/if}
 
             {foreach $answers as $answer}
                 <div id="answer">
@@ -114,19 +113,15 @@
 
                 <button id="edit" class="btn btn-primary" type="button">Answer</button>
 
-            <form action="../../actions/posts/answer.php" name="confirmationForm" method="post">
-                <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
+            <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
 
-                <input type="submit" value="Post" class="submitButton">
+                  <!--  <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
+                    <input type="submit" value="Post" class="submitButton">-->
+
+                <div class="summernote"></div>
             </form>
-<!--
-            <div class="summernote"></div>
 
-            <button id="post_answer" type="submit" hidden="hidden"
-                        onclick="return validateTextArea(this.text);"
-                        class="btn">Post Answer!<span class="glyphicon glyphicon-send"></span>
-                </button>
--->
+
 
         </div>
 <!--<script>last_question_id={$last_question_id}</script>-->
