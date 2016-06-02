@@ -8,24 +8,10 @@ if (isset($_GET['tagid'])) {
     $questions = getTagQuestions([$_GET['tagid']]);
 
     foreach ($questions as $key => $question) {
-        unset($timeago);
-        $timeago = time_elapsed_string(strtotime($question['postcreationdate']));
-        $questions[$key]['timeago'] = $timeago;
-        unset($tagarray);
-        $tagarray = array();
-        if ($question['tagnames'] != "") {
-            unset($tagnamearray);
-            $tagnamearray = explode(" ", $question['tagnames']);
-            unset($tagidarray);
-            $tagidarray = explode(" ", $question['tagids']);
-            for ($i = 0; $i < sizeof($tagnamearray); $i++) {
-                unset($tag);
-                $tag['tagid'] = $tagidarray[$i];
-                $tag['tagname'] = $tagnamearray[$i];
-                array_push($tagarray, $tag);
-            }
-        }
-        $questions[$key]['tagarray'] = $tagarray;
+        $questions[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
+        $questions[$key]['name'] = getMemberName([$question['postauthorid']])['name'];
+        $questions[$key]['categoryname'] = getCategoryName([$question['categoryid']])['categoryname'];
+        $questions[$key]['tagarray'] = getQuestionTags([$_GET['questionid']]);
     }
 
     $smarty->assign('last_question_id', $questions[0]['questionid']);

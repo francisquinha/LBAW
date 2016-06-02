@@ -6,50 +6,41 @@ include_once($BASE_DIR . 'pages/questions/time.php');
 
 
 if (isset($_GET['postid'])) {
-    $questions = getReportQuestion([$_GET['postid']]);
-    $bestanswers = getReportBestAnswer([$_GET['postid']]);
-    $answers = getReportAnswers([$_GET['postid']]);
+    $question = getQuestion([$_GET['postid']]);
+    if (!$question) {
+        $answer = getAnswer([$_GET['postid']]);
+        $answer['timeago'] = time_elapsed_string(strtotime($answer['postcreationdate']));
+        $answer['name'] = getMemberName([$answer['postauthorid']])['name'];
+        unset($answer_body);
+        $answer_body = getPostCurrentBody([$_GET['postid']]);
+        $answer['postversionid'] = $answer_body['postversionid'];
+        $answer['versionbody'] = $answer_body['versionbody'];
+        $smarty->assign('answer', $answer);
+    }
+    else {
+        unset($question_post);
+        $question_post = getPost([$_GET['postid']]);
+        $question['postauthorid'] = $question_post['postauthorid'];
+        $question['postcreationdate'] = $question_post['postcreationdate'];
+        $question['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
+        $question['postrating'] = $question_post['postrating'];
+        unset($question_body);
+        $question_body = getPostCurrentBody([$_GET['postid']]);
+        $question['postversionid'] = $question_body['postversionid'];
+        $question['versionbody'] = $question_body['versionbody'];
+        $question['name'] = getMemberName([$question_post['postauthorid']])['name'];
+        $question['categoryname'] = getCategoryName([$question['categoryid']])['categoryname'];
+        $question['tagarray'] = getQuestionTags([$_GET['questionid']]);
+        $smarty->assign('question', $question);
+    }
     $reports = getReport([$_GET['postid']]);
-
-    foreach ($questions as $key => $question) {
-        unset($timeago);
-        $timeago = time_elapsed_string(strtotime($question['postcreationdate']));
-        $questions[$key]['timeago'] = $timeago;
-        unset($tagarray);
-        $tagarray = array();
-        if ($question['tagnames'] != "") {
-            unset($tagnamearray);
-            $tagnamearray = explode(" ", $question['tagnames']);
-            unset($tagidarray);
-            $tagidarray = explode(" ", $question['tagids']);
-            for ($i = 0; $i < sizeof($tagnamearray); $i++) {
-                unset($tag);
-                $tag['tagid'] = $tagidarray[$i];
-                $tag['tagname'] = $tagnamearray[$i];
-                array_push($tagarray, $tag);
-            }
-        }
-        $questions[$key]['tagarray'] = $tagarray;
+    foreach ($reports as $key => $report) {
+        $reports[$key]['timeago'] = time_elapsed_string(strtotime($report['reportdate']));
     }
 
-    foreach ($bestanswers as $key => $bestanswer) {
-        unset($timeago);
-        $timeago = time_elapsed_string(strtotime($bestanswer['postcreationdate']));
-        $bestanswers[$key]['timeago'] = $timeago;
-    }
-
-    foreach ($answers as $key => $answer) {
-        unset($timeago);
-        $timeago = time_elapsed_string(strtotime($answer['postcreationdate']));
-        $answers[$key]['timeago'] = $timeago;
-    }
-
-
-    $smarty->assign('bestanswers', $bestanswers);
-    $smarty->assign('answers', $answers);
-    $smarty->assign('questions', $questions);
     $smarty->assign('reports', $reports);
 }
+
 $smarty->display('report/details.tpl');
 
 $smarty->display('common/menu_side.tpl');

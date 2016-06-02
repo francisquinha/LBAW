@@ -3,42 +3,15 @@ include_once('../../config/init.php');
 include_once($BASE_DIR.'database/questions.php');
 include_once('time.php');
 
-$questions = getRecentQuestions([15]);
-
-/*
-foreach ($questions as $key => $question) {
-    unset($photo);
-    if (file_exists($BASE_DIR . 'images/users/' . $tweet['username'] . '.png'))
-        $photo = 'images/users/' . $tweet['username'] . '.png';
-    if (file_exists($BASE_DIR . 'images/users/' . $tweet['username'] . '.jpg'))
-        $photo = 'images/users/' . $tweet['username'] . '.jpg';
-    if (!$photo) $photo = 'images/assets/default.png';
-    $tweets[$key]['photo'] = $photo;
-}
-*/
+$questions = getRecentQuestions(15, 0);
 
 foreach ($questions as $key => $question) {
-    unset($timeago);
-    $timeago = time_elapsed_string(strtotime($question['postcreationdate']));
-    $questions[$key]['timeago'] = $timeago;
-    unset($tagarray);
-    $tagarray = array();
-    if ($question['tagnames'] != "") {
-        unset($tagnamearray);
-        $tagnamearray = explode(" ", $question['tagnames']);
-        unset($tagidarray);
-        $tagidarray = explode(" ", $question['tagids']);
-        for ($i = 0; $i < sizeof($tagnamearray); $i++) {
-            unset($tag);
-            $tag['tagid'] = $tagidarray[$i];
-            $tag['tagname'] = $tagnamearray[$i];
-            array_push($tagarray, $tag);
-        }
-    }
-    $questions[$key]['tagarray'] = $tagarray;
+    $questions[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
+    $questions[$key]['name'] = getMemberName([$question['postauthorid']])['name'];
+    $questions[$key]['categoryname'] = getCategoryName([$question['categoryid']])['categoryname'];
+    $questions[$key]['tagarray'] = getQuestionTags([$_GET['questionid']]);
 }
 
-$smarty->assign('last_question_id', $questions[0]['questionID']);
 $smarty->assign('questions', $questions);
 $subtitle = "Top Questions";
 $smarty->assign('subtitle', $subtitle);
