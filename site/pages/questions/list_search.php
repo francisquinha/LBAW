@@ -12,7 +12,7 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
         $questions[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
         $questions[$key]['name'] = getMemberName([$question['postauthorid']])['name'];
         $questions[$key]['categoryname'] = getCategoryName([$question['categoryid']])['categoryname'];
-        $questions[$key]['tagarray'] = getQuestionTags([$_GET['questionid']]);
+        $questions[$key]['tagarray'] = getQuestionTags([$question['questionid']]);
     }
 
     $smarty->assign('questions', $questions);
