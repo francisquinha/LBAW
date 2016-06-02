@@ -8,10 +8,7 @@
     <meta name="author" content="">
     <title>OutOfBounds</title>
 
-    <!-- add summernote -->
-    <link href="{$BASE_URL}text_editor/dist/summernote.css" rel="stylesheet">
-
-    <!-- Bootstrap Core CSS -->
+   <!-- Bootstrap Core CSS -->
     <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{$BASE_URL}font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{$BASE_URL}css/bootstrap.min.css">
@@ -26,6 +23,10 @@
     <link rel="stylesheet" href="{$BASE_URL}css/question.css">
     <link rel="stylesheet" href="{$BASE_URL}css/userpage.css">
 
+    <!-- add summernote -->
+    <link href="{$BASE_URL}text_editor/dist/summernote.css" rel="stylesheet">
+
+    <link rel="stylesheet" href="{$BASE_URL}codemirror/lib/codemirror.css">
 
 </head>
 <body>
