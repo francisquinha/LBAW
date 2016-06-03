@@ -11,11 +11,12 @@ if (!$_POST['body']) {
     exit;
 }
 
-$body = strip_tags($_POST['body']);
+$body = $_POST['body'];
 $questionid = $_GET['questionid'];
 $memberid = $_SESSION['userid'];
 
 createNewAnswer($questionid, $body, $memberid);
+
 $_SESSION['success_messages'][] = 'New answer registered successfully';
 header("Location: $BASE_URL");
 echo 'something get wrong';
