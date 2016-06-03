@@ -10,7 +10,17 @@ include_once($BASE_DIR . 'pages/questions/time.php');
 
 
 $member = getMember([$_GET['membersid']]);
+
+foreach ($member as $key => $membern) {
+    $member[$key]['timeago'] = time_elapsed_string_no_ago(strtotime($membern['registrationdate']));
+}
+
 $questions = getMemberQuestions([$_GET['membersid']]);
+
+foreach ($questions as $key => $question) {
+    $questions[$key]['timeago'] = time_elapsed_string_no_ago(strtotime($question['postcreationdate']));
+}
+
 $reports = getAllReports();
 
 foreach ($reports as $key => $report) {
