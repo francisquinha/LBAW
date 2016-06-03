@@ -46,7 +46,7 @@ $(document).ready(function() {
 
 function send_answer(questionID) {
         var body = $('.summernote').summernote('code');
-        $.post(BASE_URL + '/actions/posts/answer.php?questionid=' + questionID, {body: body})
+        $.post(BASE_URL + 'actions/posts/answer.php?questionid=' + questionID, {body: body})
             .done(function () {
                 $('.summernote').summernote('destroy');
                 window.location.reload();

@@ -6,4 +6,3 @@ function createNewAnswer($questionid, $body, $memberid) {
     $stmt = $conn->prepare("SELECT insertanswer(?, ?, ?)");
     $stmt->execute(array($questionid, $body, $memberid));
 }
-?>
