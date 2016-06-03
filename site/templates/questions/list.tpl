@@ -43,7 +43,7 @@
             </ul>
 
             <div class="tab-content">
-                <div id="recent" class=" tab-pane fade in active">
+                    <div id="recent" class=" tab-pane fade in active">
 
                     {foreach $questions as $question}
                         <div id="question">
