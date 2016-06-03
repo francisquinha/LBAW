@@ -53,4 +53,3 @@ if (isset($_GET['questionid'])) {
     $smarty->display('common/footer.tpl');
 }
 
-?>

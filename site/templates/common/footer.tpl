@@ -71,6 +71,7 @@
 <script src="{$BASE_URL}javascript/bootstrap.min.js"></script>
 <!-- Validate Login JavaScript -->
 <script src="{$BASE_URL}javascript/login.js"></script>
+<script src="{$BASE_URL}javascript/updownvotes.js"></script>
 <script>
     $( document ).ready(function() {
 
@@ -91,9 +92,13 @@
     });
 </script>
 
+<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>-->
+
 <script src="{$BASE_URL}javascript/text_editor.js"></script>
 <script src="{$BASE_URL}text_editor/dist/summernote.js"></script>
 <script src="{$BASE_URL}codemirror/lib/codemirror.js"></script>
+
+<script src="{$BASE_URL}javascript/tags.js"></script>
 
 </body>
 </html>
