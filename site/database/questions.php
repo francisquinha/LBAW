@@ -266,6 +266,12 @@ WHERE
     return $stmt->fetch();
 }
 
+function createNewQuestion($title, $body, $categorid, $tags, $memberid) {
+    global $conn;
+    $stmt = $conn->prepare("SELECT insertquestion(?, ?, ?, ?, ?)");
+    $stmt->execute(array($title, $body, $categorid, $tags, $memberid));
+}
+
 function updateVotes($voterid, $postid, $up) {
 
     global $conn;
