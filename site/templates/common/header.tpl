@@ -16,6 +16,8 @@
     <link rel="stylesheet" href="{$BASE_URL}css/footer-distributed-with-address-and-phones.css">
     <link rel="stylesheet" href="{$BASE_URL}fonts/font.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" />
+
     <!-- Custom CSS -->
     <link href="{$BASE_URL}css/blog-home.css" rel="stylesheet">
     <link rel="stylesheet" href="{$BASE_URL}css/style.css">
