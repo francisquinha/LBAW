@@ -266,14 +266,16 @@ WHERE
     return $stmt->fetch();
 }
 
-function createNewQuestion($title, $body, $categorid, $tags, $memberid) {
+function createNewQuestion($title, $body, $categorid, $tags, $memberid)
+{
     global $conn;
     $stmt = $conn->prepare("SELECT insertquestion(?, ?, ?, ?, ?)");
     $stmt->execute(array($title, $body, $categorid, $tags, $memberid));
+    return $stmt->fetch();
 }
 
-function updateVotes($voterid, $postid, $up) {
-
+function updateVotes($voterid, $postid, $up)
+{
     global $conn;
     $stmt = $conn->prepare("INSERT INTO vote(voterid, postid, up) VALUES (:voterid, :postid, :up)");
     $stmt->bindValue('voterid', $voterid, PDO::PARAM_INT);
@@ -289,7 +291,7 @@ function getQuestionTitle($id)
 SELECT
 question.title
 FROM question
-WHERE question.questionid =?;
+WHERE question.questionid = ?;
 ");
     $stmt->execute($id);
     return $stmt->fetch();
