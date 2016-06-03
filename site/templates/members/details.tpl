@@ -25,8 +25,16 @@
                                 <li><span>E-mail: </span>{$membern.email}</li>
                             {else}
                             {/if}
-                            <li><span>Regist on: </span>{$membern.registrationdate}</li>
-                            <li><span>Rating: </span>{$membern.memberrating}</li>
+                            <li><span>Registered: </span>{$membern.timeago}</li>
+                            {if $membern.memberrating > 0}
+                                <li style="color: #4aaf51;"><span style="color: #888;">Rating: </span>{$membern.memberrating}</li>
+                            {else}
+                                {if $membern.memberrating < 0}
+                                    <li style="color: #c9302c;"><span style="color: #888;">Rating: </span>{$membern.memberrating}</li>
+                                {else}
+                                    <li><span style="color: #888;">Rating: </span>{$membern.memberrating}</li>
+                                {/if}
+                            {/if}
                             {if {$membern.permissiontype} eq 'member'}
                             {else}
                                 {if $USERNAME}
@@ -215,7 +223,7 @@
                                         <td>
                                             <a href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">{$question.title}</a>
                                         </td>
-                                        <td>{$question.postcreationdate}</td>
+                                        <td>{$question.timeago}</td>
                                         <td>{$question.postrating}</td>
                                         <td>{$question.views}</td>
                                         <td>{$question.answers}</td>
