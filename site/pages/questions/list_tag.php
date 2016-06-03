@@ -34,4 +34,3 @@ if (isset($_GET['tagid'])) {
     include_once($BASE_DIR .'pages/tags/list_top.php');
     $smarty->display('common/footer.tpl');
 }
-?>

@@ -3,7 +3,6 @@ include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/questions.php');
 include_once($BASE_DIR . 'pages/questions/time.php');
 
-
 if (isset($_GET['questionid'])) {
     updateViews([$_GET['questionid']]);
     $question = getQuestion([$_GET['questionid']]);

@@ -71,7 +71,7 @@ $(document).ready(function() {
     $('.login-form').submit(function () {
         $.ajax({
             type: 'POST',
-            url: BASE_URL + '/actions/members/login.php', // fix this
+            url: BASE_URL + 'actions/members/login.php', // fix this
             data: $(this).serialize()
         })
             .done(function (data) {
@@ -97,7 +97,7 @@ $(document).ready(function() {
         //event.preventDefault();
         $.ajax({
             type: 'POST',
-            url: BASE_URL + '/actions/members/register.php', // fix this
+            url: BASE_URL + 'actions/members/register.php', // fix this
             data: $(this).serialize()
         })
             .done(function(data) {

@@ -7,7 +7,6 @@ function createNewAnswer($questionid, $body, $memberid) {
     $stmt->execute(array($questionid, $body, $memberid));
 }
 
-
 function getAnswerTitle($id)
 {
     global $conn;
@@ -21,5 +20,3 @@ AND answer.answerid = ?;
     $stmt->execute($id);
     return $stmt->fetch();
 }
-
-?>
