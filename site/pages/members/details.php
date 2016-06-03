@@ -14,7 +14,7 @@ $questions = getMemberQuestions([$_GET['membersid']]);
 $reports = getAllReports();
 
 foreach ($reports as $key => $report) {
-    $reports[$key]['timeago'] = time_elapsed_string_no_ago(strtotime($report['postcreationdate']));
+    $reports[$key]['timeago'] = time_elapsed_string_no_ago(strtotime($report['postcreationdate']));   
     $reports[$key]['name'] = getMemberName([$report['postauthorid']])['name'];
     
     unset($title);
