@@ -266,4 +266,17 @@ WHERE
     return $stmt->fetch();
 }
 
+function getQuestionTitle($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+question.title
+FROM question
+WHERE question.questionid =?;
+");
+    $stmt->execute($id);
+    return $stmt->fetch();
+}
+
 ?>

@@ -241,16 +241,21 @@
                                         <table class="table table-striped table-bordered">
                                             <thead>
                                             <tr>
-                                                <th>ReportID</th>
-                                                <th>Times</th>
+                                                <th>Post</th>
+                                                <th>Author</th>
+                                                <th>Age</th>
+                                                <th>Reports</th>
                                             </tr>
                                             </thead>
                                             <tbody>
                                             {foreach $reports as $report}
                                                 <tr>
                                                     <td>
-                                                        <a href="{$BASE_URL}pages/report/details.php?postid={$report.postid}">{$report.postid}</a>
+                                                        <a href="{$BASE_URL}pages/report/details.php?postid={$report.postid}">{$report.title}</a>
+                                                    <td>                                                        <a href="{$BASE_URL}pages/members/details.php?membersid={$report.postauthorid}">{$report.name}</a>
                                                     </td>
+                                                    </td>
+                                                    <td>{$report.timeago}</td>
                                                     <td>{$report.numberreports}</td>
                                                 </tr>
                                             {/foreach}
