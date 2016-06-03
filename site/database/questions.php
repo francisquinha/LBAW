@@ -266,14 +266,6 @@ WHERE
     return $stmt->fetch();
 }
 
-/*
-function updateVotes($voterid, $postid, $up) {
-
-    global $conn;
-    $stmt = $conn->prepare("INSERT INTO vote VALUES (?, ?, ?)");
-    $stmt->execute(array($voterid, $postid, TRUE));
-}*/
-
 function updateVotes($voterid, $postid, $up) {
 
     global $conn;

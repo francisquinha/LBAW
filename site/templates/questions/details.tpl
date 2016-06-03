@@ -27,16 +27,16 @@
                     </a>
                 </div>
 
-                <div id="questionvotesection">
+                <div class="questionvotesection">
                     <form role="form" action="javascript:votes({$question.questionid})" class="updownquestion">
-                        <button id="upquestion" type="submit">
+                        <button class="upquestion" type="submit" >
                         <span
                                 class="glyphicon glyphicon-thumbs-up"
                                 style="padding:0; margin:0;color:#4aaf51;"></span>
 
                         </button>
-                        {$question.postrating}
-                        <button id="downquestion" type="submit">
+                        <span id="questionRating-{$question.questionid}">{$question.postrating}</span>
+                        <button class="downquestion" type="submit">
                             <span
                                     class="glyphicon glyphicon-thumbs-down"
                                     style="padding:0; margin:0;color:#c9302c;"></span>
@@ -80,7 +80,7 @@
                        href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
                     <span id="timeago">answered {$bestanswer.timeago}</span>
                 </div>
-                <div id="questionvotesection">
+                <div class="questionvotesection">
                     <a href="#" class="btn-lg" style="color:black;"><span
                                 class="glyphicon glyphicon-thumbs-up"
                                 style="padding:0; margin:0;color:#4aaf51;"></span> {$bestanswer.postrating}
@@ -88,7 +88,6 @@
                                 class="glyphicon glyphicon-thumbs-down"
                                 style="padding:0; margin:0;color:#c9302c;"></span></a>
                 </div>
-
 
             </div>
             <hr style="margin-top:0;">
@@ -105,14 +104,26 @@
                         <a id="answerusers" href="{$BASE_URL}pages/members/details.php?membersid={$answer.postauthorid}">{$answer.name}</a>
                         <span id="timeago">answered {$answer.timeago}</span>
                     </div>
-                    <div id="questionvotesection">
-                        <a href="#" class="btn-lg" style="color:black;"><span
-                                    class="glyphicon glyphicon-thumbs-up"
-                                    style="padding:0; margin:0;color:#4aaf51;"></span> {$answer.postrating}
+
+                    <div class="questionvotesection">
+
+                        <form role="form" action="javascript:votes({$answer.answerid})" class="updownanswer">
+                            <button class="upquestion" type="submit" >
+                        <span
+                                class="glyphicon glyphicon-thumbs-up"
+                                style="padding:0; margin:0;color:#4aaf51;"></span>
+
+                            </button>
+                            <span id="questionRating-{$answer.answerid}">{$answer.postrating}</span>
+                            <button class="downquestion" type="submit">
                             <span
                                     class="glyphicon glyphicon-thumbs-down"
-                                    style="padding:0; margin:0;color:#c9302c;"></span></a>
-                    </div>
+                                    style="padding:0; margin:0;color:#c9302c;"></span>
+                            </button>
+                        </form>
+
+
+                         </div>
 
                 </div>
                 <hr>

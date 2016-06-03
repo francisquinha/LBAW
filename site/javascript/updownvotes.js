@@ -1,57 +1,42 @@
+var buttonID = 'undefined';
 $(document).ready(function() {
-  /*  $('.updownquestion').submit(function () {
-         $.ajax({
-         type: 'POST',
-         url: BASE_URL + '/actions/posts/votes.php',
-         data: $(this).serialize()
-         })
-         .done(function (data) {
-         if (data == 'true') {
-             alert("php ok");
-         window.location.reload();
-
-         //window.location = BASE_URL + '/pages/questions/list_recent.php'
-         } else if (data == 'false') {
-         $('#response-login').html('<p class="messageErrorLogin">' + "Invalid username or password" + '</p>');
-         }
-         else {
-         alert("some error");
-         }
-         })
-         .fail(function () {
-         alert("vote failed.");
-         });
-         
+    $( ".upquestion" ).click(function() {
+        buttonID = "up";
     });
-    // to prevent refreshing the whole page
-    return false;
-*/
+
+    $( ".downquestion" ).click(function() {
+        buttonID = "down";
+    });
 });
 
-function votes(questionID){
-    $.ajax({
-        type: 'POST',
-        url: BASE_URL + '/actions/posts/votes.php',
-        data: { questionid: questionID }
-    })
-       .done(function (data) {
-            /*if (data == 'true') {*/
-            alert(data);
-            window.location.reload();
-            /*
-             //window.location = BASE_URL + '/pages/questions/list_recent.php'
-             } else if (data == 'false') {
-             $('#response-login').html('<p class="messageErrorLogin">' + "Invalid username or password" + '</p>');
-             }
-             else {
-             alert("some error");
-             }
+function votes(questionID) {
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + '/actions/posts/votes.php',
+            data: {questionid: questionID, buttonid: buttonID}
         })
-        .fail(function () {
-            alert("vote failed.");
-        });
-*/
+            .done(function (data) {
+                if ((data == 'You already voted on this post') || (data == 'You must login to vote')){
+                    alert(data);
+                }
+                else{
+                    var number = $('#questionRating-' + questionID).text();
+                    if (buttonID == 'up')
+                        number++;
+                    else number--;
+
+                    $('#questionRating-' + questionID).fadeOut(600, function(){
+                        $('#questionRating-' + questionID).fadeIn().delay(2000);
+                        $('#questionRating-' + questionID).text(number);
+                    });
+                }
+                 })
+                 .fail(function () {
+                 alert("vote failed.");
+                 });
+
 // to prevent refreshing the whole page
-//return false;
-});
+        return false;
+                /*});*/
+
 }

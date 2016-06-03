@@ -15,19 +15,20 @@ if (!$_POST['body']) {
 */
 $voterid = $_SESSION['userid'];
 $postid = $_POST['questionid'];
-$up = "true";
 
-/*
-$body = strip_tags($_POST['body']);
-$questionid = $_GET['questionid'];
-$memberid = $_SESSION['userid'];
-*/
+$buttonid = $_POST['buttonid'];
+if($buttonid == 'up')
+    $up = "true";
+else $up = "false";
 
-updateVotes($voterid, $postid, $up);
-/*
-$_SESSION['success_messages'][] = 'Vote updated successfully';
-header("Location: $BASE_URL");
-echo 'something get wrong';
+try {
+    updateVotes($voterid, $postid, $up);
+} catch (PDOException $e) {
+    if(isset($_SESSION['userid']))
+        echo 'You already voted on this post';
+    else echo 'You must login to vote';
+    exit;
+}
 exit;
-*/
+
 ?>
