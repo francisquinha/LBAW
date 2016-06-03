@@ -266,4 +266,13 @@ WHERE
     return $stmt->fetch();
 }
 
+function updateVotes($voterid, $postid, $up) {
+
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO vote(voterid, postid, up) VALUES (:voterid, :postid, :up)");
+    $stmt->bindValue('voterid', $voterid, PDO::PARAM_INT);
+    $stmt->bindValue('postid', $postid, PDO::PARAM_INT);
+    $stmt->bindValue('up', $up, PDO::PARAM_BOOL);
+    $stmt->execute(array($voterid, $postid, $up));
+}
 ?>
