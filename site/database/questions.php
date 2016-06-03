@@ -275,4 +275,18 @@ function updateVotes($voterid, $postid, $up) {
     $stmt->bindValue('up', $up, PDO::PARAM_BOOL);
     $stmt->execute(array($voterid, $postid, $up));
 }
+
+function getQuestionTitle($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+question.title
+FROM question
+WHERE question.questionid =?;
+");
+    $stmt->execute($id);
+    return $stmt->fetch();
+}
+
 ?>
