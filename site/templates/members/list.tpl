@@ -381,7 +381,7 @@
                     <
                 </a>
             {/if}
-            {if $smarty.get.page >= $total_pages}
+            {if $smarty.get.page >= $smarty.session.total_member_pages}
                 >
             {else}
                 <a href="{$BASE_URL}pages/members/list_all.php?page={$smarty.get.page + 1}">

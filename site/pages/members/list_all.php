@@ -18,11 +18,10 @@ for ($i = 0; $i < $length; $i++) {
     $smarty->assign($members_name, $$members_name);
 }
 
-$total = getNumberMembers()['number'];
-$total_pages = ceil($total/30) - 1;
-$smarty->assign('total_pages', $total_pages);
-
 $page = $_GET['page'] * 30;
+if ($page == 0)
+    $_SESSION['total_member_pages'] = ceil(getNumberMembers()['number']/30) - 1;
+
 $members = getAllMembers(30, $page);
 
 foreach ($members as $key => $member) {
