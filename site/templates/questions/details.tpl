@@ -62,6 +62,14 @@
                         <span class="glyphicon glyphicon-eye-open"></span>
                         {$question.views}
                     </a>
+
+                    {if {$smarty.session.userid} && {$smarty.session.userid} != {$question.postauthorid}}
+                        <!-- Button trigger modal -->
+                        <button type="button" class="linkReportQuestion">
+                            <span class="reportPost glyphicon glyphicon-flag"></span>
+                        </button>
+                    {/if}
+
                 </div>
 
             </div>
@@ -69,28 +77,28 @@
             <hr style="margin-top:0;">
 
             {if  $bestanswer.answerid != NULL}
-            <div class="bestanswer">
-                <span class="glyphicon glyphicon-star" style="float:right;color:#4aaf51;"></span>
-                <div id="answerbodysquare" align="left">
-                    {$bestanswer.versionbody}
-                </div>
-                <br>
-                <div id="answerusersquare">
-                    <a id="answerusers"
-                       href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
-                    <span id="timeago">answered {$bestanswer.timeago}</span>
-                </div>
-                <div class="questionvotesection">
-                    <a href="#" class="btn-lg" style="color:black;"><span
-                                class="glyphicon glyphicon-thumbs-up"
-                                style="padding:0; margin:0;color:#4aaf51;"></span> {$bestanswer.postrating}
-                        <span
-                                class="glyphicon glyphicon-thumbs-down"
-                                style="padding:0; margin:0;color:#c9302c;"></span></a>
-                </div>
+                <div class="bestanswer">
+                    <span class="glyphicon glyphicon-star" style="float:right;color:#4aaf51;"></span>
+                    <div id="answerbodysquare" align="left">
+                        {$bestanswer.versionbody}
+                    </div>
+                    <br>
+                    <div id="answerusersquare">
+                        <a id="answerusers"
+                           href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
+                        <span id="timeago">answered {$bestanswer.timeago}</span>
+                    </div>
+                    <div class="questionvotesection">
+                        <a href="#" class="btn-lg" style="color:black;"><span
+                                    class="glyphicon glyphicon-thumbs-up"
+                                    style="padding:0; margin:0;color:#4aaf51;"></span> {$bestanswer.postrating}
+                            <span
+                                    class="glyphicon glyphicon-thumbs-down"
+                                    style="padding:0; margin:0;color:#c9302c;"></span></a>
+                    </div>
 
-            </div>
-            <hr style="margin-top:0;">
+                </div>
+                <hr style="margin-top:0;">
             {/if}
 
             {foreach $answers as $answer}
@@ -120,26 +128,60 @@
                                     class="glyphicon glyphicon-thumbs-down"
                                     style="padding:0; margin:0;color:#c9302c;"></span>
                             </button>
+
+                            {if {$smarty.session.userid} && {$smarty.session.userid} != {$answer.postauthorid}}
+                                <!-- Button trigger modal -->
+                                <button type="button" class="linkReportAnswer">
+                                    <span class="reportPost glyphicon glyphicon-flag"></span>
+                                </button>
+                            {/if}
+
                         </form>
+                        <!-- The Modal -->
+                        <div id="myModalAnswer" class="modalAnswer">
 
+                            <!-- Modal content -->
+                            <div class="modal-contentAnswer">
+                                <span class="closeAnswer">×</span>
+                                <form class="reportArea" role="form" action="javascript:sendReport({$answer.answerid})">
+                                    <input type="text" class="reportBody">
+                                    <input type="submit" value="Submit">
+                                </form>
+                            </div>
 
-                         </div>
+                        </div>
 
+                        <!-- The Modal -->
+                        <div id="myModalQuestion" class="modalQuestion">
+
+                            <!-- Modal content -->
+                            <div class="modal-contentQuestion">
+                                <span class="closeQuestion">×</span>
+                                <form class="reportArea" role="form" action="javascript:sendReport({$question.questionid})">
+                                    <input type="text" class="reportBody">
+                                    <input type="submit" value="Submit">
+                                </form>
+                            </div>
+
+                        </div>
+                    </div>
                 </div>
                 <hr>
             {/foreach}
 
+            <button data-toggle="tooltip" title="Make login!" id="edit" class="btn btn-primary" type="button">Answer</button>
+            {if {$smarty.session.userid}}
 
-                <button id="edit" class="btn btn-primary" type="button">Answer</button>
+                <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
+                    <!--  <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
+                      <input type="submit" value="Post" class="submitButton">-->
 
-            <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
-
-                  <!--  <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
-                    <input type="submit" value="Post" class="submitButton">-->
-
-                <div class="summernote"></div>
-            </form>
-
-
+                    <div class="summernote"></div>
+                </form>
+            {else}
+                <div class="messageAnswer">Please, make login</div>
+            {/if}
 
         </div>
+<!--<script>last_question_id={$last_question_id}</script>-->
+<!--<script src="{$base_url}javascript/tweets.js"></script>-->
