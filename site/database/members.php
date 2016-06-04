@@ -53,16 +53,12 @@ SELECT
   memberrating,
   memberid
 FROM Member
-<<<<<<< HEAD
 WHERE memberid != 1
 ORDER BY username
 LIMIT :n
 OFFSET :m;");
     $stmt->bindParam(':n', $n);
     $stmt->bindParam(':m', $m);
-=======
-ORDER BY username;");
->>>>>>> master
     $stmt->execute();
     return $stmt->fetchAll();
 }
@@ -124,7 +120,7 @@ function Disabled($giverID, $ownerID)
     $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
   ('disabled', ?, ?);");
     $stmt->execute(array($giverID, $ownerID));
-<<<<<<< HEAD
+    $stmt->execute(array($giverID, $ownerID));
 }
 
 function getNumberMembers()
@@ -136,9 +132,6 @@ FROM   pg_class
 WHERE  relname = 'member';");
     $stmt->execute();
     return $stmt->fetch();
-}
-
-=======
 }
 
 function updatename($newname,$user)
@@ -181,4 +174,3 @@ WHERE memberid = ? AND password = ?;");
 }
 
 ?>
->>>>>>> master
