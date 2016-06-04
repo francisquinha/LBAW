@@ -48,8 +48,6 @@ OFFSET :m;");
     return $stmt->fetchAll();
 }
 
-function getSearchPosts($text, $n, $m)
-{
 function getHotQuestions($n, $m)
 {
     global $conn;
@@ -76,7 +74,6 @@ OFFSET :m;");
     $stmt->execute();
     return $stmt->fetchAll();
 }
-
 
 function getSearchPosts($text, $n, $m) {
     global $conn;
