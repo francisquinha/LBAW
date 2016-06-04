@@ -374,3 +374,31 @@ a , input, form, button{
 .userlist > li{
 	list-style-type: none;
 }
+#divhide1 {
+	background-color: transparent;
+	color: black;
+	display: none;
+	padding:0;
+	margin:0;
+}
+
+
+#divhide2 {
+	background-color: transparent;
+	padding:0;
+	margin:0;
+	color: black;
+	display: none;
+
+}
+
+.hidediv{
+	padding:0;
+	margin:0;
+}
+
+.hidediv > input {
+	padding:0;
+	margin:0;
+	height: 1px;
+}

@@ -143,5 +143,3 @@
 
 
         </div>
-<!--<script>last_question_id={$last_question_id}</script>-->
-<!--<script src="{$base_url}javascript/tweets.js"></script>-->

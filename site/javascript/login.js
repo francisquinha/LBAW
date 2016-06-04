@@ -116,6 +116,50 @@ $(document).ready(function() {
         // to prevent refreshing the whole page
         return false;
 });
+
+    $('.updatePass').submit(function () {
+        $.ajax({
+                type: 'POST',
+                url: BASE_URL + 'actions/members/updatepass.php', // fix this
+                data: $(this).serialize()
+            })
+            .done(function (data) {
+                if (data == 'Wrong password!') {
+                    window.location.reload();
+                    
+                    $('.responseupdatePass').html('<div class="alert alert-danger"><strong>' + data + '</strong></div>');
+                    setTimeout(function(){$('.responseupdatePass'), 2000});//ativaTab('login');
+
+                    //window.location = BASE_URL + '/pages/questions/list_recent.php'
+                }
+                if ('New passwords don\'t match!') {
+                    window.location.reload();
+
+                    $('.responseupdatePass').html('<div class="alert alert-danger"><strong>' + data + '</strong></div>');
+                    setTimeout(function(){$('.responseupdatePass'), 2000});//ativaTab('login');
+
+                    //window.location = BASE_URL + '/pages/questions/list_recent.php'
+                }
+                if (data == 'ok') {
+                    window.location.reload();
+
+                    $('.responseupdatePass').html('<div class="alert alert-success"><strong>' + data + '</strong></div>');
+                    setTimeout(function(){$('.responseupdatePass'), 2000});//ativaTab('login');
+
+                    //window.location = BASE_URL + '/pages/questions/list_recent.php'
+                }/*else if (data == 'false') {
+                    
+                }
+                else {
+                    alert("some error");
+                }*/
+            })
+            .fail(function () {
+                alert("Login failed.");
+            });
+        // to prevent refreshing the whole page
+        return false;
+    });
 });
 
 /* $('.register-form').submit(function(){

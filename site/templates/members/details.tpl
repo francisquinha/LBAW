@@ -19,20 +19,79 @@
 
                     </div>
                     <div id="right">
+
+                        <script language="JavaScript">
+                            function setVisibility(id, visibility) {
+                                document.getElementById(id).style.display = visibility;
+                            }
+                        </script>
+
                         <ul>
-                            <li><span>Name: </span>{$membern.name}</li>
+                            {if $USERNAME eq $membern.username}
+                                <li><span>Name: </span>{$membern.name}
+                                    <button type=button name=type value='Show Layer'
+                                            onclick="setVisibility('divhide1', 'inline');" ;><span
+                                                class="glyphicon glyphicon-pencil"
+                                                style="padding:0; margin:0;color:#888; font-size: 70%;"></span></button>
+                                    <form id="divhide1" action="{$BASE_URL}actions/members/updatename.php?newname={$newname}&membersid=membersid" class="form-horizontal" role="form" method="get">
+                                        <div class="form-group">
+                                            <div class="col-lg-4">
+                                                <br>
+                                                <input class="form-control" type="text" id="newname" name="newname" value="">
+                                                <input  Style="display:none;" class="form-control" type="text" id="membersid" name="membersid" value="{$membern.memberid}">
+                                                <input type="submit" value=" Edit " style="font-family: 'QuanticoRegular';">
+                                            </div>
+                                        </div>
+                                    </form>
+                                </li>
+                            {else}
+                                <li><span>Name: </span>{$membern.name}</li>
+                            {/if}
                             {if $USERNAME}
                                 <li><span>E-mail: </span>{$membern.email}</li>
                             {else}
                             {/if}
-                            <li><span>Regist on: </span>{$membern.registrationdate}</li>
-                            <li><span>Rating: </span>{$membern.memberrating}</li>
+                            <li><span>Registered: </span>{$membern.timeago}</li>
+                            {if $membern.memberrating > 0}
+                                <li style="color: #4aaf51;"><span
+                                            style="color: #888;">Rating: </span>{$membern.memberrating}</li>
+                            {else}
+                                {if $membern.memberrating < 0}
+                                    <li style="color: #c9302c;"><span
+                                                style="color: #888;">Rating: </span>{$membern.memberrating}</li>
+                                {else}
+                                    <li><span style="color: #888;">Rating: </span>{$membern.memberrating}</li>
+                                {/if}
+                            {/if}
                             {if {$membern.permissiontype} eq 'member'}
                             {else}
                                 {if $USERNAME}
                                     <li><span>Permission: </span>{$membern.permissiontype}</li>
                                 {else}
                                 {/if}
+                            {/if}
+                            {if $USERNAME eq $membern.username}
+                                <button type=button name=type value='Show Layer'
+                                        onclick="setVisibility('divhide2', 'inline');" ;><span
+                                            class="fa fa-key" aria-hidden="true"
+                                            style="padding:0; margin:0;color:#888; font-size: 70%;"></span></button>
+                                <div id="divhide2">
+                                    <form role="form"  action="{$BASE_URL}actions/members/updatepass.php" class="form-horizontal updatePass" >
+                                        <div class="form-group">
+                                            <div class="col-lg-4">
+                                                <br>
+                                                <input class="form-control" type="password" id="oldpass" name="oldpass" value="" placeholder="password">
+                                                <input class="form-control" type="password" id="newpass1" name="newpass1" value="" placeholder="new password">
+                                                <input class="form-control" type="password" id="newpass2" name="newpass2" value="" placeholder="new password">
+                                                <input  Style="display:none;" class="form-control" type="text" id="membersid" name="membersid" value="{$membern.memberid}">
+                                                <button type="submit" value=" Edit " style="font-family: 'QuanticoRegular';"> Edit </button>
+                                                <div class="responseupdatePass">
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </div>
+
                             {/if}
                         </ul>
                     </div>
@@ -50,7 +109,7 @@
                                     <button type="button" class="btn-xs">Moderator</button>
                                 </a>
                                 <a href="{$BASE_URL}actions/members/demotemoderator.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
-                                    <button type="button" class="btn-xs">Membern</button>
+                                    <button type="button" class="btn-xs">Member</button>
                                 </a>
                                 <a href="{$BASE_URL}actions/members/ban.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
                                     <button type="button" class="btn-xs">Ban</button>
@@ -215,7 +274,7 @@
                                         <td>
                                             <a href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">{$question.title}</a>
                                         </td>
-                                        <td>{$question.postcreationdate}</td>
+                                        <td>{$question.timeago}</td>
                                         <td>{$question.postrating}</td>
                                         <td>{$question.views}</td>
                                         <td>{$question.answers}</td>
@@ -252,7 +311,8 @@
                                                 <tr>
                                                     <td>
                                                         <a href="{$BASE_URL}pages/report/details.php?postid={$report.postid}">{$report.title}</a>
-                                                    <td>                                                        <a href="{$BASE_URL}pages/members/details.php?membersid={$report.postauthorid}">{$report.name}</a>
+                                                    <td>
+                                                        <a href="{$BASE_URL}pages/members/details.php?membersid={$report.postauthorid}">{$report.name}</a>
                                                     </td>
                                                     </td>
                                                     <td>{$report.timeago}</td>
