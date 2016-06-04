@@ -1,3 +1,4 @@
+SET SCHEMA 'public';
 
 -- indexes
 DROP INDEX IF EXISTS IndexPermissionType;
