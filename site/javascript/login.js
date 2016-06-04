@@ -120,7 +120,7 @@ $(document).ready(function() {
     $('.updatePass').submit(function () {
         $.ajax({
                 type: 'POST',
-                url: BASE_URL + '/actions/members/updatepass.php', // fix this
+                url: BASE_URL + 'actions/members/updatepass.php', // fix this
                 data: $(this).serialize()
             })
             .done(function (data) {
