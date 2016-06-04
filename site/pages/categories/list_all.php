@@ -22,5 +22,10 @@ foreach ($root_categories as $category ) {
 
 $smarty->assign('root_categories', $root_categories);
 $smarty->display('categories/list.tpl');
+
+
+$smarty->display('common/menu_side.tpl');
+$smarty->display('categories/list_side.tpl');
+include_once($BASE_DIR . 'pages/tags/list_top.php');
 $smarty->display('common/footer.tpl');
 ?>
