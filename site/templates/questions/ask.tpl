@@ -29,7 +29,7 @@
                     </select>
                 </div>
                 <div class="form-group">
-                    <select multiple id="tagsbox" name="tags[]" class="form-control" title="Tags">
+                    <select multiple size="5" id="tagsbox" name="tags[]" class="form-control" title="Tags">
                         {foreach $all_tags as $tag}
                             <option value={$tag.tagid}>
                                 {$tag.tagname}
