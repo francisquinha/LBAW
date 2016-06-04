@@ -11,7 +11,7 @@ include_once($BASE_DIR . 'pages/questions/time.php');
 
 $member = getMember([$_GET['membersid']]);
 $questions = getMemberQuestions([$_GET['membersid']]);
-$reports = getAllReports();
+$reports = getReportsModerator([$_GET['membersid']]);
 
 foreach ($reports as $key => $report) {
     $reports[$key]['timeago'] = time_elapsed_string_no_ago(strtotime($report['postcreationdate']));   
