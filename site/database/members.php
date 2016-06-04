@@ -154,5 +154,16 @@ WHERE memberid = ? AND password = ?;");
     $stmt->execute(array($memberid, sha1($password)));
     return $stmt->fetch() == true;
 }
+function updatecategorymod($user, $category)
+{
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO responsability
+(categoryid, memberid) VALUES (:category, :memberid)");
+    $stmt->bindParam('category', $category);
+    $stmt->bindParam('memberid', $user);
+
+    $stmt->execute();
+
+}
 
 ?>
