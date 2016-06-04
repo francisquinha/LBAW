@@ -48,6 +48,34 @@ OFFSET :m;");
     return $stmt->fetchAll();
 }
 
+function getHotQuestions($n, $m)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT
+  question.questionid,
+  post.postauthorid,
+  post.postcreationdate,
+  question.title,
+  post.postrating,
+  question.views,
+  question.answers,
+  question.categoryid,
+  postrating/maxrating + views/maxviews + answers/maxanswers
+  - EXTRACT(EPOCH FROM now() - postcreationdate)/EXTRACT(EPOCH FROM now() - mindate) AS hotness
+FROM post, question, questionstats
+WHERE deletorid IS NULL
+AND question.questionid = post.postid
+ORDER BY hotness DESC
+LIMIT :n
+OFFSET :m;");
+    $stmt->bindParam(':n', $n);
+    $stmt->bindParam(':m', $m);
+    $stmt->execute();
+    return $stmt->fetchAll();
+}
+
+
 function getSearchPosts($text, $n, $m) {
     global $conn;
     $stmt = $conn->prepare("
