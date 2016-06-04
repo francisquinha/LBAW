@@ -8,60 +8,84 @@ $(document).ready(function() {
         buttonID = "down";
     });
 
-   $('.linkReport').click( function(e) {
+    $('.linkReportAnswer').click( function(e) {
         e.preventDefault();
 
-       var modal = document.getElementById('myModal');
+        var form = '<button id="post_answer" type="submit" class="btn">Post Answer!<span class="glyphicon glyphicon-send"></span></button>';
+        $('.note-resizebar').append(button).html();
+        /*
+        var modal = document.getElementById('myModalAnswer');
 
-       var span = document.getElementsByClassName("close")[0];
+        var span = document.getElementsByClassName("closeAnswer")[0];
 
-       modal.style.display = "block";
-       modal.style.display
-       span.onclick = function() {
-           modal.style.display = "none";
-       }
+        modal.style.display = "block";
+        modal.style.display
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
 
-       window.onclick = function(event) {
-           if (event.target == modal) {
-               modal.style.display = "none";
-           }
-       }
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        return false;
+        */
+    } );
 
-       //alert("ola");
+
+    $('.linkReportQuestion').click( function(e) {
+        e.preventDefault();
+
+        var modal = document.getElementById('myModalQuestion');
+
+        var span = document.getElementsByClassName("closeQuestion")[0];
+
+        modal.style.display = "block";
+        modal.style.display
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
         return false;
     } );
 
 });
 
 function votes(questionID) {
-        $.ajax({
-            type: 'POST',
-            url: BASE_URL + 'actions/posts/votes.php',
-            data: {questionid: questionID, buttonid: buttonID}
-        })
-            .done(function (data) {
-                if ((data == 'You already voted on this post') || (data == 'You must login to vote')){
-                    alert(data);
-                }
-                else{
-                    var number = $('#questionRating-' + questionID).text();
-                    if (buttonID == 'up')
-                        number++;
-                    else number--;
+    $.ajax({
+        type: 'POST',
+        url: BASE_URL + 'actions/posts/votes.php',
+        data: {questionid: questionID, buttonid: buttonID}
+    })
+        .done(function (data) {
+            if ((data == 'You already voted on this post') || (data == 'You must login to vote')){
+                alert(data);
+            }
+            else{
+                var number = $('#questionRating-' + questionID).text();
+                if (buttonID == 'up')
+                    number++;
+                else number--;
 
-                    $('#questionRating-' + questionID).fadeOut(600, function(){
-                        $('#questionRating-' + questionID).fadeIn().delay(2000);
-                        $('#questionRating-' + questionID).text(number);
-                    });
-                }
-                 })
-                 .fail(function () {
-                 alert("vote failed.");
-                 });
+                $('#questionRating-' + questionID).fadeOut(600, function(){
+                    $('#questionRating-' + questionID).fadeIn().delay(2000);
+                    $('#questionRating-' + questionID).text(number);
+                });
+            }
+        })
+        .fail(function () {
+            alert("vote failed.");
+        });
 
 // to prevent refreshing the whole page
-        return false;
-                /*});*/
+    return false;
+    /*});*/
 
 }
 
