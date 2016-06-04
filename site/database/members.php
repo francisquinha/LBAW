@@ -53,12 +53,16 @@ SELECT
   memberrating,
   memberid
 FROM Member
+<<<<<<< HEAD
 WHERE memberid != 1
 ORDER BY username
 LIMIT :n
 OFFSET :m;");
     $stmt->bindParam(':n', $n);
     $stmt->bindParam(':m', $m);
+=======
+ORDER BY username;");
+>>>>>>> master
     $stmt->execute();
     return $stmt->fetchAll();
 }
@@ -120,6 +124,7 @@ function Disabled($giverID, $ownerID)
     $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
   ('disabled', ?, ?);");
     $stmt->execute(array($giverID, $ownerID));
+<<<<<<< HEAD
 }
 
 function getNumberMembers()
@@ -133,3 +138,47 @@ WHERE  relname = 'member';");
     return $stmt->fetch();
 }
 
+=======
+}
+
+function updatename($newname,$user)
+{
+    global $conn;
+    $stmt = $conn->prepare("UPDATE member
+SET
+  name     = :name
+WHERE memberid = :memberid;");
+    $stmt->bindParam('name', $newname);
+    $stmt->bindParam('memberid', $user);
+
+    $stmt->execute();
+
+}
+
+function updatepass($newpass,$user)
+{
+    global $conn;
+    $stmt = $conn->prepare("UPDATE member
+SET
+  password     = :pass
+WHERE memberid = :memberid;");
+    $stmt->bindParam('pass', sha1($newpass));
+    $stmt->bindParam('memberid', $user);
+
+    $stmt->execute();
+
+}
+
+function checkpass($memberid, $password)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT *
+FROM member
+WHERE memberid = ? AND password = ?;");
+    $stmt->execute(array($memberid, sha1($password)));
+    return $stmt->fetch() == true;
+}
+
+?>
+>>>>>>> master
