@@ -109,7 +109,7 @@
                                     <button type="button" class="btn-xs">Moderator</button>
                                 </a>
                                 <a href="{$BASE_URL}actions/members/demotemoderator.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
-                                    <button type="button" class="btn-xs">Membern</button>
+                                    <button type="button" class="btn-xs">Member</button>
                                 </a>
                                 <a href="{$BASE_URL}actions/members/ban.php?giverid={$smarty.session.userid}&ownerid={$membern.memberid}">
                                     <button type="button" class="btn-xs">Ban</button>

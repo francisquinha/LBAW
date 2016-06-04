@@ -71,6 +71,7 @@
                     {/if}
 
                 </div>
+
             </div>
 
             <hr style="margin-top:0;">
@@ -182,6 +183,5 @@
             {/if}
 
         </div>
-
-        <!--<script>last_question_id={$last_question_id}</script>-->
-        <!--<script src="{$base_url}javascript/tweets.js"></script>-->
+<!--<script>last_question_id={$last_question_id}</script>-->
+<!--<script src="{$base_url}javascript/tweets.js"></script>-->
