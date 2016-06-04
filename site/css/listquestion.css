@@ -220,3 +220,8 @@
 #questionbuttonsection > .linkReport > .reportPost{
     padding-left: 10px;
 }
+
+.messageAnswer{
+    color: red;
+    display: none;
+}

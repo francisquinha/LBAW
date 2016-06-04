@@ -9,7 +9,7 @@ if (! $_SESSION['userid']) {
 $authorid = $_SESSION['userid'];
 $postid = $_POST['postid'];
 $reportbody = $_POST['reportbody']; 
-echo $authorid.' - '.$postid.' - '.$reportbody;
+echo 'author = '. $authorid.' postid - '.$postid.' body - '.$reportbody;
 newReport($authorid, $postid, $reportbody);
 exit;
 
