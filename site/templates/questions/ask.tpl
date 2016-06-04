@@ -30,7 +30,7 @@
                 </div>
                 <div class="form-group">
                     <select multiple id="tagsbox" name="tags[]" class="form-control" title="Tags">
-                        {foreach $tags as $tag}
+                        {foreach $all_tags as $tag}
                             <option value={$tag.tagid}>
                                 {$tag.tagname}
                             </option>
