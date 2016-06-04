@@ -36,12 +36,11 @@ foreach ($member as $key => $membern) {
 }
 
 $questions = getMemberQuestions([$_GET['membersid']]);
+$reports = getReportsModerator([$_GET['membersid']]);
 
 foreach ($questions as $key => $question) {
     $questions[$key]['timeago'] = time_elapsed_string_no_ago(strtotime($question['postcreationdate']));
 }
-
-$reports = getAllReports();
 
 foreach ($reports as $key => $report) {
     $reports[$key]['timeago'] = time_elapsed_string_no_ago(strtotime($report['postcreationdate']));   
