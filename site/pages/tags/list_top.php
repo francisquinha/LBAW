@@ -6,4 +6,3 @@ $tags = getTopTags([25]);
 
 $smarty->assign('tags', $tags);
 $smarty->display('tags/list_side.tpl');
-?>

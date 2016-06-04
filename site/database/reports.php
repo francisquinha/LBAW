@@ -5,10 +5,15 @@ function getAllReports()
     $stmt = $conn->prepare("
 SELECT
   report.postid,
+  post.postauthorid,
+  post.postcreationdate,
   COUNT(*) AS numberreports
-FROM report
-WHERE report.reportsolution IS NULL
-GROUP BY postid
+FROM report,post 
+WHERE report.reportsolution IS NULL AND
+report.postid = post.postid
+GROUP BY report.postid,
+  post.postauthorid,
+  post.postcreationdate
 ORDER BY numberreports DESC;");
     $stmt->execute();
     return $stmt->fetchAll();

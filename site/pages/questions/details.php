@@ -42,7 +42,6 @@ if (isset($_GET['questionid'])) {
         $answers[$key]['versionbody'] = $answer_body['versionbody'];
     }
 
-    $smarty->assign('question_id', $_GET['questionid']);
     $smarty->assign('bestanswer', $bestanswer);
     $smarty->assign('answers', $answers);
     $smarty->assign('question', $question);
@@ -54,4 +53,3 @@ if (isset($_GET['questionid'])) {
     $smarty->display('common/footer.tpl');
 }
 
-?>

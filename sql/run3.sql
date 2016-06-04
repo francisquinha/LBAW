@@ -1,3 +1,5 @@
+SET SCHEMA 'public';
+
 -- Votes
 INSERT INTO Vote (voterID, postID, up) VALUES
   (742, 878, TRUE),
