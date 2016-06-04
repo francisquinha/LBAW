@@ -12,6 +12,14 @@
                     </span>All Tags
                 </a>
                 <br>
+                {if $USERNAME}
+                    {if $smarty.session.permissiontype eq 'administrator' || $smarty.session.permissiontype eq 'moderator'}
+                        <div id="createtag">
+                            <button class="newtag" type="button" data-toggle="tab">Create New Tag</button>
+
+                        </div>
+                    {/if}
+                {/if}
                 <br>
                 <div class="row">
                     {foreach $tags as $tag}
