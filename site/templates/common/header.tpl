@@ -51,7 +51,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li>
-                    <a href="{$BASE_URL}pages/members/list_all.php?page=1" class="btn btn-link btn-lg">Users</a>
+                    <a href="{$BASE_URL}pages/members/list_all.php?page=0" class="btn btn-link btn-lg">Users</a>
                 </li>
                 <li>
                     <a href="{$BASE_URL}pages/tags/list_all.php" class="btn btn-link btn-lg">Tags</a>

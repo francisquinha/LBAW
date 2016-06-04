@@ -18,8 +18,9 @@ for ($i = 0; $i < $length; $i++) {
     $smarty->assign($members_name, $$members_name);
 }
 
-if ($_GET['page'] == 1)
-    $_SESSION['total_members'] = getNumberMembers();
+$page = $_GET['page'] * 30;
+if ($page == 0)
+    $_SESSION['total_member_pages'] = ceil(getNumberMembers()['number']/30) - 1;
 
 $members = getAllMembers(30, $page);
 
