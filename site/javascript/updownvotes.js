@@ -11,9 +11,7 @@ $(document).ready(function() {
     $('.linkReportAnswer').click( function(e) {
         e.preventDefault();
 
-        var form = '<button id="post_answer" type="submit" class="btn">Post Answer!<span class="glyphicon glyphicon-send"></span></button>';
-        $('.note-resizebar').append(button).html();
-        /*
+
         var modal = document.getElementById('myModalAnswer');
 
         var span = document.getElementsByClassName("closeAnswer")[0];
@@ -30,7 +28,7 @@ $(document).ready(function() {
             }
         }
         return false;
-        */
+        
     } );
 
 
@@ -42,7 +40,6 @@ $(document).ready(function() {
         var span = document.getElementsByClassName("closeQuestion")[0];
 
         modal.style.display = "block";
-        modal.style.display
         span.onclick = function() {
             modal.style.display = "none";
         }
