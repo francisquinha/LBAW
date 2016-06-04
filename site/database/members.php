@@ -38,14 +38,14 @@ SELECT
 FROM Member
 WHERE username LIKE '$n' OR username LIKE '$t'
 ORDER BY username;");
-  $stmt->execute();
-  return $stmt->fetchAll();
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
 
 function getAllMembers()
 {
-  global $conn;
-  $stmt = $conn->prepare("
+    global $conn;
+    $stmt = $conn->prepare("
 SELECT
   username,
   email,
@@ -53,14 +53,14 @@ SELECT
   memberid
 FROM Member
 ORDER BY username;");
-  $stmt->execute();
-  return $stmt->fetchAll();
+    $stmt->execute();
+    return $stmt->fetchAll();
 }
 
 function getMember($id)
 {
-  global $conn;
-  $stmt = $conn->prepare("
+    global $conn;
+    $stmt = $conn->prepare("
 SELECT *
 FROM member
 WHERE memberid =?;");
@@ -70,49 +70,89 @@ WHERE memberid =?;");
 
 function Demote_Moderator($giverID, $ownerID)
 {
-  global $conn;
-  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
   ('member', ?, ?);");
-  $stmt->execute(array($giverID, $ownerID));
+    $stmt->execute(array($giverID, $ownerID));
 }
 
 function Promote_Moderator($giverID, $ownerID)
 {
-  global $conn;
-  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
   ('moderator', ?, ?);");
-  $stmt->execute(array($giverID, $ownerID));
+    $stmt->execute(array($giverID, $ownerID));
 }
 
 function Promote_Admin($giverID, $ownerID)
 {
-  global $conn;
-  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
   ('administrator', ?, ?);");
-  $stmt->execute(array($giverID, $ownerID));
+    $stmt->execute(array($giverID, $ownerID));
 }
 
 function Ban($giverID, $ownerID)
 {
-  global $conn;
-  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
   ('banned', ?, ?);");
-  $stmt->execute(array($giverID, $ownerID));
+    $stmt->execute(array($giverID, $ownerID));
 }
 
 function Suspended($giverID, $ownerID)
 {
-  global $conn;
-  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
   ('suspended', ?, ?);");
-  $stmt->execute(array($giverID, $ownerID));
+    $stmt->execute(array($giverID, $ownerID));
 }
 
 function Disabled($giverID, $ownerID)
 {
-  global $conn;
-  $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
   ('disabled', ?, ?);");
-  $stmt->execute(array($giverID, $ownerID));
+    $stmt->execute(array($giverID, $ownerID));
 }
+
+function updatename($newname,$user)
+{
+    global $conn;
+    $stmt = $conn->prepare("UPDATE member
+SET
+  name     = :name
+WHERE memberid = :memberid;");
+    $stmt->bindParam('name', $newname);
+    $stmt->bindParam('memberid', $user);
+
+    $stmt->execute();
+
+}
+
+function updatepass($newpass,$user)
+{
+    global $conn;
+    $stmt = $conn->prepare("UPDATE member
+SET
+  password     = :pass
+WHERE memberid = :memberid;");
+    $stmt->bindParam('pass', sha1($newpass));
+    $stmt->bindParam('memberid', $user);
+
+    $stmt->execute();
+
+}
+
+function checkpass($memberid, $password)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT *
+FROM member
+WHERE memberid = ? AND password = ?;");
+    $stmt->execute(array($memberid, sha1($password)));
+    return $stmt->fetch() == true;
+}
+
 ?>
