@@ -28,4 +28,10 @@ LIMIT ?;");
     return $stmt->fetchAll();
 }
 
+function createNewTag($tagName)
+{
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO Tag(tagName) VALUES (?);");
+    $stmt->execute(array($tagName));
+}
 ?>

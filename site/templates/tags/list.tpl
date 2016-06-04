@@ -13,10 +13,13 @@
                 </a>
                 <br>
                 {if $USERNAME}
-                    {if $smarty.session.permissiontype eq 'administrator' || $smarty.session.permissiontype eq 'moderator'}
+                    {if $smarty.session.permissiontype eq 'moderator'}
                         <div id="createtag">
-                            <button class="newtag" type="button" data-toggle="tab">Create New Tag</button>
-
+                            <form role="form" action="javascript:createTag();">
+                                <input type="text" class="newTagName" name="newTag">
+                                <input type="submit" value="Create New Tag">
+                            </form>
+       <!--                     <button class="newtag" type="button" data-toggle="tab">Create New Tag</button> -->
                         </div>
                     {/if}
                 {/if}
