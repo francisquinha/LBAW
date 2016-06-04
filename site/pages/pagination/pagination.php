@@ -9,6 +9,8 @@
  * @param (string|callable) $pageLinkTemplate - pagination URL string containing %d placeholder or a callable function that accepts page number and returns page URL
  * @param boolean $showPrevNext - whether to show previous and next page links
  * @return void
+ *
+ * taken from: http://salman-w.blogspot.pt/2014/04/stackoverflow-like-pagination.html
  */
 function pagination($currentPage, $itemCount, $itemsPerPage, $adjacentCount, $pageLinkTemplate, $showPrevNext = true) {
     $firstPage = 1;
