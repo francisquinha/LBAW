@@ -44,7 +44,6 @@
 
             <div class="tab-content">
                     <div id="recent" class=" tab-pane fade in active">
-
                     {foreach $questions as $question}
                         <div id="question">
                             <div id="questiontitlesquare">
@@ -90,7 +89,55 @@
                         </div>
                         <hr>
                     {/foreach}
-
                 </div>
+
+                <div id="hot" class=" tab-pane fade">
+                    {foreach $questionsH as $question}
+                        <div id="question">
+                            <div id="questiontitlesquare">
+                                <a id="questiontitle" href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
+                                    {$question.title}
+                                </a>
+                            </div>
+                            <div id="questionusersquare">
+                                <a id="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">
+                                    {$question.name}
+                                </a>
+                                <span id="timeago">
+                                    asked {$question.timeago}
+                                </span>
+                            </div>
+                            <div id="questioncategorysquare">
+                                <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
+                                    {$question.categoryname}
+                                </a>
+                            </div>
+                            <div id="questionbuttonsection">
+                                <a class="btn btn-primary btn-sm btn-success">
+                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    {$question.postrating}
+                                </a>
+                                <a class="btn btn-primary btn-sm btn-warning">
+                                    <span class="fa fa-pencil"></span>
+                                    {$question.answers}
+                                </a>
+                                <a class="btn btn-sm btn-primary">
+                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    {$question.views}
+                                </a>
+                            </div>
+                            <div id="tagsofquestion">
+                                {foreach $question.tagarray as $tag}
+                                    <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}" style="display:inline-flex;">
+                                        <span class="glyphicon glyphicon-tag"></span>
+                                        {$tag.tagname}
+                                    </a>
+                                {/foreach}
+                            </div>
+                        </div>
+                        <hr>
+                    {/foreach}
+                </div>
+
             </div>
         </div>

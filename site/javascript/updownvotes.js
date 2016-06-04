@@ -36,7 +36,7 @@ $(document).ready(function() {
 function votes(questionID) {
         $.ajax({
             type: 'POST',
-            url: BASE_URL + '/actions/posts/votes.php',
+            url: BASE_URL + 'actions/posts/votes.php',
             data: {questionid: questionID, buttonid: buttonID}
         })
             .done(function (data) {
