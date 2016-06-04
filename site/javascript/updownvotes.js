@@ -7,6 +7,30 @@ $(document).ready(function() {
     $( ".downquestion" ).click(function() {
         buttonID = "down";
     });
+
+   $('.linkReport').click( function(e) {
+        e.preventDefault();
+
+       var modal = document.getElementById('myModal');
+
+       var span = document.getElementsByClassName("close")[0];
+
+       modal.style.display = "block";
+       modal.style.display
+       span.onclick = function() {
+           modal.style.display = "none";
+       }
+
+       window.onclick = function(event) {
+           if (event.target == modal) {
+               modal.style.display = "none";
+           }
+       }
+
+       //alert("ola");
+        return false;
+    } );
+
 });
 
 function votes(questionID) {
@@ -39,4 +63,17 @@ function votes(questionID) {
         return false;
                 /*});*/
 
+}
+
+function sendReport(postID) {
+    var reportBody = $('.reportBody').val();
+    alert(reportBody);
+    $.ajax({
+        type: 'POST',
+        url: BASE_URL + '/actions/posts/reports.php',
+        data: {postid: postID, reportbody:reportBody}
+    })
+        .done(function (data) {
+            alert(data);
+        });
 }

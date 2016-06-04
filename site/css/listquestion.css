@@ -208,7 +208,15 @@
     padding-bottom:6.5rem;
 }
 
-.upquestion, .downquestion{
+.upquestion, .downquestion, .linkReport{
     background-color: Transparent;
     border: 0;
+}
+
+.reportPost{
+    color:#c9302c;
+}
+
+#questionbuttonsection > .linkReport > .reportPost{
+    padding-left: 10px;
 }

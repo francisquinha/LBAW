@@ -267,7 +267,6 @@ WHERE
 }
 
 function updateVotes($voterid, $postid, $up) {
-
     global $conn;
     $stmt = $conn->prepare("INSERT INTO vote(voterid, postid, up) VALUES (:voterid, :postid, :up)");
     $stmt->bindValue('voterid', $voterid, PDO::PARAM_INT);

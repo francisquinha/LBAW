@@ -62,8 +62,11 @@
                         <span class="glyphicon glyphicon-eye-open"></span>
                         {$question.views}
                     </a>
-                </div>
+                    <a href="#textReport" data-toggle="tab" class="linkReport">
+                        <span class="reportPost glyphicon glyphicon-flag">Report</span>
+                    </a>
 
+                </div>
             </div>
 
             <hr style="margin-top:0;">
@@ -120,14 +123,47 @@
                                     class="glyphicon glyphicon-thumbs-down"
                                     style="padding:0; margin:0;color:#c9302c;"></span>
                             </button>
+
+                            {if {$smarty.session.userid} && {$smarty.session.userid} != {$answer.postauthorid}}
+                            <!-- Button trigger modal -->
+                            <button type="button" class="linkReport">
+                                <span class="reportPost glyphicon glyphicon-flag">Report {$answer.postauthorid}</span>
+                            </button>
+                            {/if}
+
+                            <!--
+                            <a class="linkReport">
+                                <span class="reportPost glyphicon glyphicon-flag">Report</span>
+                            </a>-->
+
                         </form>
+                        <!-- The Modal -->
+                        <div id="myModal" class="modal">
+
+                            <!-- Modal content -->
+                            <div class="modal-content">
+                                <span class="close">×</span>
+                                <form role="form" action="javascript:sendReport({$answer.answerid})">
+                                    <input type="text" class="reportBody">
+                                    <input type="submit" value="Submit">
+                                </form>
+                            </div>
+
+                        </div>
+
+
+
+
 
 
                          </div>
 
                 </div>
+
                 <hr>
             {/foreach}
+            <!-- Modal content -->
+
 
 
                 <button id="edit" class="btn btn-primary" type="button">Answer</button>
@@ -143,5 +179,7 @@
 
 
         </div>
+
+
 <!--<script>last_question_id={$last_question_id}</script>-->
 <!--<script src="{$base_url}javascript/tweets.js"></script>-->

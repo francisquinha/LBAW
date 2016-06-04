@@ -28,4 +28,9 @@ AND report.postid = ?;");
     return $stmt->fetchAll();
 }
 
+function newReport($authorid, $postid, $reportbody) {
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO report(authorid, postid, reportbody) VALUES (?,?,?)");
+    $stmt->execute(array($authorid, $postid, $reportbody));
+}
 ?>
