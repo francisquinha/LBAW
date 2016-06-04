@@ -18,7 +18,12 @@ for ($i = 0; $i < $length; $i++) {
     $smarty->assign($members_name, $$members_name);
 }
 
-$members = getAllMembers();
+$total = getNumberMembers()['number'];
+$total_pages = ceil($total/30) - 1;
+$smarty->assign('total_pages', $total_pages);
+
+$page = $_GET['page'] * 30;
+$members = getAllMembers(30, $page);
 
 foreach ($members as $key => $member) {
     unset($emailhash);
