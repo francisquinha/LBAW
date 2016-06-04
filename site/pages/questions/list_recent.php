@@ -5,6 +5,8 @@ include_once('time.php');
 
 $questions = getRecentQuestions(15, 0);
 
+$questionsH = getHotQuestions(15, 0);
+
 foreach ($questions as $key => $question) {
     $questions[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
     $questions[$key]['name'] = getMemberName([$question['postauthorid']])['name'];
@@ -12,7 +14,15 @@ foreach ($questions as $key => $question) {
     $questions[$key]['tagarray'] = getQuestionTags([$question['questionid']]);
 }
 
+foreach ($questionsH as $key => $question) {
+    $questionsH[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
+    $questionsH[$key]['name'] = getMemberName([$question['postauthorid']])['name'];
+    $questionsH[$key]['categoryname'] = getCategoryName([$question['categoryid']])['categoryname'];
+    $questionsH[$key]['tagarray'] = getQuestionTags([$question['questionid']]);
+}
+
 $smarty->assign('questions', $questions);
+$smarty->assign('questionsH', $questionsH);
 $subtitle = "Top Questions";
 $smarty->assign('subtitle', $subtitle);
 $tab1 = "Recent";

@@ -24,9 +24,6 @@ foreach ($root_categories as $category ) {
 
 $smarty->assign('root_categories', $root_categories);
 
-$tags = getAllTags();
-$smarty->assign('tags', $tags);
-
 $tags = getTopTags([25]);
 $smarty->assign('tags', $tags);
 
