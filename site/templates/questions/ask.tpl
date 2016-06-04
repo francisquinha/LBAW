@@ -16,35 +16,33 @@
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-7">
-
-            <form method="post">
-                <select class="form-control" title="category">
-                    <option disabled selected>Category</option>
-                    {foreach $root_categories as $root_category}
-                        <option value={$root_category.categoryid}>
-                            {$root_category.categoryname}
-                            {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
-                        </option>
-                    {/foreach}
-                </select>
-                <br>
-                <select multiple id="tagsbox" class="form-control" title="Tags">
-                    {foreach $tags as $tag}
-                        <option value={$tag.tagid}>
-                            {$tag.tagname}
-                        </option>
-                    {/foreach}
-                </select>
-                <br>
-
+            <form action="{$BASE_URL}actions/posts/question.php" method="post">
+                <div class="form-group">
+                    <select class="form-control" name="category" title="category">
+                        <option disabled selected>Category</option>
+                        {foreach $root_categories as $root_category}
+                            <option value={$root_category.categoryid}>
+                                {$root_category.categoryname}
+                                {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
+                            </option>
+                        {/foreach}
+                    </select>
+                </div>
+                <div class="form-group">
+                    <select multiple id="tagsbox" name="tags[]" class="form-control" title="Tags">
+                        {foreach $tags as $tag}
+                            <option value={$tag.tagid}>
+                                {$tag.tagname}
+                            </option>
+                        {/foreach}
+                    </select>
+                </div>
                 <div class="form-group">
                     <input class="form-control" name="title" placeholder="Subject" type="text"/>
                 </div>
-
                 <div class="form-group">
                     <textarea class="form-control" name="body" placeholder="Question" rows="8"></textarea>
                 </div>
-
                 <div class="form-group">
                     <div>
                         <button class="btn btn-primary " name="submit" type="submit">
