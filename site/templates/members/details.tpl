@@ -73,6 +73,16 @@
                                     <li><span style="color: #888;">Rating: </span>{$membern.memberrating}</li>
                                 {/if}
                             {/if}
+                            {if {$membern.permissiontype} eq 'moderator'}
+                                {if empty($categorymod)}
+                                {else}
+                                    <li><span>Manage: </span>
+                                        {foreach $categorymod as $categorymodn}
+                                            {$categorymodn.categoryname}
+                                        {/foreach}
+                                    </li>
+                                {/if}
+                            {/if}
                             {if {$membern.permissiontype} eq 'member'}
                             {else}
                                 {if $USERNAME}
@@ -103,6 +113,8 @@
                                 </div>
 
                             {/if}
+
+
                         </ul>
                     </div>
 
@@ -153,27 +165,59 @@
                                         <button type="button" class="btn-xs">Suspend</button>
                                         </button>
                                     </a>
+                                    <br>
+                                    <br><br>
+                                    <div class="col-md-6">
 
-                                    <form action="{$BASE_URL}actions/members/updatecategorymod.php" method="post">
-                                        <div class="form-group">
-                                            <select class="form-control" name="category" title="category">
-                                                <option disabled selected>Category</option>
-                                                {foreach $root_categories as $root_category}
-                                                    <option value={$root_category.categoryid}>
-                                                        {$root_category.categoryname}
-                                                        {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
-                                                    </option>
-                                                {/foreach}
-                                            </select>
-                                        </div>
-                                        <div class="form-group">
-                                            <div>
-                                                <button class="btn btn-primary " name="submit" type="submit">
-                                                    Submit
-                                                </button>
+
+                                        <form action="{$BASE_URL}actions/members/addcategorymod.php" method="post">
+                                            <div class="form-group">
+                                                <select class="form-control" name="category" title="category">
+                                                    <option disabled selected>Category</option>
+                                                    {foreach $root_categories as $root_category}
+                                                        <option value={$root_category.categoryid}>
+                                                            {$root_category.categoryname}
+                                                            {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
+                                                        </option>
+                                                    {/foreach}
+                                                </select>
+                                                <input  Style="display:none;" class="form-control" type="text" id="moderatorid" name="moderatorid" value="{$membern.memberid}">
                                             </div>
-                                        </div>
-                                    </form>
+                                            <div class="form-group">
+                                                <div>
+                                                    <button class="btn-xs btn-primary " style="background-color: #33cc33; border-color: #33cc33;" name="submit" type="submit">
+                                                        Add
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+
+                                    <div class="col-md-6">
+
+
+                                        <form action="{$BASE_URL}actions/members/removecategorymod.php" method="post">
+                                            <div class="form-group">
+                                                <select class="form-control" name="category" title="category">
+                                                    <option disabled selected>Category</option>
+                                                    {foreach $root_categories as $root_category}
+                                                        <option value={$root_category.categoryid}>
+                                                            {$root_category.categoryname}
+                                                            {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
+                                                        </option>
+                                                    {/foreach}
+                                                </select>
+                                                <input  Style="display:none;" class="form-control" type="text" id="moderatorid" name="moderatorid" value="{$membern.memberid}">
+                                            </div>
+                                            <div class="form-group">
+                                                <div>
+                                                    <button class="btn-xs btn-danger" style="background-color: #ed5249" name="submit" type="submit">
+                                                        Remove
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
 
 
                                 {/if}

@@ -154,16 +154,45 @@ WHERE memberid = ? AND password = ?;");
     $stmt->execute(array($memberid, sha1($password)));
     return $stmt->fetch() == true;
 }
-function updatecategorymod($user, $category)
+function addcategorymod($user, $category)
 {
     global $conn;
-    $stmt = $conn->prepare("INSERT INTO responsability
-(categoryid, memberid) VALUES (:category, :memberid)");
+    $stmt = $conn->prepare("INSERT INTO responsibility
+(categoryid, memberid) VALUES (:category, :memberid);");
     $stmt->bindParam('category', $category);
     $stmt->bindParam('memberid', $user);
 
     $stmt->execute();
 
 }
+
+function getModCategories($id)
+{
+
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT 
+category.categoryname
+FROM responsibility, category
+WHERE memberid =? AND category.categoryid = responsibility.categoryid;");
+    $stmt->execute($id);
+    return $stmt->fetchAll();
+
+}
+
+function removecategorymod($user, $category)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+DELETE
+FROM responsibility
+WHERE categoryid = :category AND memberid = :memberid;");
+    $stmt->bindParam('category', $category);
+    $stmt->bindParam('memberid', $user);
+
+    $stmt->execute();
+
+}
+
 
 ?>

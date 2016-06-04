@@ -25,6 +25,8 @@ foreach ($root_categories as $category ) {
     $smarty->assign($name_category, $$name_category);
     recursiveChildren($$name_category);
 }
+$categorymod = getModCategories([$_GET['membersid']]);
+$smarty->assign('categorymod', $categorymod);
 
 $smarty->assign('root_categories', $root_categories);
 
