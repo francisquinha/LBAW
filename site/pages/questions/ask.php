@@ -4,6 +4,10 @@ include_once($BASE_DIR . 'database/questions.php');
 include_once($BASE_DIR . 'database/categories.php');
 include_once($BASE_DIR . 'database/tags.php');
 
+if (! $_SESSION['username']){
+    header("Location: ".$BASE_URL);
+}
+
 function recursiveChildren($children_category) {
     global $smarty;
     foreach ($children_category as $child_category) {
