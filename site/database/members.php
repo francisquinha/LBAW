@@ -36,13 +36,14 @@ function getMembersStartingWith($n, $t)
 SELECT 
   *
 FROM Member
-WHERE username LIKE '$n' OR username LIKE '$t'
+WHERE memberid != 1
+AND (username LIKE '$n' OR username LIKE '$t')
 ORDER BY username;");
     $stmt->execute();
     return $stmt->fetchAll();
 }
 
-function getAllMembers()
+function getAllMembers($n, $m)
 {
     global $conn;
     $stmt = $conn->prepare("
@@ -52,7 +53,12 @@ SELECT
   memberrating,
   memberid
 FROM Member
-ORDER BY username;");
+WHERE memberid != 1
+ORDER BY username
+LIMIT :n
+OFFSET :m;");
+    $stmt->bindParam(':n', $n);
+    $stmt->bindParam(':m', $m);
     $stmt->execute();
     return $stmt->fetchAll();
 }
@@ -114,6 +120,18 @@ function Disabled($giverID, $ownerID)
     $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
   ('disabled', ?, ?);");
     $stmt->execute(array($giverID, $ownerID));
+    $stmt->execute(array($giverID, $ownerID));
+}
+
+function getNumberMembers()
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT reltuples::bigint AS number
+FROM   pg_class
+WHERE  relname = 'member';");
+    $stmt->execute();
+    return $stmt->fetch();
 }
 
 function updatename($newname,$user)
@@ -154,5 +172,45 @@ WHERE memberid = ? AND password = ?;");
     $stmt->execute(array($memberid, sha1($password)));
     return $stmt->fetch() == true;
 }
+function addcategorymod($user, $category)
+{
+    global $conn;
+    $stmt = $conn->prepare("INSERT INTO responsibility
+(categoryid, memberid) VALUES (:category, :memberid);");
+    $stmt->bindParam('category', $category);
+    $stmt->bindParam('memberid', $user);
+
+    $stmt->execute();
+
+}
+
+function getModCategories($id)
+{
+
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT 
+category.categoryname
+FROM responsibility, category
+WHERE memberid =? AND category.categoryid = responsibility.categoryid;");
+    $stmt->execute($id);
+    return $stmt->fetchAll();
+
+}
+
+function removecategorymod($user, $category)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+DELETE
+FROM responsibility
+WHERE categoryid = :category AND memberid = :memberid;");
+    $stmt->bindParam('category', $category);
+    $stmt->bindParam('memberid', $user);
+
+    $stmt->execute();
+
+}
+
 
 ?>

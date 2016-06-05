@@ -33,7 +33,7 @@
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-7">
+        <div class="col-md-8">
             <h3 id="topquestion">{$subtitle}</h3>
             <ul class="nav nav-tabs right-side">
                 <li class="active"><a id="tabname" data-toggle="tab" href="#recent" style={$style_tab1}><span
@@ -50,6 +50,8 @@
                                 <a id="questiontitle" href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
                                     {$question.title}
                                 </a>
+                                <br>
+                                <br>
                             </div>
                             <div id="questionusersquare">
                                 <a id="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">

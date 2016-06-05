@@ -1,5 +1,4 @@
 {include file='common/header.tpl'}
-
 {function recursive_children}
     {foreach $child_categories as $child_category}
         <option value={$child_category.categoryid}>
@@ -15,7 +14,7 @@
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-7">
+        <div class="col-md-8">
             <form action="{$BASE_URL}actions/posts/question.php" method="post">
                 <div class="form-group">
                     <select class="form-control" name="category" title="category">

@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-7">
+        <div class="col-md-8">
 
     <form class="well form-horizontal" action=" " method="post"  id="contact_form">
         <fieldset>

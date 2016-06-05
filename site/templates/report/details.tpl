@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-7">
+        <div class="col-md-8">
             <br>
             {if $smarty.session.permissiontype eq 'moderator'}
                 <h3>Post</h3>
