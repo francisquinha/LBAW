@@ -8,7 +8,7 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
 
     $text = pg_escape_string($_GET['search']);
 
-    $items = 15;
+    $items = 10;
 
     $questions = getSearchPosts($text, $items, ($_GET['page'] - 1) * $items);
 
