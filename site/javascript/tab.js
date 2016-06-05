@@ -5,4 +5,7 @@ function changeTab(n) {
         url: BASE_URL + 'pages/questions/tab.php',
         data: {n:n}
     })
+        .done(function (data) {
+            //            alert(data);
+        })
 }

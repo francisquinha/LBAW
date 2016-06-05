@@ -43,7 +43,7 @@
             </ul>
 
             <div class="tab-content">
-                tab={$smarty.session.tab}
+                <!--tab={$smarty.session.tab}-->
                 {if {$smarty.session.tab} == 0}
                     <div id="recent" class=" tab-pane fade in active">
                 {else}
@@ -67,7 +67,7 @@
                                 </span>
                             </div>
                             <div id="questioncategorysquare">
-                                <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
+                                <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}&page=1">
                                     {$question.categoryname}
                                 </a>
                             </div>
@@ -87,7 +87,7 @@
                             </div>
                             <div id="tagsofquestion">
                                 {foreach $question.tagarray as $tag}
-                                    <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}" style="display:inline-flex;">
+                                    <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}&page=1" style="display:inline-flex;">
                                         <span class="glyphicon glyphicon-tag"></span>
                                         {$tag.tagname}
                                     </a>
@@ -119,7 +119,7 @@
                                 </span>
                             </div>
                             <div id="questioncategorysquare">
-                                <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
+                                <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}&page=1">
                                     {$question.categoryname}
                                 </a>
                             </div>
@@ -139,7 +139,7 @@
                             </div>
                             <div id="tagsofquestion">
                                 {foreach $question.tagarray as $tag}
-                                    <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}" style="display:inline-flex;">
+                                    <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}&page=1" style="display:inline-flex;">
                                         <span class="glyphicon glyphicon-tag"></span>
                                         {$tag.tagname}
                                     </a>

@@ -39,11 +39,9 @@ $smarty->assign('class_tab2', $class_tab2);
 $style_tab = "''";
 $smarty->assign('style_tab1', $style_tab);
 $smarty->assign('style_tab2', $style_tab);
-echo $_SESSION['tab'];
-exit;
 $smarty->display('questions/list.tpl');
 
-//pagination($_GET['page'], getNumberQuestions()['number'], $items, 2, "list_recent.php?page=%d");
+pagination($_GET['page'], getNumberQuestions()['number'], $items, 2, "list_recent.php?page=%d");
 echo '</div>';
 $smarty->display('common/menu_side.tpl');
 include_once($BASE_DIR .'pages/categories/list_top.php');
