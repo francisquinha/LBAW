@@ -14,7 +14,7 @@
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-7">
+        <div class="col-md-8">
             <div id="questionpq" class="well">
                 <div id="questiontitlesquare">
                     <a id="qpagequestiontitle"

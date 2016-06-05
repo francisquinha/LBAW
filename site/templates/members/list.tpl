@@ -4,7 +4,7 @@
 <br>
 <div class="container">
     <div class="row">
-        <div class="col-md-7">
+        <div class="col-md-8">
 
 
             <a style=" font-size:150%; padding:0; padding-bottom:4rem;" id="questiontitle">
