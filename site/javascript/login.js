@@ -1,4 +1,4 @@
-
+var idleTime = 0;
 function validateLogin(form, username, password){
     if (username.value == '' || password.value == '') {
         alert('You must provide both a username and password');
@@ -61,13 +61,32 @@ function validateRegister(form, username, email, password, name)
     return true;
 }
 
-
-/*
-$.getScript("main.js", function(){
-    alert("Script loaded but not necessarily executed.");
-});*/
+function timerIncrement() {
+    idleTime = idleTime + 1;
+    if (idleTime > 9) { // 10 minutes
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + 'actions/members/logout.php'
+        }).done(function (data) {
+            window.location.reload();
+        });
+    }
+}
 
 $(document).ready(function() {
+
+    //Increment the idle time counter every minute.
+    var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
+
+    //Zero the idle timer on mouse or key movement
+    $(this).mousemove(function (e) {
+        idleTime = 0;
+    });
+    $(this).keypress(function (e) {
+        idleTime = 0;
+    });
+
+
     $('.login-form').submit(function () {
         $.ajax({
             type: 'POST',
@@ -77,7 +96,6 @@ $(document).ready(function() {
             .done(function (data) {
                 if (data == 'true') {
                     window.location.reload();
-                    //window.location = BASE_URL + '/pages/questions/list_recent.php'
                 } else if (data == 'false') {
                     $('#response-login').html('<p class="messageErrorLogin">' + "Invalid username or password" + '</p>');
                 }
