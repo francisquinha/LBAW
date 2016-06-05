@@ -131,7 +131,7 @@
             {/if}
 
             {foreach $answers as $answer}
-                <div id="answer" class="answer-{$answer.answerid}">
+                <div id="answer">
                     <div id="answerbodysquare" align="left">
                         {$answer.versionbody}
                     </div>
