@@ -1,2 +1,2 @@
 <?php
-$_SESSION['tab'] = $_POST['data'];
+$_SESSION['tab'] = $_POST['n'];

@@ -100,6 +100,7 @@
 <script src="{$BASE_URL}codemirror/lib/codemirror.js"></script>
 
 <script src="{$BASE_URL}javascript/tags.js"></script>
+<script src="{$BASE_URL}javascript/tab.js"></script>
 
 </body>
 </html>
