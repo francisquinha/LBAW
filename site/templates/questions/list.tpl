@@ -43,7 +43,7 @@
             </ul>
 
             <div class="tab-content">
-                tab={$smarty.session.tab}
+                <!--tab={$smarty.session.tab}-->
                 {if {$smarty.session.tab} == 0}
                     <div id="recent" class=" tab-pane fade in active">
                 {else}
