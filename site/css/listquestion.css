@@ -208,12 +208,12 @@
     padding-bottom:6.5rem;
 }
 
-.upquestion, .downquestion, .linkReportQuestion, .linkReportAnswer{
+.upquestion, .downquestion, .linkReportQuestion, .linkReportAnswer, .linkDeletePost{
     background-color: Transparent;
     border: 0;
 }
 
-.reportPost{
+.reportPost, .deletePost{
     color:#c9302c;
 }
 
@@ -224,6 +224,10 @@
 
 
 #questionbuttonsection > .linkReportAnswer > .reportPost{
+    padding-left: 10px;
+}
+
+#questionbuttonsection > .linkDeletePost > .deletePost{
     padding-left: 10px;
 }
 
