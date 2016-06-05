@@ -4,7 +4,7 @@ include_once($BASE_DIR.'database/questions.php');
 include_once('time.php');
 include_once($BASE_DIR . 'pages/pagination/pagination.php');
 
-$items = 15;
+$items = 10;
 
 $questions = getRecentQuestions($items, ($_GET['page'] - 1) * $items);
 
