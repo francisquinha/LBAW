@@ -376,3 +376,15 @@ WHERE classification.tagid = ?
     $stmt->execute(array($id));
     return $stmt->fetch();
 }
+
+function chooseBestAnswer($questionid, $answerid)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+UPDATE question
+SET bestanswerid = :aid
+WHERE questionid = :qid;");
+    $stmt->bindParam('qid', $questionid);
+    $stmt->bindParam('aid', $answerid);
+    $stmt->execute();
+}
