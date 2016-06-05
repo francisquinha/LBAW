@@ -34,4 +34,17 @@ function createNewTag($tagName)
     $stmt = $conn->prepare("INSERT INTO Tag(tagName) VALUES (?);");
     $stmt->execute(array($tagName));
 }
+
+function deleteTag($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+
+DELETE
+FROM Tag
+WHERE tagid = ?;");
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+}
+
 ?>
