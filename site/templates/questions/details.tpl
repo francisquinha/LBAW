@@ -30,7 +30,7 @@
                                                 href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">{$question.name}</a>
                     <span id="timeago">asked {$question.timeago}</span></div>
                 <div id="questioncategorysquare">
-                    <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
+                    <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}&page=1">
                         {$question.categoryname}
                     </a>
                 </div>
@@ -72,7 +72,7 @@
 
                 <div id="tagsofquestion">
                     {foreach $question.tagarray as $tag}
-                        <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}"
+                        <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}&page=1"
                            style="display:inline-flex;">
                             <span class="glyphicon glyphicon-tag"></span>{$tag.tagname}
                         </a>
