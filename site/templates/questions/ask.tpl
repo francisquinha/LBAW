@@ -1,5 +1,4 @@
 {include file='common/header.tpl'}
-
 {function recursive_children}
     {foreach $child_categories as $child_category}
         <option value={$child_category.categoryid}>
