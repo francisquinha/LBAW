@@ -6,9 +6,10 @@ include_once($BASE_DIR . 'pages/pagination/pagination.php');
 
 if (isset($_GET['search']) && $_GET['search'] != "") {
 
+    $text = pg_escape_string($_GET['search']);
+
     $items = 15;
 
-    $text = pg_escape_string($_GET['search']);
     $questions = getSearchPosts($text, $items, ($_GET['page'] - 1) * $items);
 
     foreach ($questions as $key => $question) {
