@@ -372,24 +372,24 @@
                     {/foreach}
                 </div>
 
-
             </div>
-            {if $smarty.get.page == 0}
+            <!--
+            {if $smarty.get.page == 1}
                 <
             {else}
                 <a href="{$BASE_URL}pages/members/list_all.php?page={$smarty.get.page - 1}">
                     <
                 </a>
             {/if}
-            {if $smarty.get.page >= $smarty.session.total_member_pages}
+            {if $smarty.get.page >= ceil($smarty.session.total_members / $smarty.session.member_items)}
                 >
             {else}
                 <a href="{$BASE_URL}pages/members/list_all.php?page={$smarty.get.page + 1}">
                     >
                 </a>
             {/if}
+            -->
 
-        </div>
 
 
 

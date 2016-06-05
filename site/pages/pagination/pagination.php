@@ -63,5 +63,6 @@ function pagination($currentPage, $itemCount, $itemsPerPage, $adjacentCount, $pa
         }
     }
     echo '</div>';
+    echo '</div>';
 }
 ?>
