@@ -36,14 +36,18 @@
         <div class="col-md-8">
             <h3 id="topquestion">{$subtitle}</h3>
             <ul class="nav nav-tabs right-side">
-                <li class="active"><a id="tabname" data-toggle="tab" href="#recent" style={$style_tab1}><span
+                <li class="active"><a id="tabname" data-toggle="tab" onclick="changeTab(0)" href="#recent" style={$style_tab1}><span
                                 class={$class_tab1} style={$style_tab1}> </span>{$tab1}</a></li>
-                <li><a id="tabname" data-toggle="tab" href="#hot" style={$style_tab1}><span
+                <li><a id="tabname" data-toggle="tab" onclick="changeTab(1)" href="#hot" style={$style_tab1}><span
                                 class={$class_tab2} style={$style_tab2}> </span>{$tab2}</a></li>
             </ul>
 
             <div class="tab-content">
+                {if {$smarty.session.tab} == 0}
                     <div id="recent" class=" tab-pane fade in active">
+                {else}
+                    <div id="recent" class=" tab-pane fade">
+                {/if}
                     {foreach $questions as $question}
                         <div id="question">
                             <div id="questiontitlesquare">
@@ -93,7 +97,11 @@
                     {/foreach}
                 </div>
 
-                <div id="hot" class=" tab-pane fade">
+                        {if {$smarty.session.tab} == 1}
+                        <div id="hot" class=" tab-pane fade in active">
+                            {else}
+                            <div id="hot" class=" tab-pane fade">
+                                {/if}
                     {foreach $questionsH as $question}
                         <div id="question">
                             <div id="questiontitlesquare">

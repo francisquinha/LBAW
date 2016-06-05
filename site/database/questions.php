@@ -354,3 +354,14 @@ WHERE  relname = 'question';");
     return $stmt->fetch();
 }
 
+function getNumberSearchQuestions($text) {
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT count(*) AS number
+FROM fulltextpost
+WHERE tsvPost @@ plainto_tsquery(?);");
+    $stmt->execute(array($text));
+    return $stmt->fetch();
+}
+
+

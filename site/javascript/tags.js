@@ -12,5 +12,27 @@ $(document).ready(function() {
         }
     });
 
+    function changeTab(n) {
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + 'pages/questions/tab.php',
+            data: n
+        })
+    }
+
+    $('#recent_tab').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + 'pages/questions/tab.php'
+        })
+    });
+
+    $('#hot_tab').click(function () {
+        $.ajax({
+            type: 'POST',
+            url: BASE_URL + 'pages/questions/tab.php'
+        })
+    });
+
 });
 
