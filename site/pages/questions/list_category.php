@@ -10,6 +10,13 @@ if (isset($_GET['categoryid'])) {
 
     $questions = getCategoryQuestions($_GET['categoryid'], $items, ($_GET['page'] - 1) * $items);
 
+    $kids = getChildCategories($_GET['categoryid']);
+    
+    if(empty($questions) && empty($kids))
+    {
+        displayDeleteButton($_GET['categoryid']);
+    }
+
     foreach ($questions as $key => $question) {
         $questions[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
         $questions[$key]['name'] = getMemberName([$question['postauthorid']])['name'];
