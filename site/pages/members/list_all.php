@@ -20,7 +20,9 @@ for ($i = 0; $i < $length; $i++) {
     $smarty->assign($members_name, $$members_name);
 }
 
-$members = getAllMembers(30, ($_GET['page'] - 1) * 30);
+$items = 27;
+
+$members = getAllMembers($items, ($_GET['page'] - 1) * $items);
 
 foreach ($members as $key => $member) {
     unset($emailhash);
@@ -32,7 +34,9 @@ $smarty->assign('members', $members);
 
 $smarty->display('members/list.tpl');
 
-pagination($_GET['page'], getNumberMembers()['number'], 30, 2, "list_all.php?letter=".$_GET['letter']."&page=%d");
+pagination($_GET['page'], getNumberMembers()['number'], $items, 2, "list_all.php?letter=".$_GET['letter']."&page=%d");
+
+$smarty->display('members/list_az.tpl');
 
 $smarty->display('common/menu_side.tpl');
 include_once($BASE_DIR .'pages/categories/list_top.php');

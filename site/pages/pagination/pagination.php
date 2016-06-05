@@ -28,41 +28,48 @@ function pagination($currentPage, $itemCount, $itemsPerPage, $adjacentCount, $pa
         $firstAdjacentPage = $currentPage - $adjacentCount;
         $lastAdjacentPage  = $currentPage + $adjacentCount;
     }
-    echo '<div>';
+    echo '<ul class = "pagination">';
     if ($showPrevNext) {
+        echo '<li>';
         if ($currentPage == $firstPage) {
-            echo '<span>&lt;</span>';
+            echo '<a class="inactive_link"><span class="glyphicon glyphicon-chevron-left"></span></a>';
         } else {
-            echo '<a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($currentPage - 1) : sprintf($pageLinkTemplate, $currentPage - 1)) . '">&lt;</a>';
+            echo '<a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($currentPage - 1) : sprintf($pageLinkTemplate, $currentPage - 1)) . '"><span class="glyphicon glyphicon-chevron-left"></span></a>';
         }
+        echo '</li>';
     }
     if ($firstAdjacentPage > $firstPage) {
+        echo '<li>';
         echo '<a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($firstPage) : sprintf($pageLinkTemplate, $firstPage)) . '">' . $firstPage . '</a>';
         if ($firstAdjacentPage > $firstPage + 1) {
-            echo '<span>...</span>';
+            echo '<a class="inactive_link" id="ellipsis">...</a>';
         }
+        echo '</li>';
     }
     for ($i = $firstAdjacentPage; $i <= $lastAdjacentPage; $i++) {
         if ($currentPage == $i) {
-            echo '<b>' . $i . '</b>';
+            echo '<li class="chosen_link"><a class="inactive_link"><span>' . $i . '</span></a></li>';
         } else {
-            echo '<a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($i) : sprintf($pageLinkTemplate, $i)) . '">' . $i . '</a>';
+            echo '<li><a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($i) : sprintf($pageLinkTemplate, $i)) . '">' . $i . '</a></li>';
         }
     }
     if ($lastAdjacentPage < $lastPage) {
+        echo '<li>';
         if ($lastAdjacentPage < $lastPage - 1) {
-            echo '<span>...</span>';
+            echo '<a class="inactive_link" id="ellipsis">...</a>';
         }
         echo '<a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($lastPage) : sprintf($pageLinkTemplate, $lastPage)) . '">' . $lastPage . '</a>';
+        echo '</li>';
     }
     if ($showPrevNext) {
+        echo '<li>';
         if ($currentPage == $lastPage) {
-            echo '<span>&gt;</span>';
+            echo '<a class="inactive_link"><span class="glyphicon glyphicon-chevron-right"></span></a>';
         } else {
-            echo '<a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($currentPage + 1) : sprintf($pageLinkTemplate, $currentPage + 1)) . '">&gt;</a>';
+            echo '<a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($currentPage + 1) : sprintf($pageLinkTemplate, $currentPage + 1)) . '"><span class="glyphicon glyphicon-chevron-right"></span></a>';
         }
+        echo '</li>';
     }
-    echo '</div>';
-    echo '</div>';
+    echo '</ul>';
 }
 ?>
