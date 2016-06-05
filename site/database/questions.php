@@ -75,7 +75,6 @@ OFFSET :m;");
     return $stmt->fetchAll();
 }
 
-
 function getSearchPosts($text, $n, $m) {
     global $conn;
     $stmt = $conn->prepare("
@@ -103,7 +102,8 @@ OFFSET :m;");
     return $stmt->fetchAll();
 }
 
-function getTagQuestions($id) {
+function getTagQuestions($id)
+{
     global $conn;
     $stmt = $conn->prepare("
 SELECT
@@ -124,7 +124,8 @@ WHERE question.questionid = classification.questionid
     return $stmt->fetchAll();
 }
 
-function getCategoryQuestions($id) {
+function getCategoryQuestions($id)
+{
     global $conn;
     $stmt = $conn->prepare("
 SELECT

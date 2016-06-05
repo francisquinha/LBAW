@@ -402,3 +402,35 @@ a , input, form, button{
 	margin:0;
 	height: 1px;
 }
+
+.inactive_link {
+	pointer-events: none;
+	cursor: default;
+	color: #888;
+	font-weight: normal;
+}
+
+.inactive_link > span {
+	color: #888;
+	font-weight: normal;
+}
+
+.pagination span {
+	margin: 0;
+	padding: 0;
+}
+
+#ellipsis {
+	color: #888;
+	font-weight: normal;
+}
+
+.chosen_link > .inactive_link {
+	z-index: 2;
+	background-color: #33cc33;
+	border-color: #29a329;
+}
+
+.chosen_link > .inactive_link > span {
+	color: #fff;
+}
