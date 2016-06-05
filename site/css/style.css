@@ -434,3 +434,8 @@ a , input, form, button{
 .chosen_link > .inactive_link > span {
 	color: #fff;
 }
+
+
+#createtag{
+	min-height: 200px;
+}

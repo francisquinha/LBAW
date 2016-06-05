@@ -39,17 +39,17 @@
                         <ul>
                             {if $USERNAME eq $membern.username}
                                 <li><span>Name: </span>{$membern.name}
-                                    <button type=button name=type value='Show Layer'
+                                    <button class="btn-xs" style="background-color: #33cc33; color:white;" type=button name=type value='Show Layer'
                                             onclick="setVisibility('divhide1', 'inline');" ;><span
                                                 class="glyphicon glyphicon-pencil"
-                                                style="padding:0; margin:0;color:#888; font-size: 70%;"></span></button>
+                                                style="padding:0; margin:0;color:white; font-size: 70%;"></span></button>
                                     <form id="divhide1" action="{$BASE_URL}actions/members/updatename.php?newname={$newname}&membersid=membersid" class="form-horizontal" role="form" method="get">
                                         <div class="form-group">
                                             <div class="col-lg-4">
                                                 <br>
-                                                <input class="form-control" type="text" id="newname" name="newname" value="">
+                                                <input class="form-control" type="text" placeholder="new name" id="newname" name="newname" value="">
                                                 <input  Style="display:none;" class="form-control" type="text" id="membersid" name="membersid" value="{$membern.memberid}">
-                                                <input type="submit" value=" Edit " style="font-family: 'QuanticoRegular';">
+                                                <input class="btn-xs" type="submit" value="Edit" style="font-family: 'QuanticoRegular';">
                                             </div>
                                         </div>
                                     </form>
@@ -91,10 +91,10 @@
                                 {/if}
                             {/if}
                             {if $USERNAME eq $membern.username}
-                                <button type=button name=type value='Show Layer'
-                                        onclick="setVisibility('divhide2', 'inline');" ;><span
+                                <button class="btn-xs"  style="background-color: #33cc33; color:white;" type=button name=type value='Show Layer'
+                                        onclick="setVisibility('divhide2', 'inline');" ;>Change Password <span
                                             class="fa fa-key" aria-hidden="true"
-                                            style="padding:0; margin:0;color:#888; font-size: 70%;"></span></button>
+                                            style="padding:0; margin:0;color:white; font-size: 70%;"></span></button>
                                 <div id="divhide2">
                                     <form role="form"  action="{$BASE_URL}actions/members/updatepass.php" class="form-horizontal updatePass" >
                                         <div class="form-group">
@@ -104,7 +104,7 @@
                                                 <input class="form-control" type="password" id="newpass1" name="newpass1" value="" placeholder="new password">
                                                 <input class="form-control" type="password" id="newpass2" name="newpass2" value="" placeholder="new password">
                                                 <input  Style="display:none;" class="form-control" type="text" id="membersid" name="membersid" value="{$membern.memberid}">
-                                                <button type="submit" value=" Edit " style="font-family: 'QuanticoRegular';"> Edit </button>
+                                                <button class="btn-xs" type="submit" value=" Edit " style="font-family: 'QuanticoRegular';"> Edit </button>
                                                 <div class="responseupdatePass">
                                                 </div>
                                             </div>
