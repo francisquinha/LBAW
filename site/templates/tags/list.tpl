@@ -5,7 +5,7 @@
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-7">
+        <div class="col-md-8">
             <div class="tab-content">
                 <a style=" font-size:150%; padding:0; padding-bottom:4rem;" id="questiontitle">
                     <span style=" padding:0; padding:1rem; margin:0;" class="glyphicon glyphicon-tags">

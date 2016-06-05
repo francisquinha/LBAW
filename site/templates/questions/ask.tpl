@@ -15,7 +15,7 @@
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
-        <div class="col-md-7">
+        <div class="col-md-8">
             <form action="{$BASE_URL}actions/posts/question.php" method="post">
                 <div class="form-group">
                     <select class="form-control" name="category" title="category">
