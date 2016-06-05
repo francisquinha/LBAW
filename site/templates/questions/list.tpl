@@ -50,8 +50,9 @@
                                 <a id="questiontitle" href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
                                     {$question.title}
                                 </a>
+                                <br>
+                                <br>
                             </div>
-                            <br>
                             <div id="questionusersquare">
                                 <a id="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">
                                     {$question.name}
