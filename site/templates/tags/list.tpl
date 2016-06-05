@@ -12,6 +12,17 @@
                     </span>All Tags
                 </a>
                 <br>
+                {if $USERNAME}
+                    {if $smarty.session.permissiontype eq 'moderator'}
+                        <div id="createtag">
+                            <form role="form" action="javascript:createTag();">
+                                <input type="text" class="newTagName" name="newTag">
+                                <input type="submit" value="Create New Tag">
+                            </form>
+       <!--                     <button class="newtag" type="button" data-toggle="tab">Create New Tag</button> -->
+                        </div>
+                    {/if}
+                {/if}
                 <br>
                 <div class="row">
                     {foreach $tags as $tag}

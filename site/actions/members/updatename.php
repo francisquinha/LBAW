@@ -6,7 +6,7 @@ $user = strip_tags($_GET['membersid']);
 
 
 updatename(strip_tags($_GET['newname']), strip_tags($_GET['membersid']));
-header("Location: $BASE_URL/pages/members/details.php?membersid=$user");
+header("Location: ".$BASE_URL."pages/members/details.php?membersid=$user");
 
 
 

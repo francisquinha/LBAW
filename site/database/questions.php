@@ -253,7 +253,8 @@ WHERE
   answer.questionid = ?
   AND answer.answerid = post.postid
   AND question.questionid = answer.questionid
-  AND question.bestanswerid IS NULL;");
+  AND post.deletorid IS NULL
+  AND (question.bestanswerid IS NULL OR question.bestanswerid != answer.answerid);");
     $stmt->execute($id);
     return $stmt->fetchAll();
 }
@@ -270,7 +271,8 @@ SELECT
 FROM answer, post
 WHERE
   answer.answerid = ?
-  AND answer.answerid = post.postid;");
+  AND answer.answerid = post.postid
+  AND post.deletorid IS NULL;");
     $stmt->execute($id);
     return $stmt->fetch();
 }
@@ -289,7 +291,8 @@ WHERE
   answer.questionid = ?
   AND answer.answerid = post.postid
   AND question.questionid = answer.questionid
-  AND question.bestanswerid = answer.answerid;");
+  AND question.bestanswerid = answer.answerid
+  AND post.deletorid IS NULL;");
     $stmt->execute($id);
     return $stmt->fetch();
 }
@@ -323,4 +326,18 @@ WHERE question.questionid = ?;
 ");
     $stmt->execute($id);
     return $stmt->fetch();
+}
+
+function deletePost($postid, $memberid)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+UPDATE post
+SET deletorid = :memberid,
+    postdeletiondate = now()
+WHERE post.postid = :postid;");
+    $stmt->bindParam(':postid', $postid);
+    $stmt->bindParam(':memberid', $memberid);
+    $stmt->execute();
+    return true;
 }
