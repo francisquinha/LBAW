@@ -16,7 +16,7 @@
         <!-- Blog Entries Column -->
         <div class="col-md-7">
             <br>
-            <div id="questionpq">
+            <div id="questionpq" class="well">
                 <div id="questiontitlesquare">
                     <a id="qpagequestiontitle"
                        href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
@@ -37,8 +37,6 @@
                 </div>
                 {if $smarty.session.permissiontype eq 'moderator'}
                     <div class="col-md-4">
-
-
                         <form action="{$BASE_URL}actions/members/changecategoryquestion.php" method="post">
                             <div class="form-group">
                                 <select class="form-control" name="category" title="category">
@@ -51,13 +49,9 @@
                                     {/foreach}
                                 </select>
                                 <input  Style="display:none;" class="form-control" type="text" id="questionid" name="questionid" value="{$question.questionid}">
-                            </div>
-                            <div class="form-group">
-                                <div>
-                                    <button class="btn-xs btn-primary " style="background-color: #33cc33; border-color: #33cc33;" name="submit" type="submit">
-                                        Edit
-                                    </button>
-                                </div>
+                                <button class="btn-xs btn-primary " style="background-color: #33cc33; border-color: #33cc33;" name="submit" type="submit">
+                                    Edit
+                                </button>
                             </div>
                         </form>
                     </div>
@@ -100,33 +94,34 @@
                     </a>
                 </div>
 
+
             </div>
 
             <hr style="margin-top:0;">
 
             {if  $bestanswer.answerid != NULL}
-            <div class="bestanswer">
-                <span class="glyphicon glyphicon-star" style="float:right;color:#4aaf51;"></span>
-                <div id="answerbodysquare" align="left">
-                    {$bestanswer.versionbody}
-                </div>
-                <br>
-                <div id="answerusersquare">
-                    <a id="answerusers"
-                       href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
-                    <span id="timeago">answered {$bestanswer.timeago}</span>
-                </div>
-                <div class="questionvotesection">
-                    <a href="#" class="btn-lg" style="color:black;"><span
-                                class="glyphicon glyphicon-thumbs-up"
-                                style="padding:0; margin:0;color:#4aaf51;"></span> {$bestanswer.postrating}
-                        <span
-                                class="glyphicon glyphicon-thumbs-down"
-                                style="padding:0; margin:0;color:#c9302c;"></span></a>
-                </div>
+                <div class="bestanswer">
+                    <span class="glyphicon glyphicon-star" style="float:right;color:#4aaf51;"></span>
+                    <div id="answerbodysquare" align="left">
+                        {$bestanswer.versionbody}
+                    </div>
+                    <br>
+                    <div id="answerusersquare">
+                        <a id="answerusers"
+                           href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
+                        <span id="timeago">answered {$bestanswer.timeago}</span>
+                    </div>
+                    <div class="questionvotesection">
+                        <a href="#" class="btn-lg" style="color:black;"><span
+                                    class="glyphicon glyphicon-thumbs-up"
+                                    style="padding:0; margin:0;color:#4aaf51;"></span> {$bestanswer.postrating}
+                            <span
+                                    class="glyphicon glyphicon-thumbs-down"
+                                    style="padding:0; margin:0;color:#c9302c;"></span></a>
+                    </div>
 
-            </div>
-            <hr style="margin-top:0;">
+                </div>
+                <hr style="margin-top:0;">
             {/if}
 
             {foreach $answers as $answer}
@@ -159,19 +154,19 @@
                         </form>
 
 
-                         </div>
+                    </div>
 
                 </div>
                 <hr>
             {/foreach}
 
 
-                <button id="edit" class="btn btn-primary" type="button">Answer</button>
+            <button id="edit" class="btn btn-primary" type="button">Answer</button>
 
             <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
 
-                  <!--  <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
-                    <input type="submit" value="Post" class="submitButton">-->
+                <!--  <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
+                  <input type="submit" value="Post" class="submitButton">-->
 
                 <div class="summernote"></div>
             </form>
