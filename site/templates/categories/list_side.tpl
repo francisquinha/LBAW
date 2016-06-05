@@ -6,12 +6,12 @@
                     <label class="tree-toggle nav-header">
                         <span style="font-size:70%;" class="glyphicon glyphicon-menu-right"></span>
                     </label>
-                    <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$child_category.categoryid}"
+                    <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$child_category.categoryid}&page=1"
                        class="force-grey2">
                         {$child_category.categoryname}
                     </a>
                 {else}
-                    <a class="cat" href="{$BASE_URL}pages/questions/list_category.php?categoryid={$child_category.categoryid}">
+                    <a class="cat" href="{$BASE_URL}pages/questions/list_category.php?categoryid={$child_category.categoryid}&page=1">
                         {$child_category.categoryname}
                     </a>
                 {/if}
@@ -32,12 +32,12 @@
                         <label class="tree-toggle nav-header">
                             <span style="font-size:70%;" class="glyphicon glyphicon-menu-right"></span>
                         </label>
-                        <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$root_category.categoryid}"
+                        <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$root_category.categoryid}&page=1"
                            class="force-grey2">
                             {$root_category.categoryname}
                         </a>
                     {else}
-                        <a class="cat" href="{$BASE_URL}pages/questions/list_category.php?categoryid={$root_category.categoryid}">
+                        <a class="cat" href="{$BASE_URL}pages/questions/list_category.php?categoryid={$root_category.categoryid}&page=1">
                             {$root_category.categoryname}
                         </a>
                     {/if}

@@ -18,7 +18,7 @@
                     <ul class="tree noBullets">
                         {foreach $child_categories as $child_category}
                             <li>
-                                <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$child_category.categoryid}"
+                                <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$child_category.categoryid}&page=1"
                                    class="force-grey">
                                     {$child_category.categoryname}
                                 </a>
@@ -58,7 +58,7 @@
                 <ul class="browseAlign noBullets">
                     {foreach $root_categories as $root_category}
                         <li>
-                            <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$root_category.categoryid}"
+                            <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$root_category.categoryid}&page=1"
                                class="force-grey">
                                 {$root_category.categoryname}
                             </a>
