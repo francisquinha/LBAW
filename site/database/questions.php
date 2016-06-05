@@ -342,3 +342,16 @@ WHERE post.postid = :postid;");
     $stmt->execute();
     return true;
 }
+
+function getNumberTagQuestions($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT count(*) AS number
+FROM post, question, classification
+WHERE classification.tagid = ? 
+  AND post.postid = classification.questionid
+  AND post.deletorid IS NULL;");
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+}
