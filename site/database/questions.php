@@ -343,6 +343,27 @@ WHERE post.postid = :postid;");
     return true;
 }
 
+function getNumberQuestions()
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT reltuples::bigint AS number
+FROM   pg_class
+WHERE  relname = 'question';");
+    $stmt->execute();
+    return $stmt->fetch();
+}
+
+function getNumberSearchQuestions($text) {
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT count(*) AS number
+FROM fulltextpost
+WHERE tsvPost @@ plainto_tsquery(?);");
+    $stmt->execute(array($text));
+    return $stmt->fetch();
+}
+
 function getNumberTagQuestions($id)
 {
     global $conn;

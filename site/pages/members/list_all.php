@@ -34,7 +34,7 @@ $smarty->assign('members', $members);
 
 $smarty->display('members/list.tpl');
 
-pagination($_GET['page'], getNumberMembers()['number'], $items, 2, "list_all.php?letter=".$_GET['letter']."&page=%d");
+pagination($_GET['page'], getNumberMembers()['number'], $items, 2, "list_all.php?page=%d");
 
 $smarty->display('members/list_az.tpl');
 

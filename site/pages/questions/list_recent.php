@@ -2,10 +2,13 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR.'database/questions.php');
 include_once('time.php');
+include_once($BASE_DIR . 'pages/pagination/pagination.php');
 
-$questions = getRecentQuestions(15, 0);
+$items = 15;
 
-$questionsH = getHotQuestions(15, 0);
+$questions = getRecentQuestions($items, ($_GET['page'] - 1) * $items);
+
+$questionsH = getHotQuestions($items, ($_GET['page'] - 1) * $items);
 
 foreach ($questions as $key => $question) {
     $questions[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
@@ -36,8 +39,12 @@ $smarty->assign('class_tab2', $class_tab2);
 $style_tab = "''";
 $smarty->assign('style_tab1', $style_tab);
 $smarty->assign('style_tab2', $style_tab);
+echo $_SESSION['tab'];
+exit;
 $smarty->display('questions/list.tpl');
 
+//pagination($_GET['page'], getNumberQuestions()['number'], $items, 2, "list_recent.php?page=%d");
+echo '</div>';
 $smarty->display('common/menu_side.tpl');
 include_once($BASE_DIR .'pages/categories/list_top.php');
 include_once($BASE_DIR .'pages/tags/list_top.php');

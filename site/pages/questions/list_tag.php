@@ -2,10 +2,13 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/questions.php');
 include_once($BASE_DIR . 'pages/questions/time.php');
+include_once($BASE_DIR . 'pages/pagination/pagination.php');
 
 if (isset($_GET['tagid'])) {
 
-    $questions = getTagQuestions([$_GET['tagid']]);
+    $items = 15;
+
+    $questions = getTagQuestions($_GET['tagid'], $items, ($_GET['page'] - 1) * $items);
 
     foreach ($questions as $key => $question) {
         $questions[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
