@@ -17,7 +17,6 @@ $(document).ready(function() {
         var span = document.getElementsByClassName("closeAnswer")[0];
 
         modal.style.display = "block";
-        modal.style.display
         span.onclick = function() {
             modal.style.display = "none";
         }
@@ -52,7 +51,11 @@ $(document).ready(function() {
         return false;
     } );
 
-});
+    $('.linkDeletePost').click( function(e) {
+        e.preventDefault();
+    } );
+
+    });
 
 function votes(questionID) {
     $.ajax({
@@ -95,6 +98,20 @@ function sendReport(postID) {
         data: {postid: postID, reportbody:reportBody}
     })
         .done(function (data) {
+            alert(data);
+        });
+}
+
+function deletePost(postID) {
+    $.ajax({
+        type: 'POST',
+        url: BASE_URL + 'actions/posts/delete.php',
+        data: {postid: postID}
+    })
+        .done(function (data) {
+            window.location.reload();
+        })
+        .fail(function () {
             alert(data);
         });
 }
