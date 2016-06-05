@@ -51,6 +51,7 @@
                                     {$question.title}
                                 </a>
                             </div>
+                            <br>
                             <div id="questionusersquare">
                                 <a id="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">
                                     {$question.name}
