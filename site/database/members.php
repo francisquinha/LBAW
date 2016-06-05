@@ -36,13 +36,14 @@ function getMembersStartingWith($n, $t)
 SELECT 
   *
 FROM Member
-WHERE username LIKE '$n' OR username LIKE '$t'
+WHERE memberid != 1
+AND (username LIKE '$n' OR username LIKE '$t')
 ORDER BY username;");
     $stmt->execute();
     return $stmt->fetchAll();
 }
 
-function getAllMembers()
+function getAllMembers($n, $m)
 {
     global $conn;
     $stmt = $conn->prepare("
@@ -52,7 +53,12 @@ SELECT
   memberrating,
   memberid
 FROM Member
-ORDER BY username;");
+WHERE memberid != 1
+ORDER BY username
+LIMIT :n
+OFFSET :m;");
+    $stmt->bindParam(':n', $n);
+    $stmt->bindParam(':m', $m);
     $stmt->execute();
     return $stmt->fetchAll();
 }
@@ -114,6 +120,18 @@ function Disabled($giverID, $ownerID)
     $stmt = $conn->prepare("INSERT INTO Permission (permissionType, giverID, ownerID) VALUES
   ('disabled', ?, ?);");
     $stmt->execute(array($giverID, $ownerID));
+    $stmt->execute(array($giverID, $ownerID));
+}
+
+function getNumberMembers()
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT reltuples::bigint AS number
+FROM   pg_class
+WHERE  relname = 'member';");
+    $stmt->execute();
+    return $stmt->fetch();
 }
 
 function updatename($newname,$user)
