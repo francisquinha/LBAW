@@ -6,7 +6,6 @@
     <div class="row">
         <!-- Blog Entries Column -->
         <div class="col-md-7">
-            <br>
             <div id="questionpq">
                 <div id="questiontitlesquare">
                     <a id="qpagequestiontitle"
@@ -27,6 +26,27 @@
                     </a>
                 </div>
 
+                <div id="questionbuttonsection">
+                    <a>
+                        <span class="fa fa-pencil"></span>
+                        {$question.answers}
+                    </a>
+                    <a>
+                        <span class="glyphicon glyphicon-eye-open"></span>
+                        {$question.views}
+                    </a>
+
+                </div>
+
+                <div id="tagsofquestion">
+                    {foreach $question.tagarray as $tag}
+                        <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}"
+                           style="display:inline-flex;">
+                            <span class="glyphicon glyphicon-tag"></span>{$tag.tagname}
+                        </a>
+                    {/foreach}
+                </div>
+
                 <div class="questionvotesection">
                     <form role="form" action="javascript:votes({$question.questionid})" class="updownquestion">
                         <button class="upquestion" type="submit" >
@@ -41,42 +61,21 @@
                                     class="glyphicon glyphicon-thumbs-down"
                                     style="padding:0; margin:0;color:#c9302c;"></span>
                         </button>
+
+                        {if {$smarty.session.userid} && {$smarty.session.userid} != {$question.postauthorid}}
+                            <!-- Button trigger modal -->
+                            <button type="button" class="linkReportQuestion">
+                                <span class="reportPost glyphicon glyphicon-flag"></span>
+                            </button>
+                        {/if}
+
+                        {if {$smarty.session.permissiontype} == "moderator"}
+                            <button type="submit" formaction="javascript:deleteQuestion({$question.questionid})" class="linkDeletePost">
+                                <span class="deletePost glyphicon glyphicon-remove"></span>
+                            </button>
+                        {/if}
+
                     </form>
-                </div>
-
-                <div id="tagsofquestion">
-                    {foreach $question.tagarray as $tag}
-                        <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}"
-                           style="display:inline-flex;">
-                            <span class="glyphicon glyphicon-tag"></span>{$tag.tagname}
-                        </a>
-                    {/foreach}
-                </div>
-
-                <div id="questionbuttonsection">
-                    <a>
-                        <span class="fa fa-pencil"></span>
-                        {$question.answers}
-                    </a>
-                    <a>
-                        <span class="glyphicon glyphicon-eye-open"></span>
-                        {$question.views}
-                    </a>
-
-                    {if {$smarty.session.userid} && {$smarty.session.userid} != {$question.postauthorid}}
-                        <!-- Button trigger modal -->
-                        <button type="button" class="linkReportQuestion">
-                            <span class="reportPost glyphicon glyphicon-flag"></span>
-                        </button>
-                    {/if}
-
-                    {if {$smarty.session.permissiontype} == "moderator"}
-                        <!-- Button trigger modal -->
-                        <button type="button" class="linkDeletePost">
-                            <span class="deletePost glyphicon glyphicon-remove"></span>
-                        </button>
-                    {/if}
-
                 </div>
 
             </div>
@@ -111,7 +110,7 @@
                                     style="padding:0; margin:0;color:#c9302c;"></span>
                             </button>
 
-                            {if {$smarty.session.userid} && {$smarty.session.userid} != {$answer.postauthorid}}
+                            {if {$smarty.session.userid} && {$smarty.session.userid} != {$bestanswer.postauthorid}}
                                 <!-- Button trigger modal -->
                                 <button type="button" class="linkReportAnswer">
                                     <span class="reportPost glyphicon glyphicon-flag"></span>
@@ -119,40 +118,12 @@
                             {/if}
 
                             {if {$smarty.session.permissiontype} == "moderator"}
-                                <!-- Button trigger modal -->
-                                <button type="button" class="linkDeletePost">
+                                <button type="submit" formaction="javascript:deleteAnswer({$bestanswer.answerid})" class="linkDeletePost">
                                     <span class="deletePost glyphicon glyphicon-remove"></span>
                                 </button>
                             {/if}
 
                         </form>
-                        <!-- The Modal -->
-                        <div id="myModalAnswer" class="modalAnswer">
-
-                            <!-- Modal content -->
-                            <div class="modal-contentAnswer">
-                                <span class="closeAnswer">×</span>
-                                <form class="reportArea" role="form" action="javascript:sendReport({$answer.answerid})">
-                                    <input type="text" class="reportBody">
-                                    <input type="submit" value="Submit">
-                                </form>
-                            </div>
-
-                        </div>
-
-                        <!-- The Modal -->
-                        <div id="myModalQuestion" class="modalQuestion">
-
-                            <!-- Modal content -->
-                            <div class="modal-contentQuestion">
-                                <span class="closeQuestion">×</span>
-                                <form class="reportArea" role="form" action="javascript:sendReport({$question.questionid})">
-                                    <input type="text" class="reportBody">
-                                    <input type="submit" value="Submit">
-                                </form>
-                            </div>
-
-                        </div>
                     </div>
 
                 </div>
@@ -195,13 +166,26 @@
                             {/if}
 
                             {if {$smarty.session.permissiontype} == "moderator"}
-                                    <button type="submit" formaction="javascript:deletePost({$answer.answerid})" class="linkDeleteAnswer">
-                                        <span class="deletePost glyphicon glyphicon-remove"></span>
-                                    </button>
+                                <button type="submit" formaction="javascript:deleteAnswer({$answer.answerid})" class="linkDeletePost">
+                                    <span class="deletePost glyphicon glyphicon-remove"></span>
+                                </button>
                             {/if}
 
-
                         </form>
+
+                        <!-- The Modal -->
+                        <div id="myModalBestAnswer" class="modalAnswer">
+
+                            <!-- Modal content -->
+                            <div class="modal-contentAnswer">
+                                <span class="closeAnswer">×</span>
+                                <form class="reportArea" role="form" action="javascript:sendReport({$bestanswer.answerid})">
+                                    <input type="text" class="reportBody">
+                                    <input type="submit" value="Submit">
+                                </form>
+                            </div>
+
+                        </div>
 
                       <!-- The Modal -->
                         <div id="myModalAnswer" class="modalAnswer">

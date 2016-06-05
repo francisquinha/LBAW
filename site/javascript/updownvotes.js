@@ -51,10 +51,6 @@ $(document).ready(function() {
         return false;
     } );
 
-    $('.linkDeletePost').click( function(e) {
-        e.preventDefault();
-    } );
-
     });
 
 function votes(questionID) {
@@ -102,7 +98,7 @@ function sendReport(postID) {
         });
 }
 
-function deletePost(postID) {
+function deleteAnswer(postID) {
     $.ajax({
         type: 'POST',
         url: BASE_URL + 'actions/posts/delete.php',
@@ -110,6 +106,20 @@ function deletePost(postID) {
     })
         .done(function (data) {
             window.location.reload();
+        })
+        .fail(function () {
+            alert(data);
+        });
+}
+
+function deleteQuestion(postID) {
+    $.ajax({
+        type: 'POST',
+        url: BASE_URL + 'actions/posts/delete.php',
+        data: {postid: postID}
+    })
+        .done(function (data) {
+            window.location = BASE_URL
         })
         .fail(function () {
             alert(data);
