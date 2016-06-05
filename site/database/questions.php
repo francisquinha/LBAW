@@ -342,3 +342,15 @@ WHERE post.postid = :postid;");
     $stmt->execute();
     return true;
 }
+
+function getNumberQuestions()
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT reltuples::bigint AS number
+FROM   pg_class
+WHERE  relname = 'question';");
+    $stmt->execute();
+    return $stmt->fetch();
+}
+
