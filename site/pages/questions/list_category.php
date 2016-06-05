@@ -31,6 +31,9 @@ if (isset($_GET['categoryid'])) {
     $smarty->assign('style_tab2', $style_tab);
     $smarty->display('questions/list.tpl');
 
+    pagination($_GET['page'], getNumberCategoryQuestions($_GET['categoryid'])['number'], $items, 2, "list_category.php?categoryid=".$_GET['categoryid']."&page=%d");
+    echo '</div>';
+
     $smarty->display('common/menu_side.tpl');
     include_once($BASE_DIR .'pages/categories/list_top.php');
     include_once($BASE_DIR .'pages/tags/list_top.php');

@@ -17,7 +17,6 @@ if (isset($_GET['tagid'])) {
         $questions[$key]['tagarray'] = getQuestionTags([$question['questionid']]);
     }
 
-    $smarty->assign('last_question_id', $questions[0]['questionid']);
     $smarty->assign('questions', $questions);
     $subtitle = "";
     $smarty->assign('subtitle', $subtitle);
@@ -31,6 +30,9 @@ if (isset($_GET['tagid'])) {
     $smarty->assign('style_tab1', $style_tab);
     $smarty->assign('style_tab2', $style_tab);
     $smarty->display('questions/list.tpl');
+
+    pagination($_GET['page'], getNumberTagQuestions($_GET['tagid'])['number'], $items, 2, "list_tag.php?tagid=".$_GET['tagid']."&page=%d");
+    echo '</div>';
 
     $smarty->display('common/menu_side.tpl');
     include_once($BASE_DIR .'pages/categories/list_top.php');
