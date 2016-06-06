@@ -15,7 +15,7 @@ function recursiveChildren($children_category) {
 }
 
 $root_categories = getRootCategories();
-foreach ($root_categories as $category ) {
+foreach ($root_categories as $category) {
     $name_category = 'child_categories_'.$category['categoryid'];
     $$name_category = getChildCategories([$category['categoryid']]);
     $smarty->assign($name_category, $$name_category);

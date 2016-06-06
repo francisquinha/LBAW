@@ -1,10 +1,10 @@
 {include file='common/header.tpl'}
-{function recursive_children}
+{function recursive_children_sel}
     {foreach $child_categories as $child_category}
         <option value={$child_category.categoryid}>
             {for $i = 0 to $level} &nbsp &nbsp &nbsp {/for}
             {$child_category.categoryname}
-            {recursive_children child_categories=$child_categories_{$child_category.categoryid} level = $level + 1}
+            {recursive_children_sel child_categories=$child_categories_{$child_category.categoryid} level = $level + 1}
         </option>
     {/foreach}
 {/function}
@@ -21,7 +21,7 @@
     <div class="row">
         <div class="col-md-8">
             <div class="tab-content">
-                {function recursive_children2}
+                {function recursive_children_all}
                     <ul class="tree noBullets">
                         {foreach $child_categories as $child_category}
                             <li>
@@ -29,7 +29,7 @@
                                    class="force-grey">
                                     {$child_category.categoryname}
                                 </a>
-                                {recursive_children2 child_categories=$child_categories_{$child_category.categoryid}}
+                                {recursive_children_all child_categories=$child_categories_{$child_category.categoryid}}
                             </li>
                         {/foreach}
                     </ul>
@@ -57,7 +57,7 @@
                                         {foreach $root_categories as $root_category}
                                             <option value={$root_category.categoryid}>
                                                 {$root_category.categoryname}
-                                                {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
+                                                {recursive_children_sel child_categories=$child_categories_{$root_category.categoryid} level = 0}
                                             </option>
                                         {/foreach}
                                     </select>
@@ -80,7 +80,7 @@
                                class="force-grey">
                                 {$root_category.categoryname}
                             </a>
-                            {recursive_children2 child_categories=$child_categories_{$root_category.categoryid}}
+                            {recursive_children_all child_categories=$child_categories_{$root_category.categoryid}}
                         </li>
                     {/foreach}
                 </ul>
