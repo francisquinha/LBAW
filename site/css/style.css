@@ -443,13 +443,13 @@ a , input, form, button{
 }
 
 #createcategory{
-	min-height: 200px;
+	min-height: 400px;
 	display:none;
 
 }
 
 #removecategory{
-	min-height: 200px;
+	min-height: 400px;
 	display:none;
 }
 #deletetag{
