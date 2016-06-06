@@ -1,9 +1,6 @@
 $(document).ready(function() {
 
-    $('#edit').click(function(){
-        $(this).remove();
-        $('.messageAnswer').show();
-
+    $('#edit').fadeIn(function(){
         setTimeout(function(){
             $('.messageAnswer').remove();
         }, 5000);
@@ -41,7 +38,7 @@ $(document).ready(function() {
                     ['view', ['fullscreen', 'codeview']]
                 ]
             });
-            var button = '<button id="post_answer" type="submit" class="btn">Post Answer!<span class="glyphicon glyphicon-send"></span></button>';
+            var button = '<button id="post_answer" type="submit" class="btn-xs "  style="background-color: #33cc33; color:white;">Post Answer!<span class="glyphicon glyphicon-send"></span></button>';
             $('.note-resizebar').append(button).html();
 
     });

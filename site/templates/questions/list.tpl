@@ -73,15 +73,15 @@
                             </div>
                             <div id="questionbuttonsection">
                                 <a class="btn btn-primary btn-sm btn-success">
-                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    <span class="glyphicon glyphicon-thumbs-up" title="Likes"></span>
                                     {$question.postrating}
                                 </a>
                                 <a class="btn btn-primary btn-sm btn-warning">
-                                    <span class="fa fa-pencil"></span>
+                                    <span class="fa fa-pencil" title="Answers"></span>
                                     {$question.answers}
                                 </a>
                                 <a class="btn btn-sm btn-primary">
-                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <span class="glyphicon glyphicon-eye-open" title="Views"></span>
                                     {$question.views}
                                 </a>
                             </div>
@@ -125,15 +125,15 @@
                             </div>
                             <div id="questionbuttonsection">
                                 <a class="btn btn-primary btn-sm btn-success">
-                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    <span class="glyphicon glyphicon-thumbs-up" title="Like"></span>
                                     {$question.postrating}
                                 </a>
                                 <a class="btn btn-primary btn-sm btn-warning">
-                                    <span class="fa fa-pencil"></span>
+                                    <span class="fa fa-pencil" title="Answers"></span>
                                     {$question.answers}
                                 </a>
                                 <a class="btn btn-sm btn-primary">
-                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <span class="glyphicon glyphicon-eye-open" title="Views"></span>
                                     {$question.views}
                                 </a>
                             </div>

@@ -44,7 +44,7 @@
                 </div>
                 <div class="form-group">
                     <div>
-                        <button class="btn btn-primary " name="submit" type="submit">
+                        <button class="btn-xs "  style="background-color: #33cc33; color:white;" name="submit" type="submit">
                             Submit
                         </button>
                     </div>
