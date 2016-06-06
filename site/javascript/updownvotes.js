@@ -8,68 +8,29 @@ $(document).ready(function() {
         buttonID = "down";
     });
 
-    $('.linkReportAnswer').click( function(e) {
-        e.preventDefault();
+    $('.linkReportQuestion').click( function() {
 
-        var modal = document.getElementById('myModalAnswer');
-        var span = document.getElementsByClassName("closeAnswer")[0];
-        modal.style.display = "block";
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
+        $('.reportFormQuestion').css( "display", "inline" );
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        return false;
-        
     } );
 
+    $('.linkReportAnswer').click( function() {
 
-    $('.linkReportQuestion').click( function(e) {
-        e.preventDefault();
+        $('.reportFormAnswer').css( "display", "inline" );
 
-        var modal = document.getElementById('myModalQuestion');
-        alert(modal);
-        /*var span = document.getElementsByClassName("closeQuestion")[0];
+    } );
 
-        modal.style.display = "block";
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
+    $('.linkReportBestAnswer').click( function() {
 
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        return false;
-        */
-    });
-
-    $('.linkReportBestAnswer').click( function(e) {
-        e.preventDefault();
-
-        var modal = document.getElementById('myModalBestAnswer');
-        var span = document.getElementsByClassName("closeAnswer")[0];
-        modal.style.display = "block";
-        span.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-        return false;
+        $('.reportFormBestAnswer').css( "display", "inline" );
 
     } );
 
 
-    });
+
+
+
+});
 
 function votes(questionID) {
     $.ajax({
@@ -103,18 +64,54 @@ function votes(questionID) {
 
 }
 
-function sendReport(postID) {
-    var reportBody = $('.reportBody').val();
-    alert(reportBody);
+function sendReport1(postID) {
+    var reportBody = $('.reportBody1').val();
+    if(reportBody == '') {
+        alert('you really want send a message');
+        return false;
+    }
     $.ajax({
         type: 'POST',
         url: BASE_URL + '/actions/posts/reports.php',
-        data: {postid: postID, reportbody:reportBody}
+        data: {postid: postID, reportbody: reportBody}
     })
         .done(function (data) {
-            alert(data);
+            window.location.reload();
         });
 }
+
+function sendReport2(postID) {
+    var reportBody = $('.reportBody2').val();
+    if(reportBody == '') {
+        alert('you really want send a message');
+        return false;
+    }
+    $.ajax({
+        type: 'POST',
+        url: BASE_URL + '/actions/posts/reports.php',
+        data: {postid: postID, reportbody: reportBody}
+    })
+        .done(function (data) {
+            window.location.reload();
+        });
+}
+
+function sendReport3(postID) {
+    var reportBody = $('.reportBody3').val();
+    if(reportBody == '') {
+        alert('you really want send a message');
+        return false;
+    }
+    $.ajax({
+        type: 'POST',
+        url: BASE_URL + '/actions/posts/reports.php',
+        data: {postid: postID, reportbody: reportBody}
+    })
+        .done(function (data) {
+            window.location.reload();
+        });
+}
+
 
 function deleteAnswer(postID) {
     $.ajax({
