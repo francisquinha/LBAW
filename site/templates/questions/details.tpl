@@ -94,7 +94,7 @@
                                     style="padding:0; margin:0;color:#c9302c;" title="Dislike" ></span>
                         </button>
 
-                        {if {$smarty.session.userid} && {$smarty.session.userid} != {$question.postauthorid}}
+                        {if {$smarty.session.userid}}
                             <!-- Button trigger modal -->
                             <button type="button" class="linkReportQuestion">
                                 <span class="reportPost glyphicon glyphicon-flag" title="Report Question"></span>
@@ -142,13 +142,18 @@
                                     style="padding:0; margin:0;color:#c9302c;"></span>
                             </button>
 
-                            {if {$smarty.session.userid} && {$smarty.session.userid} != {$bestanswer.postauthorid}}
+                            {if {$smarty.session.userid}}
                                 <!-- Button trigger modal -->
-                                <button type="button" class="linkReportAnswer">
-                                    <span class="reportPost glyphicon glyphicon-flag" title="Report Answer"></span>
+                                <button type="button" class="linkReportBestAnswer">
+                                    <span class="reportPost glyphicon glyphicon-flag"></span>
                                 </button>
                             {/if}
 
+                            {if {$smarty.session.permissiontype} == "moderator"}
+                                <button type="submit" formaction="javascript:deleteAnswer({$bestanswer.answerid})" class="linkDeletePost">
+                                    <span class="deletePost glyphicon glyphicon-remove"></span>
+                                </button>
+                            {/if}
 
                         </form>
                     </div>
@@ -185,12 +190,12 @@
                                     style="padding:0; margin:0;color:#c9302c;"></span>
                                 </button>
 
-                                {if {$smarty.session.userid} && {$smarty.session.userid} != {$answer.postauthorid}}
-                                    <!-- Button trigger modal -->
-                                    <button type="button" class="linkReportAnswer">
-                                        <span class="reportPost glyphicon glyphicon-flag" title="Report Answer"></span>
-                                    </button>
-                                {/if}
+                            {if {$smarty.session.userid}}
+                                <!-- Button trigger modal -->
+                                <button type="button" class="linkReportAnswer">
+                                    <span class="reportPost glyphicon glyphicon-flag"></span>
+                                </button>
+                            {/if}
 
                                 {if {$smarty.session.permissiontype} == "moderator"}
                                     <button type="submit" formaction="javascript:deleteAnswer({$answer.answerid})" class="linkDeletePost">
