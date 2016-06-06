@@ -6,6 +6,5 @@ function changeTab(n) {
         data: {n:n}
     })
         .done(function (data) {
-            //            alert(data);
         })
 }

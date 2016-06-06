@@ -2,7 +2,7 @@ var idleTime = 0;
 function validateLogin(form, username, password){
     if (username.value == '' || password.value == '') {
         alert('You must provide both a username and password');
-        form.username='error'; // fix this
+        form.username='error'; 
         return false;
     }
     return true;
@@ -47,14 +47,12 @@ function validateRegister(form, username, email, password, name)
     if(!re.test(username.value)) {
         alert("Username must contain only letters, numbers and underscores");
         form.username.style.backgroundColor = "#d3d3d3";
-        //form.username.focus();
         return false;
     }
 
     if (password.value.length < 3) {
         alert("Password must be at least 3 characters long");
         form.password.style.backgroundColor = "#d3d3d3";
-        //form.password.focus();
         return false;
     }
 
@@ -90,7 +88,7 @@ $(document).ready(function() {
     $('.login-form').submit(function () {
         $.ajax({
             type: 'POST',
-            url: BASE_URL + 'actions/members/login.php', // fix this
+            url: BASE_URL + 'actions/members/login.php',
             data: $(this).serialize()
         })
             .done(function (data) {
@@ -112,17 +110,15 @@ $(document).ready(function() {
 
 
     $('.register-form').submit(function(){
-        //event.preventDefault();
         $.ajax({
             type: 'POST',
-            url: BASE_URL + 'actions/members/register.php', // fix this
+            url: BASE_URL + 'actions/members/register.php', 
             data: $(this).serialize()
         })
             .done(function(data) {
                 if (data == 'true') {
                     $('#response-register').html('<p class="messageErrorRegister">' + "Registered with success" + '</p>');
-                    setTimeout(function(){$('.nav-tabs a[href="#' + 'login' + '"]').tab('show');}, 2000);//ativaTab('login');
-                    //window.location='https://gnomo.fe.up.pt/~lbaw1553/pages/questions/list_recent.php'
+                    setTimeout(function(){$('.nav-tabs a[href="#' + 'login' + '"]').tab('show');}, 2000);
                 } else if(data == 'false'){
                     $('#response-register').html('<p class="messageErrorRegister">' + "Fill correctly, please" + '</p>');
                 }
@@ -138,7 +134,7 @@ $(document).ready(function() {
     $('.updatePass').submit(function () {
         $.ajax({
                 type: 'POST',
-                url: BASE_URL + 'actions/members/updatepass.php', // fix this
+                url: BASE_URL + 'actions/members/updatepass.php', 
                 data: $(this).serialize()
             })
             .done(function (data) {
@@ -146,31 +142,21 @@ $(document).ready(function() {
                     window.location.reload();
                     
                     $('.responseupdatePass').html('<div class="alert alert-danger"><strong>' + data + '</strong></div>');
-                    setTimeout(function(){$('.responseupdatePass'), 2000});//ativaTab('login');
-
-                    //window.location = BASE_URL + '/pages/questions/list_recent.php'
+                    setTimeout(function(){$('.responseupdatePass'), 2000});
                 }
                 if ('New passwords don\'t match!') {
                     window.location.reload();
 
                     $('.responseupdatePass').html('<div class="alert alert-danger"><strong>' + data + '</strong></div>');
-                    setTimeout(function(){$('.responseupdatePass'), 2000});//ativaTab('login');
-
-                    //window.location = BASE_URL + '/pages/questions/list_recent.php'
+                    setTimeout(function(){$('.responseupdatePass'), 2000});
                 }
                 if (data == 'ok') {
                     window.location.reload();
 
                     $('.responseupdatePass').html('<div class="alert alert-success"><strong>' + data + '</strong></div>');
-                    setTimeout(function(){$('.responseupdatePass'), 2000});//ativaTab('login');
-
-                    //window.location = BASE_URL + '/pages/questions/list_recent.php'
-                }/*else if (data == 'false') {
-                    
+                    setTimeout(function(){$('.responseupdatePass'), 2000});
                 }
-                else {
-                    alert("some error");
-                }*/
+       
             })
             .fail(function () {
                 alert("Login failed.");
@@ -179,33 +165,3 @@ $(document).ready(function() {
         return false;
     });
 });
-
-/* $('.register-form').submit(function(){
-    $.ajax({
-         type: 'POST',
-         url: "../../actions/members/register.php", // fix this
-         data: $(this).serialize()
-     })
-         .done(function(data) {
-             if (data == 'true') {
-
-                 $('#response-register').html('<p class="messageErrorRegister">' + "Registered with success" + '</p>');
-                 ativaTab('login');
-                 //window.location='https://gnomo.fe.up.pt/~lbaw1553/pages/questions/list_recent.php'
-             } else if(data == 'false'){
-               $('#response-register').html('<p class="messageErrorRegister">' + "Fill correctly, please" + '</p>');
-             }
-             else{alert("some error");}
-         })
-         .fail(function() {
-             alert( "Register failed." );
-         });
-     // to prevent refreshing the whole page
-     return false;
- });
-});*/
-/*
-function ativaTab(tab){
-    $('.nav-tabs a[href="#' + tab + '"]').tab('show');
-}
-    */

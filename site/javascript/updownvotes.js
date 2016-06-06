@@ -60,7 +60,6 @@ function votes(questionID) {
 
 // to prevent refreshing the whole page
     return false;
-    /*});*/
 
 }
 

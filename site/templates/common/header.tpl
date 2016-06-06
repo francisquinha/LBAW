@@ -22,7 +22,6 @@
     <link href="{$BASE_URL}css/blog-home.css" rel="stylesheet">
     <link rel="stylesheet" href="{$BASE_URL}css/style.css">
     <link rel="stylesheet" href="{$BASE_URL}css/listquestion.css">
-    <link rel="stylesheet" href="{$BASE_URL}css/question.css">
     <link rel="stylesheet" href="{$BASE_URL}css/userpage.css">
 
     <!-- add summernote -->
@@ -46,7 +45,6 @@
             </button>
             <a class="navbar-brand1" href="{$BASE_URL}index.php">OutOfBounds</a>
         </div>
-        <!-- Collect the nav links, forms, and other content for toggling -->
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">

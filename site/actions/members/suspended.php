@@ -9,5 +9,5 @@ Suspended(strip_tags($_GET['giverid']), strip_tags($_GET['ownerid']));
 header("Location: ".$BASE_URL."pages/members/details.php?membersid=$user");
 
 
-
+exit;
 ?>

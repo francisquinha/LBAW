@@ -268,3 +268,19 @@
     background-color: white;
     display: none;
 }
+
+
+#qpagequestiontitle{
+    font-family: 'QuanticoRegular';
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 60ch;
+    font-size: 150%;
+}
+
+.note-btn-group.btn-group button{
+    background-color: ButtonShadow;
+
+}

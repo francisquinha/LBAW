@@ -89,8 +89,6 @@
     });
 </script>
 
-<!--<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/js/bootstrap-select.min.js"></script>-->
-
 <script src="{$BASE_URL}javascript/text_editor.js"></script>
 <script src="{$BASE_URL}text_editor/dist/summernote.js"></script>
 <script src="{$BASE_URL}codemirror/lib/codemirror.js"></script>
