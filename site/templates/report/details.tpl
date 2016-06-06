@@ -64,7 +64,7 @@
 
                         <div id="tagsofquestion">
                             {foreach $question.tagarray as $tag}
-                                <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}"
+                                <a class="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}"
                                    style="display:inline-flex;">
                                     <span class="glyphicon glyphicon-tag"></span>{$tag.tagname}
                                 </a>

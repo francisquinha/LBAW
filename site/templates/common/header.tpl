@@ -9,14 +9,11 @@
     <title>OutOfBounds</title>
 
    <!-- Bootstrap Core CSS -->
-    <link href="{$BASE_URL}css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{$BASE_URL}font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="{$BASE_URL}css/bootstrap.min.css">
     <link rel="stylesheet" href="{$BASE_URL}css/form-elements.css">
     <link rel="stylesheet" href="{$BASE_URL}css/footer-distributed-with-address-and-phones.css">
     <link rel="stylesheet" href="{$BASE_URL}fonts/font.css">
-
-<!--    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-select/1.10.0/css/bootstrap-select.min.css" />-->
 
     <!-- Custom CSS -->
     <link href="{$BASE_URL}css/blog-home.css" rel="stylesheet">
@@ -26,13 +23,12 @@
 
     <!-- add summernote -->
     <link href="{$BASE_URL}text_editor/dist/summernote.css" rel="stylesheet">
-
     <link rel="stylesheet" href="{$BASE_URL}codemirror/lib/codemirror.css">
 
 </head>
 <body>
 <!-- Navigation -->
-<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+<nav class="navbar navbar-inverse navbar-fixed-top">
     <div class="container">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">

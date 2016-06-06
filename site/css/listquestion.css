@@ -201,7 +201,7 @@
     font-family: 'QuanticoRegular';
 }
 
-#button_tag{
+.button_tag{
     color: #c9302c;
     font-size: 80%;
     padding:1rem;

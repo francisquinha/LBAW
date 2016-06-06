@@ -1,6 +1,5 @@
 <a href="#" class="btn btn-link btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Login</a>
 
-</li>
 </ul>
 </div>
 <!-- /.navbar-collapse -->
@@ -27,7 +26,7 @@
                         <div id="myTabContent" class="tab-content">
                             <div class="tab-pane active in" id="login">
                                 <fieldset>
-                                    <form role="form" class="login-form">
+                                    <form class="login-form">
                                         <div class="form-group">
                                             <label class="sr-only" for="form-username">Username</label>
                                             <input type="text" name="username" placeholder="Username..."
@@ -43,7 +42,7 @@
                                                 class="btn">Login!</button>
 
                                         <div class="col-sm-11 col-sm-offset-1 form-box">
-                                            <a class="btn btn-link-1 btn-link-1-facebook" href="https://www.facebook.com/dialog/oauth?client_id=<b>104463303035318</b>&amp;scope=<b>email,user_website,user_location</b>&amp;redirect_uri=<b>https://gnomo.fe.up.pt/~lbaw1553/pages/questions/list_recent.php</b>">
+                                            <a class="btn btn-link-1 btn-link-1-facebook" href="#">
                                                 <i class="fa fa-facebook"></i> Facebook
                                             </a>
                                             <a class="btn btn-link-1 btn-link-1-google-plus" href="#">
@@ -58,26 +57,26 @@
                                 </fieldset>
                             </div>
                             <div class="tab-pane fade" id="create">
-                                <form role="form" class="register-form">
+                                <form class="register-form">
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Username</label>
                                         <input type="text" name="username" placeholder="Username..."
-                                               class="form-username form-control" id="form-username">
+                                               class="form-username form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Email</label>
                                         <input type="text" name="email" placeholder="Email..."
-                                               class="form-email form-control" id="form-username">
+                                               class="form-email form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Password</label>
                                         <input type="password" name="password" placeholder="Password..."
-                                               class="form-password form-control" id="form-username">
+                                               class="form-password form-control">
                                     </div>
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Last Name</label>
                                         <input type="text" name="name" placeholder="Name..."
-                                               class="form-name form-control" id="form-username">
+                                               class="form-name form-control">
                                     </div>
                                     <button id="buttonreg" type="submit"
                                             onclick="return validateRegister(this.form, this.form.username, this.form.email, this.form.password, this.form.name);"
