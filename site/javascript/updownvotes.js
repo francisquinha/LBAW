@@ -11,11 +11,8 @@ $(document).ready(function() {
     $('.linkReportAnswer').click( function(e) {
         e.preventDefault();
 
-
         var modal = document.getElementById('myModalAnswer');
-
         var span = document.getElementsByClassName("closeAnswer")[0];
-
         modal.style.display = "block";
         span.onclick = function() {
             modal.style.display = "none";
@@ -35,8 +32,8 @@ $(document).ready(function() {
         e.preventDefault();
 
         var modal = document.getElementById('myModalQuestion');
-
-        var span = document.getElementsByClassName("closeQuestion")[0];
+        alert(modal);
+        /*var span = document.getElementsByClassName("closeQuestion")[0];
 
         modal.style.display = "block";
         span.onclick = function() {
@@ -49,7 +46,28 @@ $(document).ready(function() {
             }
         }
         return false;
+        */
+    });
+
+    $('.linkReportBestAnswer').click( function(e) {
+        e.preventDefault();
+
+        var modal = document.getElementById('myModalBestAnswer');
+        var span = document.getElementsByClassName("closeAnswer")[0];
+        modal.style.display = "block";
+        span.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+        return false;
+
     } );
+
 
     });
 
