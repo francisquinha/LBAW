@@ -30,7 +30,7 @@
                                                 href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">{$question.name}</a>
                     <span id="timeago">asked {$question.timeago}</span></div>
                 <div id="questioncategorysquare">
-                    <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
+                    <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}&page=1">
                         {$question.categoryname}
                     </a>
                 </div>
@@ -60,11 +60,11 @@
 
                 <div id="questionbuttonsection">
                     <a>
-                        <span class="fa fa-pencil"></span>
+                        <span class="fa fa-pencil" title="Number Answers"></span>
                         {$question.answers}
                     </a>
                     <a>
-                        <span class="glyphicon glyphicon-eye-open"></span>
+                        <span class="glyphicon glyphicon-eye-open" title="Number Views"></span>
                         {$question.views}
                     </a>
 
@@ -72,7 +72,7 @@
 
                 <div id="tagsofquestion">
                     {foreach $question.tagarray as $tag}
-                        <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}"
+                        <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}&page=1"
                            style="display:inline-flex;">
                             <span class="glyphicon glyphicon-tag"></span>{$tag.tagname}
                         </a>
@@ -84,26 +84,26 @@
                         <button class="upquestion" type="submit" >
                         <span
                                 class="glyphicon glyphicon-thumbs-up"
-                                style="padding:0; margin:0;color:#4aaf51;"></span>
+                                style="padding:0; margin:0;color:#4aaf51;" title="Like"></span>
 
                         </button>
                         <span id="questionRating-{$question.questionid}">{$question.postrating}</span>
                         <button class="downquestion" type="submit">
                             <span
                                     class="glyphicon glyphicon-thumbs-down"
-                                    style="padding:0; margin:0;color:#c9302c;"></span>
+                                    style="padding:0; margin:0;color:#c9302c;" title="Dislike" ></span>
                         </button>
 
                         {if {$smarty.session.userid}}
                             <!-- Button trigger modal -->
                             <button type="button" class="linkReportQuestion">
-                                <span class="reportPost glyphicon glyphicon-flag"></span>
+                                <span class="reportPost glyphicon glyphicon-flag" title="Report Question"></span>
                             </button>
                         {/if}
 
                         {if {$smarty.session.permissiontype} == "moderator"}
                             <button type="submit" formaction="javascript:deleteQuestion({$question.questionid})" class="linkDeletePost">
-                                <span class="deletePost glyphicon glyphicon-remove"></span>
+                                <span class="deletePost glyphicon glyphicon-remove" title="Delete Question"></span>
                             </button>
                         {/if}
 
@@ -175,20 +175,20 @@
                     </div>
 
                     <div class="questionvotesection">
-
-                        <form role="form" action="javascript:votes({$answer.answerid})" class="updownanswer">
-                            <button class="upquestion" type="submit" >
+                        <li class="noBullets" style="display: inline-flex;">
+                            <form role="form" action="javascript:votes({$answer.answerid})" class="updownanswer">
+                                <button class="upquestion" type="submit" >
                         <span
                                 class="glyphicon glyphicon-thumbs-up"
                                 style="padding:0; margin:0;color:#4aaf51;"></span>
 
-                            </button>
-                            <span id="questionRating-{$answer.answerid}">{$answer.postrating}</span>
-                            <button class="downquestion" type="submit">
+                                </button>
+                                <span id="questionRating-{$answer.answerid}">{$answer.postrating}</span>
+                                <button class="downquestion" type="submit">
                             <span
                                     class="glyphicon glyphicon-thumbs-down"
                                     style="padding:0; margin:0;color:#c9302c;"></span>
-                            </button>
+                                </button>
 
                             {if {$smarty.session.userid}}
                                 <!-- Button trigger modal -->
@@ -197,13 +197,21 @@
                                 </button>
                             {/if}
 
-                            {if {$smarty.session.permissiontype} == "moderator"}
-                                <button type="submit" formaction="javascript:deleteAnswer({$answer.answerid})" class="linkDeletePost">
-                                    <span class="deletePost glyphicon glyphicon-remove"></span>
-                                </button>
-                            {/if}
+                                {if {$smarty.session.permissiontype} == "moderator"}
+                                    <button type="submit" formaction="javascript:deleteAnswer({$answer.answerid})" class="linkDeletePost">
+                                        <span class="deletePost glyphicon glyphicon-remove" title="Delete Answer"></span>
+                                    </button>
+                                {/if}
 
-                        </form>
+                            </form>
+                            {if $smarty.session.userid eq $question.postauthorid}
+                                <a href="{$BASE_URL}actions/posts/bestanswer.php?answerid={$answer.answerid}&questionid={$question.questionid}">
+                                    <button class="linkDeletePost">
+                                        <span class=" deletePost glyphicon glyphicon-star" style="color:#888;"  title="Best Answer"></span>
+                                    </button>
+                                </a>
+                            {/if}
+                        </li>
 
                         <!-- The Modal -->
                         <div id="myModalBestAnswer" class="modalAnswer">
@@ -219,7 +227,7 @@
 
                         </div>
 
-                      <!-- The Modal -->
+                        <!-- The Modal -->
                         <div id="myModalAnswer" class="modalAnswer">
 
                             <!-- Modal content -->
