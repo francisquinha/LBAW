@@ -8,6 +8,13 @@
         </option>
     {/foreach}
 {/function}
+
+<script language="JavaScript">
+    function setVisibility(id, visibility) {
+        document.getElementById(id).style.display = visibility;
+    }
+</script>
+
 <br>
 <br>
 <div class="container">
@@ -31,30 +38,41 @@
                 <br>
                 {if $USERNAME}
                     {if $smarty.session.permissiontype eq 'administrator'}
+                        <br>
+                        <button class="btn-xs" style="background-color: #33cc33; color:white;" type=button name=type value='Show Layer'
+                                onclick="setVisibility('createcategory', 'inline');" ;>Add Category <span
+                                    class="glyphicon glyphicon-plus"
+                                    style="padding:0; margin:0;color:white; font-size: 70%;"></span></button>
+                        <button class="btn-xs" style="background-color: #33cc33; color:white;" type=button name=type value='Show Layer'
+                                onclick="setVisibility('deletetag', 'inline');" ;>Remove Category <span
+                                    class="glyphicon glyphicon-minus"
+                                    style="padding:0; margin:0;color:white; font-size: 70%;"></span></button>
                         <div id="createcategory">
+                            <br><br>
                             <form role="form" action="{$BASE_URL}actions/members/createnewcategory.php" method="post">
-
-                                <div class="col-md-4">
-                                        <select name="parentcategoryid" class="form-control">
-                                            <option disabled selected>Choose Parent Category</option>
-                                            <option value=''>None</option>
-                                            {foreach $root_categories as $root_category}
-                                                <option value={$root_category.categoryid}>
-                                                    {$root_category.categoryname}
-                                                    {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
-                                                </option>
-                                            {/foreach}
-                                        </select>
-                                        <input  style="display:none;" class="form-control" type="text">
+                                <div class="col-md-6">
+                                    <select name="parentcategoryid" class="form-control">
+                                        <option disabled selected>Choose Parent Category</option>
+                                        <option value=''>None</option>
+                                        {foreach $root_categories as $root_category}
+                                            <option value={$root_category.categoryid}>
+                                                {$root_category.categoryname}
+                                                {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
+                                            </option>
+                                        {/foreach}
+                                    </select>
                                 </div>
-
-                                <input type="text" class="newCategoryName" name="newCategory">
-                                <input type="submit" value="Create New Category">
+                                <div class="col-md-6">
+                                <input type="text" class="newCategoryName" name="newCategory" placeholder="new category">
+                                <input class="btn-xs" type="submit" value="Create">
+                                </div>
                             </form>
+                        </div>
+                        <div id="removecategory">
                         </div>
                     {/if}
                 {/if}
-                <br>
+                <br><br><br>
                 <ul class="browseAlign noBullets">
                     {foreach $root_categories as $root_category}
                         <li>

@@ -3,10 +3,6 @@
 <footer class="footer-distributed" style="margin-bottom: 0;">
 
     <div class="footer-left">
-        <a href="#">Question</a>
-        <a href="#">Admin</a>
-        <a href="#">Moderator</a>
-        <a href="#">Member</a>
         <h2>OutOfBounds</h2>
 
         <p class="footer-links">
@@ -19,24 +15,24 @@
             <a href="{$BASE_URL}pages/contact/contact.php">Contact</a>
         </p>
 
-        <p class="footer-company-name">OutOfBounds &copy; 2016</p>
+        <p class="footer-company-name">Area53 &copy; 2016</p>
     </div>
 
     <div class="footer-center">
 
         <div>
             <i class="fa fa-map-marker"></i>
-            <p><span>21 Revolution Street</span> Paris, France</p>
+            <p><span>Rua Dr. Roberto Frias</span> Porto, Portugal</p>
         </div>
 
         <div>
             <i class="fa fa-phone"></i>
-            <p>+1 555 123456</p>
+            <p>+351 22 508 1400</p>
         </div>
 
         <div>
             <i class="fa fa-envelope"></i>
-            <p><a href="mailto:support@outofbounds.com">support@company.com</a></p>
+            <p><a href="mailto:support@area53.com">support@area53.com</a></p>
         </div>
 
     </div>
@@ -44,8 +40,8 @@
     <div class="footer-right">
 
         <p class="footer-company-about">
-            <span>About the company</span>
-            Lorem ipsum dolor sit amet, consectateur adispicing elit. Fusce euismod convallis velit, eu auctor lacus vehicula sit amet.
+            <span>About Area53</span>
+            Area53 is a fictional company created in the scope of LBAW, in MIEIC FEUP 2016.
         </p>
 
         <div class="footer-icons">

@@ -13,7 +13,7 @@ function isLoginCorrect($username, $password)
     $stmt = $conn->prepare("
 SELECT *
 FROM member
-WHERE username = ? AND password = ? AND permissiontype NOT IN ('banned', 'disabled', 'suspended');");
+WHERE username = ? AND password = ? AND permissiontype NOT IN ('banned', 'disabled', 'suspended', 'system');");
     $stmt->execute(array($username, sha1($password)));
     return $stmt->fetch() == true;
 }
@@ -24,7 +24,7 @@ function getLogin($username, $password)
     $stmt = $conn->prepare("
 SELECT memberid, permissiontype
 FROM member
-WHERE username = ? AND password = ? AND permissiontype NOT IN ('banned', 'disabled', 'suspended');");
+WHERE username = ? AND password = ? AND permissiontype NOT IN ('banned', 'disabled', 'suspended', 'system');");
     $stmt->execute(array($username, sha1($password)));
     return $stmt->fetch();
 }

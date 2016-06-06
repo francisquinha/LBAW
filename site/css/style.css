@@ -438,4 +438,21 @@ a , input, form, button{
 
 #createtag{
 	min-height: 200px;
+	display:none;
+
+}
+
+#createcategory{
+	min-height: 400px;
+	display:none;
+
+}
+
+#removecategory{
+	min-height: 400px;
+	display:none;
+}
+#deletetag{
+	min-height: 200px;
+	display:none;
 }

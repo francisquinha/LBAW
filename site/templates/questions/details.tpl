@@ -137,20 +137,20 @@
                             <button class="upquestion" type="submit" >
                         <span
                                 class="glyphicon glyphicon-thumbs-up"
-                                style="padding:0; margin:0;color:#4aaf51;"></span>
+                                style="padding:0; margin:0;color:#4aaf51;" title="Like"></span>
 
                             </button>
                             <span id="questionRating-{$bestanswer.answerid}">{$bestanswer.postrating}</span>
                             <button class="downquestion" type="submit">
                             <span
                                     class="glyphicon glyphicon-thumbs-down"
-                                    style="padding:0; margin:0;color:#c9302c;"></span>
+                                    style="padding:0; margin:0;color:#c9302c;" title="Dislike"></span>
                             </button>
 
                             {if {$smarty.session.userid}}
                                 <!-- Button trigger modal -->
                                 <button type="button" class="linkReportBestAnswer">
-                                    <span class="reportPost glyphicon glyphicon-flag"></span>
+                                    <span class="reportPost glyphicon glyphicon-flag" title="Report"></span>
                                 </button>
                                 <div class="reportFormBestAnswer">
                                     <textarea class="reportBody2" cols="50" rows ="20" name="body"></textarea>
@@ -231,14 +231,18 @@
                 <hr>
             {/foreach}
 
-            <button data-toggle="tooltip" title="Make login!" id="edit" class="btn btn-primary" type="button">Answer</button>
             {if {$smarty.session.userid}}
 
                 <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
+
                     <div class="summernote"></div>
+
+                    <!--  <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
+                      <input type="submit" value="Post" class="submitButton">-->
+                    <div id="edit"class="summernote"></div>
+
+
                 </form>
-            {else}
-                <div class="messageAnswer">Please, make login</div>
             {/if}
 
         </div>

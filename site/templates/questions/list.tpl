@@ -1,35 +1,15 @@
 {include file='common/header.tpl'}
 
-<script language="javascript">
-
-    function myFunction(){
-
-            var status=true;
-
-            if(status) {
-                $('.alert-success').show();
-            }
-    }
-</script>
-
-<div class = "alert alert-success hide">
-    <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
-        &times;
-    </button>
-
-    Success! Well done its submitted.
-</div>
-
-<div class = "alert alert-unsuccess hide">
-    <button type = "button" class = "close" data-dismiss = "alert" aria-hidden = "true">
-        &times;
-    </button>
-
-    Error ! Change few things.
-</div>
-
 <br>
 <br>
+
+{if $kids|@count == 0 && $questions|@count == 0 && $smarty.session.permissiontype=="administrator"}
+    <form role="form" action="{$BASE_URL}actions/members/deletecategory.php" method="get">
+        <input type="hidden" name="categoryid" value={$smarty.get.categoryid}>
+        <button class="btn-primary " type="submit" value="dsa"> Delete</button>
+    </form>
+{/if}
+
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->
@@ -73,15 +53,15 @@
                             </div>
                             <div id="questionbuttonsection">
                                 <a class="btn btn-primary btn-sm btn-success">
-                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    <span class="glyphicon glyphicon-thumbs-up" title="Likes"></span>
                                     {$question.postrating}
                                 </a>
                                 <a class="btn btn-primary btn-sm btn-warning">
-                                    <span class="fa fa-pencil"></span>
+                                    <span class="fa fa-pencil" title="Answers"></span>
                                     {$question.answers}
                                 </a>
                                 <a class="btn btn-sm btn-primary">
-                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <span class="glyphicon glyphicon-eye-open" title="Views"></span>
                                     {$question.views}
                                 </a>
                             </div>
@@ -125,15 +105,15 @@
                             </div>
                             <div id="questionbuttonsection">
                                 <a class="btn btn-primary btn-sm btn-success">
-                                    <span class="glyphicon glyphicon-thumbs-up"></span>
+                                    <span class="glyphicon glyphicon-thumbs-up" title="Like"></span>
                                     {$question.postrating}
                                 </a>
                                 <a class="btn btn-primary btn-sm btn-warning">
-                                    <span class="fa fa-pencil"></span>
+                                    <span class="fa fa-pencil" title="Answers"></span>
                                     {$question.answers}
                                 </a>
                                 <a class="btn btn-sm btn-primary">
-                                    <span class="glyphicon glyphicon-eye-open"></span>
+                                    <span class="glyphicon glyphicon-eye-open" title="Views"></span>
                                     {$question.views}
                                 </a>
                             </div>
