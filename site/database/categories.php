@@ -27,8 +27,7 @@ ORDER BY categoryid;");
 function changecategoryquestion($question, $category)
 {
     global $conn;
-    $stmt = $conn->prepare("
-    
+    $stmt = $conn->prepare("  
     UPDATE question
 SET categoryid = :categoryid
 WHERE question.questionid = :questionid;
@@ -37,7 +36,30 @@ WHERE question.questionid = :questionid;
     $stmt->bindParam('categoryid', $category);
 
     $stmt->execute();
-
 }
 
+function createnewcategory($newcategory, $parentcategory)
+{
+    global $conn;
+    $stmt = $conn->prepare("    
+    INSERT INTO Category (categoryName, parentcategoryid) 
+    VALUES (:categoryname, :parentcategoryid);
+    ");
+    $stmt->bindParam('categoryname', $newcategory);
+    $stmt->bindParam('parentcategoryid', $parentcategory);
+
+    $stmt->execute();
+}
+
+function createnewparentcategory($newcategory)
+{
+    global $conn;
+    $stmt = $conn->prepare("    
+    INSERT INTO Category (categoryName) 
+    VALUES (:categoryname);
+    ");
+    $stmt->bindParam('categoryname', $newcategory);
+
+    $stmt->execute();
+}
 ?>

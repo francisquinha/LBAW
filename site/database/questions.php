@@ -102,7 +102,7 @@ OFFSET :m;");
     return $stmt->fetchAll();
 }
 
-function getTagQuestions($id)
+function getTagQuestions($id, $n, $m)
 {
     global $conn;
     $stmt = $conn->prepare("
@@ -117,14 +117,19 @@ SELECT
   question.categoryid
 FROM post, question, classification
 WHERE question.questionid = classification.questionid 
-  AND classification.tagid = ? 
+  AND classification.tagid = :id 
   AND post.postid = question.questionid
-  AND post.deletorid IS NULL;");
-    $stmt->execute($id);
+  AND post.deletorid IS NULL
+LIMIT :n
+OFFSET :m;");
+    $stmt->bindParam(':n', $n);
+    $stmt->bindParam(':m', $m);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
     return $stmt->fetchAll();
 }
 
-function getCategoryQuestions($id)
+function getCategoryQuestions($id, $n, $m)
 {
     global $conn;
     $stmt = $conn->prepare("
@@ -138,10 +143,15 @@ SELECT
   question.answers,
   question.categoryid
 FROM post, question
-WHERE question.categoryid = ? 
+WHERE question.categoryid = :id 
   AND post.postid = question.questionid
-  AND post.deletorid IS NULL;");
-    $stmt->execute($id);
+  AND post.deletorid IS NULL
+LIMIT :n
+OFFSET :m;");
+    $stmt->bindParam(':n', $n);
+    $stmt->bindParam(':m', $m);
+    $stmt->bindParam(':id', $id);
+    $stmt->execute();
     return $stmt->fetchAll();
 }
 
@@ -341,4 +351,63 @@ WHERE post.postid = :postid;");
     $stmt->bindParam(':memberid', $memberid);
     $stmt->execute();
     return true;
+}
+
+function getNumberQuestions()
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT reltuples::bigint AS number
+FROM   pg_class
+WHERE  relname = 'question';");
+    $stmt->execute();
+    return $stmt->fetch();
+}
+
+function getNumberSearchQuestions($text) {
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT count(*) AS number
+FROM fulltextpost
+WHERE tsvPost @@ plainto_tsquery(?);");
+    $stmt->execute(array($text));
+    return $stmt->fetch();
+}
+
+function getNumberTagQuestions($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT count(*) AS number
+FROM post, classification
+WHERE classification.tagid = ? 
+  AND post.postid = classification.questionid
+  AND post.deletorid IS NULL;");
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+}
+
+function getNumberCategoryQuestions($id)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+SELECT count(*) AS number
+FROM post, question
+WHERE question.categoryid = ? 
+  AND post.postid = question.questionid
+  AND post.deletorid IS NULL;");
+    $stmt->execute(array($id));
+    return $stmt->fetch();
+}
+
+function chooseBestAnswer($questionid, $answerid)
+{
+    global $conn;
+    $stmt = $conn->prepare("
+UPDATE question
+SET bestanswerid = :aid
+WHERE questionid = :qid;");
+    $stmt->bindParam('qid', $questionid);
+    $stmt->bindParam('aid', $answerid);
+    $stmt->execute();
 }

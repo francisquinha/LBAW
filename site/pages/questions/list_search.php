@@ -2,11 +2,15 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/questions.php');
 include_once($BASE_DIR . 'pages/questions/time.php');
+include_once($BASE_DIR . 'pages/pagination/pagination.php');
 
 if (isset($_GET['search']) && $_GET['search'] != "") {
 
     $text = pg_escape_string($_GET['search']);
-    $questions = getSearchPosts($text, 15, 0);
+
+    $items = 10;
+
+    $questions = getSearchPosts($text, $items, ($_GET['page'] - 1) * $items);
 
     foreach ($questions as $key => $question) {
         $questions[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
@@ -28,6 +32,9 @@ if (isset($_GET['search']) && $_GET['search'] != "") {
     $smarty->assign('style_tab1', $style_tab);
     $smarty->assign('style_tab2', $style_tab);
     $smarty->display('questions/list.tpl');
+
+    pagination($_GET['page'], getNumberSearchQuestions($text)['number'], $items, 2, "list_search.php?search=".$_GET['search']."&page=%d");
+    echo '</div>';
 
     $smarty->display('common/menu_side.tpl');
     include_once($BASE_DIR .'pages/categories/list_top.php');
