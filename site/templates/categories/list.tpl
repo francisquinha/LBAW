@@ -8,6 +8,13 @@
         </option>
     {/foreach}
 {/function}
+
+<script language="JavaScript">
+    function setVisibility(id, visibility) {
+        document.getElementById(id).style.display = visibility;
+    }
+</script>
+
 <br>
 <br>
 <div class="container">
@@ -31,6 +38,15 @@
                 <br>
                 {if $USERNAME}
                     {if $smarty.session.permissiontype eq 'administrator'}
+                        <br>
+                        <button class="btn-xs" style="background-color: #33cc33; color:white;" type=button name=type value='Show Layer'
+                                onclick="setVisibility('createcategory', 'inline');" ;>Add Tag <span
+                                    class="glyphicon glyphicon-plus"
+                                    style="padding:0; margin:0;color:white; font-size: 70%;"></span></button>
+                        <button class="btn-xs" style="background-color: #33cc33; color:white;" type=button name=type value='Show Layer'
+                                onclick="setVisibility('deletetag', 'inline');" ;>Remove Tag <span
+                                    class="glyphicon glyphicon-minus"
+                                    style="padding:0; margin:0;color:white; font-size: 70%;"></span></button>
                         <div id="createcategory">
                             <form role="form" action="{$BASE_URL}actions/members/createnewcategory.php" method="post">
 
@@ -45,7 +61,6 @@
                                                 </option>
                                             {/foreach}
                                         </select>
-                                        <input  style="display:none;" class="form-control" type="text">
                                 </div>
 
                                 <input type="text" class="newCategoryName" name="newCategory">
