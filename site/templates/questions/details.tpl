@@ -237,7 +237,7 @@
                     <div class="summernote"></div>
                 </form>
             {else}
-                <div class="messageAnswer">Please, make login</div>
+                <div class="messageAnswer">Please, login</div>
             {/if}
 
         </div>

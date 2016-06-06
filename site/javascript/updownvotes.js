@@ -71,7 +71,7 @@ function sendReport1(postID) {
     }
     $.ajax({
         type: 'POST',
-        url: BASE_URL + '/actions/posts/reports.php',
+        url: BASE_URL + 'actions/posts/reports.php',
         data: {postid: postID, reportbody: reportBody}
     })
         .done(function (data) {
@@ -87,7 +87,7 @@ function sendReport2(postID) {
     }
     $.ajax({
         type: 'POST',
-        url: BASE_URL + '/actions/posts/reports.php',
+        url: BASE_URL + 'actions/posts/reports.php',
         data: {postid: postID, reportbody: reportBody}
     })
         .done(function (data) {
@@ -103,7 +103,7 @@ function sendReport3(postID) {
     }
     $.ajax({
         type: 'POST',
-        url: BASE_URL + '/actions/posts/reports.php',
+        url: BASE_URL + 'actions/posts/reports.php',
         data: {postid: postID, reportbody: reportBody}
     })
         .done(function (data) {
