@@ -54,9 +54,6 @@
                     <a href="{$BASE_URL}pages/members/list_all.php?page=1" class="btn btn-link btn-lg">Users</a>
                 </li>
                 <li>
-                    <a href="{$BASE_URL}pages/tags/list_all.php" class="btn btn-link btn-lg">Tags</a>
-                </li>
-                <li>
                     <a href="{$BASE_URL}pages/about/about.php" class="btn btn-link btn-lg">About</a>
                 </li>
                 <li>
