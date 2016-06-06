@@ -12,5 +12,17 @@ $(document).ready(function() {
         }
     });
 
+    $('option').mousedown(function(e) {
+        e.preventDefault();
+        $(this).prop('selected', $(this).prop('selected') ? false : true);
+
+        if ($('#tagsbox').val().length > 5) {
+            alert('You can only choose 5 tags!');
+            $('#tagsbox').val(last_valid_selection);
+        } else {
+            last_valid_selection = $(this).val();
+        }
+    });
+
 });
 

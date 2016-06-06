@@ -29,14 +29,14 @@
                                 onclick="setVisibility('deletetag', 'inline');" ;>Remove Tag <span
                                     class="glyphicon glyphicon-minus"
                                     style="padding:0; margin:0;color:white; font-size: 70%;"></span></button>
-                        <div id="createtag" style="display:none;">
+                        <div id="createtag">
                             <br>
                             <form role="form" action="javascript:createTag();" style="overflow: auto; padding:4rem; padding-bottom: 0;">
                                 <input type="text" class="newTagName" name="newTag" placeholder="new tag">
                                 <input class="btn-xs" type="submit" value="Add">
                             </form>
                         </div>
-                        <div id="deletetag" style="display:none;">
+                        <div id="deletetag" >
                             <br>
                             <form action="{$BASE_URL}actions/tags/deletetag.php"  method="post" role="form" style="overflow: auto; padding:4rem; padding-bottom: 0;">
                                 <select class="form-control" name="tagtodelete" title="tagtodelete">
