@@ -87,7 +87,7 @@ h3 {
 img { max-width: 100%; }
 
 ::-moz-selection { background: #4aaf51; color: #fff; text-shadow: none; }
-::selection { background: #4aaf51; color: #fff; text-shadow: none; }
+/*::selection { background: #4aaf51; color: #fff; text-shadow: none; }*/
 
 
 .btn-link-1 {
@@ -276,7 +276,7 @@ a > span{
 }
 
 .container {
-	margin: 1 0rem;
+	margin:1rem auto;
 }
 
 .hide-tab{
@@ -404,7 +404,7 @@ a , input, form, button{
 }
 
 .inactive_link {
-	pointer-events: none;
+	/*pointer-events: none;*/
 	cursor: default;
 	color: #888;
 	font-weight: normal;

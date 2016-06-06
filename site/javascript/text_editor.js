@@ -5,9 +5,15 @@ $(document).ready(function() {
         $('.messageAnswer').show();
         setTimeout(function(){
             $('.messageAnswer').hide();
-            $('#edit').show();
-        }, 1500);
+            
+            $.ajax({
+                url: BASE_URL + 'actions/members/session.php',
+            }).done(function(data) {
+                if(data != 'logged')
+                    $('#edit').show();
+            });
 
+        }, 1500);
 
             var editor = $('.summernote');
             editor.summernote({
