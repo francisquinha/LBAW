@@ -6,7 +6,7 @@ include_once($BASE_DIR . 'pages/pagination/pagination.php');
 
 if (isset($_GET['categoryid'])) {
 
-    $items = 15;
+    $items = 10;
 
     $questions = getCategoryQuestions($_GET['categoryid'], $items, ($_GET['page'] - 1) * $items);
 
