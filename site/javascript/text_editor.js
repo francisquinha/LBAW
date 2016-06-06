@@ -1,9 +1,12 @@
 $(document).ready(function() {
 
-    $('#edit').fadeIn(function(){
+    $('#edit').click(function(){
+        $(this).hide();
+        $('.messageAnswer').show();
         setTimeout(function(){
-            $('.messageAnswer').remove();
-        }, 5000);
+            $('.messageAnswer').hide();
+            $('#edit').show();
+        }, 1500);
 
 
             var editor = $('.summernote');

@@ -1,10 +1,10 @@
 {include file='common/header.tpl'}
-{function recursive_children_sel}
+{function recursive_children}
     {foreach $child_categories as $child_category}
         <option value={$child_category.categoryid}>
             {for $i = 0 to $level} &nbsp &nbsp &nbsp {/for}
             {$child_category.categoryname}
-            {recursive_children_sel child_categories=$child_categories_{$child_category.categoryid} level = $level + 1}
+            {recursive_children child_categories=$child_categories_{$child_category.categoryid} level = $level + 1}
         </option>
     {/foreach}
 {/function}
@@ -45,7 +45,7 @@
                                     {foreach $root_categories as $root_category}
                                         <option value={$root_category.categoryid}>
                                             {$root_category.categoryname}
-                                            {recursive_children_sel child_categories=$child_categories_{$root_category.categoryid} level = 0}
+                                            {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
                                         </option>
                                     {/foreach}
                                 </select>
@@ -233,7 +233,6 @@
 
             <button data-toggle="tooltip" title="Make login!" id="edit" class="btn btn-primary" type="button">Answer</button>
             {if {$smarty.session.userid}}
-<!-->
                 <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
                     <div class="summernote"></div>
                 </form>
