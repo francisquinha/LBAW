@@ -2130,7 +2130,7 @@ INSERT INTO Category (categoryName, parentcategoryid) VALUES
 	('Software design patterns‎', NULL),
 	('Source code‎', NULL),
 	('Source code generation‎', 39),
-	('Other', NULL);
+	('', NULL);
 
 
 -- Responsibility
