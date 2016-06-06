@@ -13,9 +13,7 @@ for ($i = 0; $i < $length; $i++) {
     $members_name = 'members'.$letters[$i];
     $$members_name = getMembersStartingWith($letters1[$i], $letters2[$i]);
     foreach ($$members_name as $key => $member) {
-        unset($emailhash);
-        $emailhash = md5(strtolower(trim($member['email'])));
-        ${$members_name}[$key]['emailhash'] = $emailhash;
+        ${$members_name}[$key]['emailhash'] = md5(strtolower(trim($member['email'])));
     }
     $smarty->assign($members_name, $$members_name);
 }

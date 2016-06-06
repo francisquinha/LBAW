@@ -35,6 +35,7 @@ $member = getMember([$_GET['membersid']]);
 
 foreach ($member as $key => $membern) {
     $member[$key]['timeago'] = time_elapsed_string_no_ago(strtotime($membern['registrationdate']));
+    $member[$key]['emailhash'] = md5(strtolower(trim($membern['email'])));
 }
 
 $questions = getMemberQuestions([$_GET['membersid']]);
