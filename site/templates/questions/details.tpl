@@ -233,7 +233,7 @@
 
             <button data-toggle="tooltip" title="Make login!" id="edit" class="btn btn-primary" type="button">Answer</button>
             {if {$smarty.session.userid}}
-
+<!-->
                 <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
                     <div class="summernote"></div>
                 </form>
