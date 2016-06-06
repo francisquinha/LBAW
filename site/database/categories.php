@@ -62,4 +62,17 @@ function createnewparentcategory($newcategory)
 
     $stmt->execute();
 }
+
+function deletecategory($categoryid)
+{
+    global $conn;
+    $stmt = $conn->prepare("    
+    DELETE
+    FROM Category
+    WHERE categoryID = :categoryID;
+    ");
+    $stmt->bindParam('categoryID', $categoryid);
+
+    $stmt->execute();
+}
 ?>

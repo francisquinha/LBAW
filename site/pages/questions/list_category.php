@@ -1,21 +1,17 @@
 <?php
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/questions.php');
+include_once($BASE_DIR . 'database/categories.php');
 include_once($BASE_DIR . 'pages/questions/time.php');
 include_once($BASE_DIR . 'pages/pagination/pagination.php');
 
 if (isset($_GET['categoryid'])) {
 
-    $items = 15;
+    $items = 10;
 
     $questions = getCategoryQuestions($_GET['categoryid'], $items, ($_GET['page'] - 1) * $items);
 
-    $kids = getChildCategories($_GET['categoryid']);
-    
-    if(empty($questions) && empty($kids))
-    {
-        displayDeleteButton($_GET['categoryid']);
-    }
+    $smarty->assign('kids', getChildCategories([$_GET['categoryid']]));
 
     foreach ($questions as $key => $question) {
         $questions[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
