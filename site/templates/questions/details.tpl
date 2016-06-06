@@ -99,6 +99,11 @@
                             <button type="button" class="linkReportQuestion">
                                 <span class="reportPost glyphicon glyphicon-flag" title="Report Question"></span>
                             </button>
+                            <div class="reportFormQuestion">
+                                <form>
+                                    <textarea class="reportBody1" cols="50" rows ="20" name="body"></textarea>
+                                    <input formaction="javascript:sendReport1({$question.questionid})" type="submit" value="Post" class="submitButton">
+                            </div>
                         {/if}
 
                         {if {$smarty.session.permissiontype} == "moderator"}
@@ -147,6 +152,10 @@
                                 <button type="button" class="linkReportBestAnswer">
                                     <span class="reportPost glyphicon glyphicon-flag" title="Report"></span>
                                 </button>
+                                <div class="reportFormBestAnswer">
+                                    <textarea class="reportBody2" cols="50" rows ="20" name="body"></textarea>
+                                    <input formaction="javascript:sendReport2({$bestanswer.answerid})" type="submit" value="Post" class="submitButton">
+                                </div>
                             {/if}
 
                             {if {$smarty.session.permissiontype} == "moderator"}
@@ -190,12 +199,16 @@
                                     style="padding:0; margin:0;color:#c9302c;"></span>
                                 </button>
 
-                            {if {$smarty.session.userid}}
-                                <!-- Button trigger modal -->
-                                <button type="button" class="linkReportAnswer">
-                                    <span class="reportPost glyphicon glyphicon-flag"></span>
-                                </button>
-                            {/if}
+                                {if {$smarty.session.userid}}
+                                    <!-- Button trigger modal -->
+                                    <button type="button" class="linkReportAnswer">
+                                        <span class="reportPost glyphicon glyphicon-flag"></span>
+                                    </button>
+                                    <div class="reportFormAnswer">
+                                            <textarea class="reportBody3" cols="50" rows ="20" name="body"></textarea>
+                                            <input formaction="javascript:sendReport3({$answer.answerid})" type="submit" value="Post" class="submitButton">
+                                    </div>
+                                {/if}
 
                                 {if {$smarty.session.permissiontype} == "moderator"}
                                     <button type="submit" formaction="javascript:deleteAnswer({$answer.answerid})" class="linkDeletePost">
@@ -213,60 +226,19 @@
                             {/if}
                         </li>
 
-                        <!-- The Modal -->
-                        <div id="myModalBestAnswer" class="modalAnswer">
-
-                            <!-- Modal content -->
-                            <div class="modal-contentAnswer">
-                                <span class="closeAnswer">×</span>
-                                <form class="reportArea" role="form" action="javascript:sendReport({$bestanswer.answerid})">
-                                    <input type="text" class="reportBody">
-                                    <input type="submit" value="Submit">
-                                </form>
-                            </div>
-
-                        </div>
-
-                        <!-- The Modal -->
-                        <div id="myModalAnswer" class="modalAnswer">
-
-                            <!-- Modal content -->
-                            <div class="modal-contentAnswer">
-                                <span class="closeAnswer">×</span>
-                                <form class="reportArea" role="form" action="javascript:sendReport({$answer.answerid})">
-                                    <input type="text" class="reportBody">
-                                    <input type="submit" value="Submit">
-                                </form>
-                            </div>
-
-                        </div>
-
-                        <!-- The Modal -->
-                        <div id="myModalQuestion" class="modalQuestion">
-
-                            <!-- Modal content -->
-                            <div class="modal-contentQuestion">
-                                <span class="closeQuestion">×</span>
-                                <form class="reportArea" role="form" action="javascript:sendReport({$question.questionid})">
-                                    <input type="text" class="reportBody">
-                                    <input type="submit" value="Submit">
-                                </form>
-                            </div>
-
-                        </div>
                     </div>
                 </div>
                 <hr>
             {/foreach}
 
+            <button data-toggle="tooltip" title="Make login!" id="edit" class="btn btn-primary" type="button">Answer</button>
             {if {$smarty.session.userid}}
 
                 <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
-                    <!--  <textarea id="confirmationText" class="text" cols="86" rows ="20" name="body"></textarea>
-                      <input type="submit" value="Post" class="submitButton">-->
-                    <div id="edit"class="summernote"></div>
-
+                    <div class="summernote"></div>
                 </form>
+            {else}
+                <div class="messageAnswer">Please, make login</div>
             {/if}
 
         </div>
