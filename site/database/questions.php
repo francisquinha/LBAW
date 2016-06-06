@@ -79,11 +79,11 @@ function getSearchPosts($text, $n, $m) {
     global $conn;
     $stmt = $conn->prepare("
 SELECT
-  post.postid,
+  question.questionid,
   post.postauthorid,
   post.postcreationdate,
-  post.postrating,
   question.title,
+  post.postrating,
   question.views,
   question.answers,
   question.categoryid
@@ -97,7 +97,7 @@ LIMIT :n
 OFFSET :m;");
     $stmt->bindParam(':n', $n);
     $stmt->bindParam(':m', $m);
-    $stmt->bindParam(':text', $text);
+    $stmt->bindParam('text', $text);
     $stmt->execute();
     return $stmt->fetchAll();
 }
@@ -122,9 +122,9 @@ WHERE question.questionid = classification.questionid
   AND post.deletorid IS NULL
 LIMIT :n
 OFFSET :m;");
-    $stmt->bindParam(':n', $n);
-    $stmt->bindParam(':m', $m);
-    $stmt->bindParam(':id', $id);
+    $stmt->bindParam('n', $n);
+    $stmt->bindParam('m', $m);
+    $stmt->bindParam('id', $id);
     $stmt->execute();
     return $stmt->fetchAll();
 }
@@ -148,9 +148,9 @@ WHERE question.categoryid = :id
   AND post.deletorid IS NULL
 LIMIT :n
 OFFSET :m;");
-    $stmt->bindParam(':n', $n);
-    $stmt->bindParam(':m', $m);
-    $stmt->bindParam(':id', $id);
+    $stmt->bindParam('n', $n);
+    $stmt->bindParam('m', $m);
+    $stmt->bindParam('id', $id);
     $stmt->execute();
     return $stmt->fetchAll();
 }
@@ -347,8 +347,8 @@ UPDATE post
 SET deletorid = :memberid,
     postdeletiondate = now()
 WHERE post.postid = :postid;");
-    $stmt->bindParam(':postid', $postid);
-    $stmt->bindParam(':memberid', $memberid);
+    $stmt->bindParam('postid', $postid);
+    $stmt->bindParam('memberid', $memberid);
     $stmt->execute();
     return true;
 }

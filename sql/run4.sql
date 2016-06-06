@@ -132,20 +132,20 @@ CREATE MATERIALIZED VIEW FullTextPost AS
           categoryName AS postCategory,
           string_agg(tagName, ' ') AS postTags
         FROM CurrentPostVersion, Question, Category,
-          (SELECT
-             questionID,
-             versionBody AS answerBody
-           FROM Answer, CurrentPostVersion
-           WHERE Answer.answerID = CurrentPostVersion.postID) AS A,
-          (SELECT
+         (SELECT
              Question.questionID,
              tagName
            FROM Question
              LEFT JOIN Classification ON Question.questionID = Classification.questionID
              LEFT JOIN Tag ON Classification.tagID = Tag.tagID) AS B
+        LEFT JOIN
+          (SELECT
+             questionID,
+             versionBody AS answerBody
+           FROM Answer, CurrentPostVersion
+           WHERE Answer.answerID = CurrentPostVersion.postID) AS A ON A.questionid = B.questionid
         WHERE
           CurrentPostVersion.postID = Question.questionID
-          AND Question.questionID = A.questionID
           AND Question.categoryID = Category.categoryID
           AND Question.questionID = B.questionID
         GROUP BY Question.questionid, title, versionBody, categoryName) AS C;
