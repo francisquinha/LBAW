@@ -35,12 +35,10 @@ a, a:hover, a:focus {
 }
 #topquestion{
 	float:left;
-	padding-right:1rem;
+	padding-right:1em;
 	padding-bottom:0;	
     margin-bottom: 3px;
     margin-top: 1px;
-
-	
 }
 
 
@@ -54,8 +52,7 @@ a, a:hover, a:focus {
 	padding:1rem;
 	margin:0;
 	background-color:#F8F8F8;
-    white-space: nowrap; 
-
+    white-space: nowrap;
 }
 
 
