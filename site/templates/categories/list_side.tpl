@@ -23,7 +23,7 @@
 
 <div class="well col-md-12">
     <div class="browse">
-        <a href="{$BASE_URL}pages/categories/list_all.php" style=" padding:0; padding:0;" id="questiontitle">Categories</a>
+        <a href="{$BASE_URL}pages/categories/list_all.php" style=" padding:0; padding:0;" class="questiontitle">Categories</a>
         <br>
         <ul class="browseAlign">
             {foreach $root_categories as $root_category}

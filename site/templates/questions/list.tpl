@@ -9,7 +9,7 @@
         <div class="col-md-8">
             <h3 id="topquestion">{$subtitle}</h3>
             <ul class="nav nav-tabs right-side">
-                <li class="active"><a id="tabname" data-toggle="tab" onclick="changeTab(0)" href="#recent" style={$style_tab1}><span
+                <li class="active"><a class="tabname" data-toggle="tab" onclick="changeTab(0)" href="#recent" style={$style_tab1}><span
                                 class={$class_tab1} style={$style_tab1}> </span>{$tab1}</a></li>
                 <li><a id="tabname" data-toggle="tab" onclick="changeTab(1)" href="#hot" style={$style_tab1}><span
                                 class={$class_tab2} style={$style_tab2}> </span>{$tab2}</a></li>
@@ -23,28 +23,28 @@
                     <div id="recent" class=" tab-pane fade">
                 {/if}
                     {foreach $questions as $question}
-                        <div id="question">
-                            <div id="questiontitlesquare">
-                                <a id="questiontitle" href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
+                        <div class="question">
+                            <div class="questiontitlesquare">
+                                <a class="questiontitle" href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
                                     {$question.title}
                                 </a>
                                 <br>
                                 <br>
                             </div>
-                            <div id="questionusersquare">
-                                <a id="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">
+                            <div class="questionusersquare">
+                                <a class="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">
                                     {$question.name}
                                 </a>
-                                <span id="timeago">
+                                <span class="timeago">
                                     asked {$question.timeago}
                                 </span>
                             </div>
-                            <div id="questioncategorysquare">
+                            <div class="questioncategorysquare">
                                 <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}&page=1">
                                     {$question.categoryname}
                                 </a>
                             </div>
-                            <div id="questionbuttonsection">
+                            <div class="questionbuttonsection">
                                 <a class="btn btn-primary btn-sm btn-success">
                                     <span class="glyphicon glyphicon-thumbs-up" title="Likes"></span>
                                     {$question.postrating}
@@ -58,7 +58,7 @@
                                     {$question.views}
                                 </a>
                             </div>
-                            <div id="tagsofquestion">
+                            <div class="tagsofquestion">
                                 {foreach $question.tagarray as $tag}
                                     <a class="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}&page=1" style="display:inline-flex;">
                                         <span class="glyphicon glyphicon-tag"></span>
@@ -77,26 +77,26 @@
                             <div id="hot" class=" tab-pane fade">
                                 {/if}
                     {foreach $questionsH as $question}
-                        <div id="question">
-                            <div id="questiontitlesquare">
-                                <a id="questiontitle" href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
+                        <div class="question">
+                            <div class="questiontitlesquare">
+                                <a class="questiontitle" href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
                                     {$question.title}
                                 </a>
                             </div>
-                            <div id="questionusersquare">
-                                <a id="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">
+                            <div class="questionusersquare">
+                                <a class="questionusers" href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">
                                     {$question.name}
                                 </a>
-                                <span id="timeago">
+                                <span class="timeago">
                                     asked {$question.timeago}
                                 </span>
                             </div>
-                            <div id="questioncategorysquare">
+                            <div class="questioncategorysquare">
                                 <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}&page=1">
                                     {$question.categoryname}
                                 </a>
                             </div>
-                            <div id="questionbuttonsection">
+                            <div class="questionbuttonsection">
                                 <a class="btn btn-primary btn-sm btn-success">
                                     <span class="glyphicon glyphicon-thumbs-up" title="Like"></span>
                                     {$question.postrating}
@@ -110,9 +110,9 @@
                                     {$question.views}
                                 </a>
                             </div>
-                            <div id="tagsofquestion">
+                            <div class="tagsofquestion">
                                 {foreach $question.tagarray as $tag}
-                                    <a id="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}&page=1" style="display:inline-flex;">
+                                    <a class="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}&page=1" style="display:inline-flex;">
                                         <span class="glyphicon glyphicon-tag"></span>
                                         {$tag.tagname}
                                     </a>

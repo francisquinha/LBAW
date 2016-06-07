@@ -1,4 +1,5 @@
 var idleTime = 0;
+
 function validateLogin(form, username, password){
     if (username.value == '' || password.value == '') {
         alert('You must provide both a username and password');
@@ -7,7 +8,6 @@ function validateLogin(form, username, password){
     }
     return true;
 }
-
 
 $('.form-username, .form-password, .form-email, .form-name').focus(
     function(){
@@ -83,6 +83,8 @@ $(document).ready(function() {
     $(this).keypress(function (e) {
         idleTime = 0;
     });
+
+
 
 
     $('.login-form').submit(function () {

@@ -1,10 +1,10 @@
 {include file='common/header.tpl'}
-{function recursive_children}
+{function recursive_children_sel}
     {foreach $child_categories as $child_category}
         <option value={$child_category.categoryid}>
-            {for $i = 0 to $level} &nbsp &nbsp &nbsp {/for}
+            {for $i = 0 to $level} > {/for}
             {$child_category.categoryname}
-            {recursive_children child_categories=$child_categories_{$child_category.categoryid} level = $level + 1}
+            {recursive_children_sel child_categories=$child_categories_{$child_category.categoryid} level = $level + 1}
         </option>
     {/foreach}
 {/function}
@@ -16,20 +16,20 @@
         <!-- Blog Entries Column -->
         <div class="col-md-8">
             <div id="questionpq" class="well">
-                <div id="questiontitlesquare">
-                    <a id="qpagequestiontitle"
+                <div class="questiontitlesquare">
+                    <a class="qpagequestiontitle"
                        href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
                         {$question.title}
                     </a>
                 </div>
-                <div id="questionbodysquare" align="left">
+                <div id="questionbodysquare">
                     {$question.versionbody}
                 </div>
                 <br>
-                <div id="questionusersquare"><a id="questionusers"
+                <div class="questionusersquare"><a class="questionusers"
                                                 href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">{$question.name}</a>
-                    <span id="timeago">asked {$question.timeago}</span></div>
-                <div id="questioncategorysquare">
+                    <span class="timeago">asked {$question.timeago}</span></div>
+                <div class="questioncategorysquare">
                     <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}&page=1">
                         {$question.categoryname}
                     </a>
@@ -45,7 +45,7 @@
                                     {foreach $root_categories as $root_category}
                                         <option value={$root_category.categoryid}>
                                             {$root_category.categoryname}
-                                            {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
+                                            {recursive_children_sel child_categories=$child_categories_{$root_category.categoryid} level = 0}
                                         </option>
                                     {/foreach}
                                 </select>
@@ -58,7 +58,7 @@
                     </div>
                 {/if}
 
-                <div id="questionbuttonsection">
+                <div class="questionbuttonsection">
                     <a>
                         <span class="fa fa-pencil" title="Number Answers"></span>
                         {$question.answers}
@@ -70,7 +70,7 @@
 
                 </div>
 
-                <div id="tagsofquestion">
+                <div class="tagsofquestion">
                     {foreach $question.tagarray as $tag}
                         <a class="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}&page=1"
                            style="display:inline-flex;">
@@ -80,7 +80,7 @@
                 </div>
 
                 <div class="questionvotesection">
-                    <form role="form" action="javascript:votes({$question.questionid})" class="updownquestion">
+                    <form action="javascript:votes({$question.questionid})" class="updownquestion">
                         <button class="upquestion" type="submit" >
                         <span
                                 class="glyphicon glyphicon-thumbs-up"
@@ -129,11 +129,11 @@
                     <div id="answerusersquare">
                         <a id="answerusers"
                            href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
-                        <span id="timeago">answered {$bestanswer.timeago}</span>
+                        <span class="timeago">answered {$bestanswer.timeago}</span>
                     </div>
                     <div class="questionvotesection">
 
-                        <form role="form" action="javascript:votes({$bestanswer.answerid})" class="updownanswer">
+                        <form action="javascript:votes({$bestanswer.answerid})" class="updownanswer">
                             <button class="upquestion" type="submit" >
                         <span
                                 class="glyphicon glyphicon-thumbs-up"
@@ -180,12 +180,12 @@
 
                     <div id="answerusersquare">
                         <a id="answerusers" href="{$BASE_URL}pages/members/details.php?membersid={$answer.postauthorid}">{$answer.name}</a>
-                        <span id="timeago">answered {$answer.timeago}</span>
+                        <span class="timeago">answered {$answer.timeago}</span>
                     </div>
 
                     <div class="questionvotesection">
                         <li class="noBullets" style="display: inline-flex;">
-                            <form role="form" action="javascript:votes({$answer.answerid})" class="updownanswer">
+                            <form action="javascript:votes({$answer.answerid})" class="updownanswer">
                                 <button class="upquestion" type="submit" >
                         <span
                                 class="glyphicon glyphicon-thumbs-up"

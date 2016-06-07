@@ -2,7 +2,7 @@
 {function recursive_children_sel}
     {foreach $child_categories as $child_category}
         <option value={$child_category.categoryid}>
-            {for $i = 0 to $level} &nbsp &nbsp &nbsp {/for}
+            {for $i = 0 to $level} > {/for}
             {$child_category.categoryname}
             {recursive_children_sel child_categories=$child_categories_{$child_category.categoryid} level = $level + 1}
         </option>
@@ -34,7 +34,7 @@
                         {/foreach}
                     </ul>
                 {/function}
-                <a style=" font-size:150%; padding:0; padding-bottom:4rem;" id="questiontitle">Categories</a>
+                <a style=" font-size:150%; padding:0; padding-bottom:4rem;" class="questiontitle">Categories</a>
                 <br>
                 {if $USERNAME}
                     {if $smarty.session.permissiontype eq 'administrator'}

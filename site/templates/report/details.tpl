@@ -19,7 +19,7 @@
                         <div id="answerusersquare">
                             <a id="answerusers"
                                href="{$BASE_URL}pages/members/details.php?membersid={$answer.postauthorid}">{$answer.name}</a>
-                            <span id="timeago">answered {$answer.timeago}</span>
+                            <span class="timeago">answered {$answer.timeago}</span>
                         </div>
                         <div id="questionvotesection">
                             <a href="#" class="btn-lg" style="color:black;"><span
@@ -34,8 +34,8 @@
                     <hr>
                 {else}
                     <div id="questionpq">
-                        <div id="questiontitlesquare">
-                            <a id="qpagequestiontitle"
+                        <div class="questiontitlesquare">
+                            <a class="qpagequestiontitle"
                                href="{$BASE_URL}pages/questions/details.php?questionid={$question.questionid}">
                                 {$question.title}
                             </a>
@@ -44,10 +44,10 @@
                             {$question.versionbody}
                         </div>
                         <br>
-                        <div id="questionusersquare"><a id="questionusers"
+                        <div class="questionusersquare"><a class="questionusers"
                                                         href="{$BASE_URL}pages/members/details.php?membersid={$question.postauthorid}">{$question.name}</a>
-                            <span id="timeago">asked {$question.timeago}</span></div>
-                        <div id="questioncategorysquare">
+                            <span class="timeago">asked {$question.timeago}</span></div>
+                        <div class="questioncategorysquare">
                             <a href="{$BASE_URL}pages/questions/list_category.php?categoryid={$question.categoryid}">
                                 {$question.categoryname}
                             </a>
@@ -62,7 +62,7 @@
                                         style="padding:0; margin:0;color:#c9302c;"></span></a>
                         </div>
 
-                        <div id="tagsofquestion">
+                        <div class="tagsofquestion">
                             {foreach $question.tagarray as $tag}
                                 <a class="button_tag" href="{$BASE_URL}pages/questions/list_tag.php?tagid={$tag.tagid}"
                                    style="display:inline-flex;">
@@ -71,7 +71,7 @@
                             {/foreach}
                         </div>
 
-                        <div id="questionbuttonsection">
+                        <div class="questionbuttonsection">
                             <a>
                                 <span class="fa fa-pencil"></span>
                                 {$question.answers}
@@ -89,9 +89,9 @@
                 {foreach $reports as $report}
                     <div id="report">
                         <p>{$report.reportbody}</p>
-                        <div id="questionusersquare"><a id="questionusers"
+                        <div class="questionusersquare"><a class="questionusers"
                                                         href="{$BASE_URL}pages/members/details.php?membersid={$report.authorid}">{$report.username}</a>
-                            <span id="timeago">reported {$report.timeago}</span></div>
+                            <span class="timeago">reported {$report.timeago}</span></div>
                     </div>
                     <hr style="margin-top:0;">
                 {/foreach}

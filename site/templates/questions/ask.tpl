@@ -1,11 +1,11 @@
 {include file='common/header.tpl'}
-{function recursive_children}
+{function recursive_children_sel}
     {foreach $child_categories as $child_category}
         <option value={$child_category.categoryid}>
-            {for $i = 0 to $level} &nbsp &nbsp &nbsp {/for}
+            {for $i = 0 to $level} > {/for}
             {$child_category.categoryname}
-            {recursive_children child_categories=$child_categories_{$child_category.categoryid} level = $level + 1}
         </option>
+            {recursive_children_sel child_categories=$child_categories_{$child_category.categoryid} level = $level + 1}
     {/foreach}
 {/function}
 
@@ -21,9 +21,9 @@
                         <option disabled selected>Category</option>
                         {foreach $root_categories as $root_category}
                             <option value={$root_category.categoryid}>
-                                {$root_category.categoryname}
-                                {recursive_children child_categories=$child_categories_{$root_category.categoryid} level = 0}
-                            </option>
+                                {$root_category.categoryname}</option>
+                                {recursive_children_sel child_categories=$child_categories_{$root_category.categoryid} level = 0}
+
                         {/foreach}
                     </select>
                 </div>

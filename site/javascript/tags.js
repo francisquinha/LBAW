@@ -12,6 +12,7 @@ $(document).ready(function() {
         }
     });
 
+
     $('option').mousedown(function(e) {
         e.preventDefault();
         $(this).prop('selected', $(this).prop('selected') ? false : true);
@@ -23,6 +24,7 @@ $(document).ready(function() {
             last_valid_selection = $(this).val();
         }
     });
+    
 
 });
 

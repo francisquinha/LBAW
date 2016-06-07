@@ -1,4 +1,4 @@
-#question{
+.question{
     margin:0;
     background-color:white;
     padding:1.5rem;
@@ -27,7 +27,7 @@
 
 
 
-#questiontitle{
+.questiontitle{
     font-family: 'QuanticoRegular';
     font-weight: bold;
     white-space: nowrap;
@@ -36,7 +36,7 @@
     max-width: 60ch;
 
 }
-#questiontitlesquare{
+.questiontitlesquare{
     padding:0;
     margin:0;
     width: 100%;
@@ -45,20 +45,24 @@
 
 }
 
-#questioncategorysquare{
+#questionbodysquare{
+    align: left;
+}
+
+.questioncategorysquare{
     float:left;
     width: 20%;
     overflow: auto;
 
 }
 
-#questioncategorysquare > a{
+.questioncategorysquare > a{
     color:black;
     font-family: 'QuanticoRegular';
 
 }
 
-#questionusersquare{
+.questionusersquare{
     width: 80%;
     float:left;
     text-align: left;
@@ -76,7 +80,7 @@
 
 }
 
-#questionusers{
+.questionusers{
     font-size:80%;
     color: #008CBA;
     font-family: 'QuanticoRegular';
@@ -92,14 +96,14 @@
 
 }
 
-#timeago{
+.timeago{
     font-size:70%;
     font-family: 'QuanticoRegular';
 
 
 }
 
-#tagsofquestion{
+.tagsofquestion{
     float:right;
     padding:0;
     margin-left:0;
@@ -115,7 +119,7 @@
 
 
 
-#tagsofquestion > a{
+.tagsofquestion > a{
     padding-left:0.2rem;
     padding-right:0.2rem;
     padding-top:0.2rem;
@@ -123,7 +127,7 @@
     margin:0.2rem;
 }
 
-#questionbuttonsection{
+.questionbuttonsection{
     clear: both;
     float:left;
     margin:0;
@@ -133,13 +137,13 @@
 
 
 }
-#questionbuttonsection > a > span{
+.questionbuttonsection > a > span{
     margin:0;
     padding:0;
 
 }
 
-#questionbuttonsection > a{
+.questionbuttonsection > a{
     font-size:80%;
     padding-left:0.2rem;
     padding-right:0.2rem;
@@ -176,7 +180,7 @@
 
 }
 
-#tagsofquestion > a > span{
+.tagsofquestion > a > span{
     padding-left:0.1rem;
     padding-right:0;
     padding-top:0;
@@ -208,7 +212,7 @@
     font-family: 'QuanticoRegular';
 }
 
-#tabname{
+.tabname{
     font-family: 'QuanticoRegular';
 }
 
@@ -240,19 +244,19 @@
     color:#c9302c;
 }
 
-#questionbuttonsection > .linkReportQuestion > .reportPost{
+.questionbuttonsection > .linkReportQuestion > .reportPost{
     padding-left: 10px;
 }
 
-#questionbuttonsection > .linkReportBestAnswer > .reportPost{
+.questionbuttonsection > .linkReportBestAnswer > .reportPost{
     padding-left: 10px;
 }
 
-#questionbuttonsection > .linkReportAnswer > .reportPost{
+.questionbuttonsection > .linkReportAnswer > .reportPost{
     padding-left: 10px;
 }
 
-#questionbuttonsection > .linkDeletePost > .deletePost{
+.questionbuttonsection > .linkDeletePost > .deletePost{
     padding-left: 10px;
 }
 
@@ -268,7 +272,7 @@
 }
 
 
-#qpagequestiontitle{
+.qpagequestiontitle{
     font-family: 'QuanticoRegular';
     font-weight: bold;
     white-space: nowrap;
