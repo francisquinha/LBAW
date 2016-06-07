@@ -1,4 +1,4 @@
-<a href="#" class="btn btn-link btn-lg" role="button" data-toggle="modal" data-target="#login-modal">Login</a>
+<a href="#" class="btn btn-link btn-lg" role="button" data-toggle="modal" data-target="#login-modal" style="focus:blur;">Login</a>
 
 </ul>
 </div>
