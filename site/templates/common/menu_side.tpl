@@ -4,7 +4,7 @@
 
 
     <div class="well">
-        <a id="questiontitle">Search</a>
+        <a style=" padding:0; padding:0;" class="questiontitle">Search</a>
         <form class="input-group" action="{$BASE_URL}pages/questions/list_search.php" method="get">
             <input type="text" name="search" class="form-control">
             <input type="hidden" name="page" value = 1>

@@ -7,7 +7,7 @@
         <div class="col-md-8">
 
 
-            <a style=" font-size:150%; padding:0; padding-bottom:4rem;" id="questiontitle">
+            <a style=" font-size:150%; padding:0;" class="questiontitle">
                 Users
             </a>
 

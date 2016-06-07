@@ -50,7 +50,7 @@
                 <li>
                     <a href="{$BASE_URL}pages/about/about.php" class="btn btn-link btn-lg">About</a>
                 </li>
-                <li>
+                <li style="padding-left:1.5rem;">
                     {if $USERNAME}
                         {include file='common/menu_logged_in.tpl'}
                     {else}
