@@ -73,7 +73,7 @@
                             <form role="form" action="{$BASE_URL}actions/members/removecategory.php" method="post">
                                 <div class="col-md-12">
                                     <select name="categorytodelete" class="form-control">
-                                        <option disabled selected>choose category to remove (only if category don't have subcategories or questions related)</option>
+                                        <option disabled selected>choose category to remove (only if category doesn't have subcategories or questions related)</option>
                                         {foreach $root_categories as $root_category}
                                             <option value={$root_category.categoryid}>
                                                 {$root_category.categoryname}
