@@ -10,10 +10,10 @@
 
 
 <!-- BEGIN # MODAL LOGIN -->
-<div class="modal fade" id="login-modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
+<div class="modal fade" id="login-modal"  tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true"
      style="display: none;">
     <div class="modal-dialog">
-        <div class="modal-content">
+        <div class="modal-content" style="background-color:#eee">
             <!-- Begin # DIV Form -->
             <div id="div-forms">
                 <!-- Begin # Login Form -->
