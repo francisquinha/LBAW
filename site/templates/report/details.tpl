@@ -11,7 +11,7 @@
                 <h3>Post</h3>
                 {if !empty($answer)}
                     <div id="answer">
-                        <div id="answerbodysquare" align="left">
+                        <div class="answerbodysquare" align="left">
                             {$answer.versionbody}
                         </div>
                         <br>

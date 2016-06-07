@@ -71,7 +71,7 @@
 
 }
 
-#answerusersquare{
+.answerusersquare{
     width: 80%;
     float:left;
     text-align: left;
@@ -88,7 +88,7 @@
 
 }
 
-#answerusers{
+.answerusers{
     font-size:80%;
     color: #008CBA;
     font-family: 'QuanticoRegular';
@@ -226,7 +226,7 @@
 
 }
 
-#answer{
+.answer{
     padding:1.5rem;
     min-height: 160px;
     min-width: 200px;

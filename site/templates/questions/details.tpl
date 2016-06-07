@@ -122,12 +122,12 @@
             {if  $bestanswer.answerid != NULL}
                 <div class="bestanswer">
                     <span class="glyphicon glyphicon-star" style="float:right;color:#4aaf51;"></span>
-                    <div id="answerbodysquare" align="left">
+                    <div class="answerbodysquare">
                         {$bestanswer.versionbody}
                     </div>
                     <br>
-                    <div id="answerusersquare">
-                        <a id="answerusers"
+                    <div class="answerusersquare">
+                        <a class="answerusers"
                            href="{$BASE_URL}pages/members/details.php?membersid={$bestanswer.postauthorid}">{$bestanswer.name}</a>
                         <span class="timeago">answered {$bestanswer.timeago}</span>
                     </div>
@@ -172,18 +172,19 @@
             {/if}
 
             {foreach $answers as $answer}
-                <div id="answer">
-                    <div id="answerbodysquare" align="left">
+                <div class="answer">
+                    <div class="answerbodysquare">
                         {$answer.versionbody}
                     </div>
                     <br>
 
-                    <div id="answerusersquare">
-                        <a id="answerusers" href="{$BASE_URL}pages/members/details.php?membersid={$answer.postauthorid}">{$answer.name}</a>
+                    <div class="answerusersquare">
+                        <a class="answerusers" href="{$BASE_URL}pages/members/details.php?membersid={$answer.postauthorid}">{$answer.name}</a>
                         <span class="timeago">answered {$answer.timeago}</span>
                     </div>
 
                     <div class="questionvotesection">
+                        <ul>
                         <li class="noBullets" style="display: inline-flex;">
                             <form action="javascript:votes({$answer.answerid})" class="updownanswer">
                                 <button class="upquestion" type="submit" >
@@ -225,6 +226,7 @@
                                 </a>
                             {/if}
                         </li>
+                        </ul>
 
                     </div>
                 </div>
