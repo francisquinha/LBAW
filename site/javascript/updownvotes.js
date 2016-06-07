@@ -17,11 +17,8 @@ $(document).ready(function() {
     $('.linkReportAnswer').click( function() {
 
         $('.reportFormAnswer').hide();
-
         var j = $(this).attr('id');
         $('.reportFormAnswer-'+j).css( "display", "inline" );
-        //var j = document.querySelector('[id^=id-]').id;
-        //$('#'+j).css( "display", "inline" );
     } );
 
 
@@ -97,7 +94,8 @@ function sendReport2(postID) {
 }
 
 function sendReport3(postID) {
-    var reportBody = $('.reportBody3').val();
+
+    var reportBody = $('.reportBody3-'+postID).val();
     if(reportBody == '') {
         alert('you really want send a message');
         return false;

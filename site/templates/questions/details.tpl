@@ -206,7 +206,7 @@
                                         <span class="reportPost glyphicon glyphicon-flag"></span>
                                     </button>
                                     <div class="reportFormAnswer reportFormAnswer-{$answer.answerid}">
-                                            <textarea class="reportBody3" cols="50" rows ="20" name="body"></textarea>
+                                            <textarea class="reportBody3 reportBody3-{$answer.answerid}" cols="50" rows ="20" name="body"></textarea>
                                             <input formaction="javascript:sendReport3({$answer.answerid})" type="submit" value="Post" class="submitButton">
                                     </div>
                                 {/if}
