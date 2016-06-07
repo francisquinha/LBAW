@@ -202,10 +202,10 @@
 
                                 {if {$smarty.session.userid}}
                                     <!-- Button trigger modal -->
-                                    <button type="button" class="linkReportAnswer">
+                                    <button type="button" class="linkReportAnswer" id="{$answer.answerid}">
                                         <span class="reportPost glyphicon glyphicon-flag"></span>
                                     </button>
-                                    <div class="reportFormAnswer">
+                                    <div class="reportFormAnswer reportFormAnswer-{$answer.answerid}">
                                             <textarea class="reportBody3" cols="50" rows ="20" name="body"></textarea>
                                             <input formaction="javascript:sendReport3({$answer.answerid})" type="submit" value="Post" class="submitButton">
                                     </div>
