@@ -205,8 +205,8 @@
                                         <span class="reportPost glyphicon glyphicon-flag"></span>
                                     </button>
                                     <div class="reportFormAnswer">
-                                            <textarea class="reportBody3" cols="50" rows ="20" name="body"></textarea>
-                                            <input formaction="javascript:sendReport3({$answer.answerid})" type="submit" value="Post" class="submitButton">
+                                        <textarea class="reportBody3" cols="50" rows ="20" name="body"></textarea>
+                                        <input formaction="javascript:sendReport3({$answer.answerid})" type="submit" value="Post" class="submitButton">
                                     </div>
                                 {/if}
 
@@ -231,7 +231,7 @@
                 <hr>
             {/foreach}
 
-            <button data-toggle="tooltip" title="Make login!" id="edit" class="btn btn-primary" type="button">Answer</button>
+            <button data-toggle="tooltip" title="Make login!" id="edit" class="btn-xs btn-primary " style="background-color: #33cc33; border-color: #33cc33;" type="button">Answer</button>
             {if {$smarty.session.userid}}
                 <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
                     <div class="summernote"></div>
@@ -239,5 +239,6 @@
             {else}
                 <div class="messageAnswer">Please, login</div>
             {/if}
-
+            <br>
+            <br>
         </div>
