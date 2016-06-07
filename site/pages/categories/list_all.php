@@ -2,6 +2,7 @@
 include_once('../../config/init.php');
 include_once($BASE_DIR . 'database/categories.php');
 
+
 function recursiveChildren($children_category) {
     global $smarty;
     foreach ($children_category as $child_category) {

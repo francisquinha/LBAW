@@ -44,7 +44,7 @@
                                     class="glyphicon glyphicon-plus"
                                     style="padding:0; margin:0;color:white; font-size: 70%;"></span></button>
                         <button class="btn-xs" style="background-color: #33cc33; color:white;" type=button name=type value='Show Layer'
-                                onclick="setVisibility('deletetag', 'inline');" ;>Remove Category <span
+                                onclick="setVisibility('removecategory', 'inline');" ;>Remove Category <span
                                     class="glyphicon glyphicon-minus"
                                     style="padding:0; margin:0;color:white; font-size: 70%;"></span></button>
                         <div id="createcategory">
@@ -63,12 +63,27 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                <input type="text" class="newCategoryName" name="newCategory" placeholder="new category">
-                                <input class="btn-xs" type="submit" value="Create">
+                                    <input type="text" class="newCategoryName" name="newCategory" placeholder="new category">
+                                    <input class="btn-xs" type="submit" value="Create">
                                 </div>
                             </form>
                         </div>
                         <div id="removecategory">
+                            <br><br>
+                            <form role="form" action="{$BASE_URL}actions/members/removecategory.php" method="post">
+                                <div class="col-md-12">
+                                    <select name="categorytodelete" class="form-control">
+                                        <option disabled selected>choose category to remove</option>
+                                        {foreach $root_categories as $root_category}
+                                            <option value={$root_category.categoryid}>
+                                                {$root_category.categoryname}
+                                                {recursive_children_sel child_categories=$child_categories_{$root_category.categoryid} level = 0}
+                                            </option>
+                                        {/foreach}
+                                    </select>
+                                </div>
+                                <input class="btn-xs" type="submit" value="Delete">
+                            </form>
                         </div>
                     {/if}
                 {/if}

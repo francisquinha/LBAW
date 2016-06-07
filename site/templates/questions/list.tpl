@@ -3,13 +3,6 @@
 <br>
 <br>
 
-{if $kids|@count == 0 && $questions|@count == 0 && $smarty.session.permissiontype=="administrator"}
-    <form role="form" action="{$BASE_URL}actions/members/deletecategory.php" method="get">
-        <input type="hidden" name="categoryid" value={$smarty.get.categoryid}>
-        <button class="btn-primary " type="submit" value="dsa"> Delete</button>
-    </form>
-{/if}
-
 <div class="container">
     <div class="row">
         <!-- Blog Entries Column -->

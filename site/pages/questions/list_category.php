@@ -10,9 +10,7 @@ if (isset($_GET['categoryid'])) {
     $items = 10;
 
     $questions = getCategoryQuestions($_GET['categoryid'], $items, ($_GET['page'] - 1) * $items);
-
-    $smarty->assign('kids', getChildCategories([$_GET['categoryid']]));
-
+    
     foreach ($questions as $key => $question) {
         $questions[$key]['timeago'] = time_elapsed_string(strtotime($question['postcreationdate']));
         $questions[$key]['name'] = getMemberName([$question['postauthorid']])['name'];
