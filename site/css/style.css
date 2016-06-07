@@ -401,7 +401,7 @@ a , input, form, button{
 }
 
 .inactive_link {
-	/*pointer-events: none;*/
+	pointer-events: none;
 	cursor: default;
 	color: #888;
 	font-weight: normal;
@@ -417,7 +417,7 @@ a , input, form, button{
 	padding: 0;
 }
 
-#ellipsis {
+#ellipsis1,#ellipsis2 {
 	color: #888;
 	font-weight: normal;
 }

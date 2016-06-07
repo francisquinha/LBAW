@@ -45,13 +45,15 @@
 
 
             <div class="tab-content">
-                <div id="ALL" class="tab-pane fade in active">
-                    <br>
-                    {foreach $members as $member}
-                        <ul class="userlist">
-                            <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
-                            <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
-                            <li class="userlistmemberrating">{$member.memberrating}</li>
-                        </ul>
-                    {/foreach}
+                <div>
+                    <div id="ALL" class="tab-pane fade in active">
+                        <br>
+                        {foreach $members as $member}
+                            <ul class="userlist">
+                                <a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}"><img src="http://www.gravatar.com/avatar/{$member.emailhash}?s=80&d=retro"></a>
+                                <li class="userlistusername"><a href="{$BASE_URL}pages/members/details.php?membersid={$member.memberid}">{$member.username}</a></li>
+                                <li class="userlistmemberrating">{$member.memberrating}</li>
+                            </ul>
+                        {/foreach}
+                </div>
 

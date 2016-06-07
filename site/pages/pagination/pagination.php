@@ -15,7 +15,7 @@
 function pagination($currentPage, $itemCount, $itemsPerPage, $adjacentCount, $pageLinkTemplate, $showPrevNext = true) {
     $firstPage = 1;
     $lastPage  = ceil($itemCount / $itemsPerPage);
-    if ($lastPage == 1) {
+    if ($lastPage <= 1) {
         return;
     }
     if ($currentPage <= $adjacentCount + $adjacentCount) {
@@ -42,7 +42,7 @@ function pagination($currentPage, $itemCount, $itemsPerPage, $adjacentCount, $pa
         echo '<li>';
         echo '<a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($firstPage) : sprintf($pageLinkTemplate, $firstPage)) . '">' . $firstPage . '</a>';
         if ($firstAdjacentPage > $firstPage + 1) {
-            echo '<a class="inactive_link" id="ellipsis">...</a>';
+            echo '<a class="inactive_link" id="ellipsis1">...</a>';
         }
         echo '</li>';
     }
@@ -56,7 +56,7 @@ function pagination($currentPage, $itemCount, $itemsPerPage, $adjacentCount, $pa
     if ($lastAdjacentPage < $lastPage) {
         echo '<li>';
         if ($lastAdjacentPage < $lastPage - 1) {
-            echo '<a class="inactive_link" id="ellipsis">...</a>';
+            echo '<a class="inactive_link" id="ellipsis2">...</a>';
         }
         echo '<a href="' . (is_callable($pageLinkTemplate) ? $pageLinkTemplate($lastPage) : sprintf($pageLinkTemplate, $lastPage)) . '">' . $lastPage . '</a>';
         echo '</li>';
