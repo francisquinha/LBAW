@@ -233,7 +233,7 @@
                 <hr>
             {/foreach}
 
-            <button data-toggle="tooltip" title="Make login!" id="edit" class="btn btn-primary" type="button">Answer</button>
+            <button data-toggle="tooltip" title="Make login!" id="edit" class="btn-xs" style="background-color: #33cc33; border-color: #33cc33;color:white" type="button">Answer</button>
             {if {$smarty.session.userid}}
                 <form id="send" action="javascript:send_answer({$smarty.get.questionid})" name="confirmationForm">
                     <div class="summernote"></div>

@@ -45,7 +45,7 @@ $(document).ready(function() {
                     ['view', ['fullscreen', 'codeview']]
                 ]
             });
-            var button = '<button id="post_answer" type="submit" class="btn-xs btn-primary " style="background-color: #33cc33; border-color: #33cc33;">Answer <span class="glyphicon glyphicon-send"></span></button>';
+            var button = '<button id="post_answer" type="submit" class="btn-xs" style="background-color: #33cc33; border-color: #33cc33;">Answer <span class="glyphicon glyphicon-send"></span></button>';
             $('.note-resizebar').append(button).html();
 
     });
