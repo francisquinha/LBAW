@@ -449,7 +449,13 @@ a , input, form, button{
 	min-height: 400px;
 	display:none;
 }
+
 #deletetag{
 	min-height: 200px;
 	display:none;
+}
+
+a.btn.btn-sm.btn-primary {
+    pointer-events: none;
+    cursor: default;
 }
